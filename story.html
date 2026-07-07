@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — Demi's Tasty 🍊</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&display=swap" rel="stylesheet">
+  
+  <!-- Icons & Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="mockup.css?v=3.0">
+  
+  <style>
+    .story-hero {
+      padding: 180px 0 100px;
+      background: linear-gradient(135deg, #fbf9f4 0%, #f4eee1 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-hero h1 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 4rem;
+      color: #016130;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .story-hero p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .story-hero-leaf {
+      position: absolute;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    
+    .story-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .story-content h2 {
+      font-family: 'Calistoga', serif;
+      font-size: 2.8rem;
+      color: #016130;
+      margin-bottom: 1.5rem;
+    }
+    .story-content p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .story-image-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+    .story-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Timeline */
+    .timeline-section {
+      background: #fbf9f4;
+      padding: 100px 0;
+    }
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .timeline-header h2 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 3rem;
+      color: #016130;
+    }
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: #016130;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 10px;
+    }
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: #fff;
+      border: 4px solid #b84a0e;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item.right {
+      left: 50%;
+    }
+    .timeline-item.right::after {
+      left: -10px;
+    }
+    .timeline-card {
+      padding: 25px;
+      background-color: #fff;
+      position: relative;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    }
+    .timeline-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #016130;
+      margin: 0 0 10px;
+    }
+    .timeline-card p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .timeline-container::after {
+        left: 31px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .timeline-item.left {
+        text-align: left;
+        left: 0;
+      }
+      .timeline-item.right {
+        left: 0;
+      }
+      .timeline-item::after {
+        left: 21px;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+<body class="theme-organic">
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link active">Our Story</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="partner.html" class="nav-link">Become a partner</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="story.html" class="mobile-link active">Our Story</a>
+      <a href="products.html" class="mobile-link">Products</a>
+      <a href="partner.html" class="mobile-link">Become a partner</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Story Hero -->
+    <section class="story-hero">
+      <!-- Floating leaves background -->
+      <img src="assets/custom_mango_leaf.png" alt="Leaf" class="story-hero-leaf" style="width: 100px; top: 10%; left: 5%;">
+      <img src="assets/custom_mango_leaf.png" alt="Leaf" class="story-hero-leaf" style="width: 80px; bottom: 10%; right: 5%; transform: rotate(180deg);">
+      
+      <div class="container">
+        <h1>Grown by Nature, Bottled with Care.</h1>
+        <p>From day one, our mission has been simple: to bring the authentic, unadulterated freshness of orchard-ripe fruits straight to your table.</p>
+      </div>
+    </section>
+
+    <!-- Detailed Story Sections -->
+    <section class="story-section">
+      <div class="container">
+        
+        <!-- Grid Block 1 -->
+        <div class="story-grid">
+          <div class="story-content">
+            <h2>The Demi's Standard</h2>
+            <p>We started in 2026 with a belief that beverages shouldn't be loaded with sugars, preservatives, or artificial chemicals. While other brands boiled away flavors with heat pasteurization, we committed to clinical cold-pressing and aseptic packaging.</p>
+            <p>Our packaging locks in nutrients and colors naturally, ensuring that every sip is as healthy and delicious as eating fruit fresh off the tree.</p>
+          </div>
+          <div class="story-image-wrap">
+            <img src="assets/about_us_bg_new_cropped.png" alt="Demi's Orchard harvesting">
+          </div>
+        </div>
+
+        <!-- Grid Block 2 -->
+        <div class="story-grid" style="direction: rtl;">
+          <div class="story-content" style="direction: ltr;">
+            <h2>Sustainability at Heart</h2>
+            <p>Our commitment doesn't end at taste. We pack all our products in FSC-certified sugarcane-derived paperboard cartons that are 100% recyclable, reducing our carbon footprint by up to 75% compared to plastic bottles.</p>
+            <p>We work directly with small organic farms across India to source premium Alphonso mangoes, Himachali apples, and fresh cow's milk, ensuring fair wages and eco-friendly farming practices.</p>
+          </div>
+          <div class="story-image-wrap">
+            <img src="assets/selo-economia-circular-reciclagem-v2.webp" alt="Recycling illustration" style="max-height: 350px; background: #f9f9f9; padding: 20px; object-fit: contain;">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Farm to Bottle Timeline -->
+    <section class="timeline-section">
+      <div class="container">
+        <div class="timeline-header">
+          <h2>Farm-to-Bottle Journey</h2>
+        </div>
+        
+        <div class="timeline-container">
+          
+          <div class="timeline-item left">
+            <div class="timeline-card">
+              <h3>1. Orchard Harvesting</h3>
+              <p>Fruits are hand-picked at peak ripeness from sustainable orchards to ensure natural sugar levels are ideal.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item right">
+            <div class="timeline-card">
+              <h3>2. Hand-Selection</h3>
+              <p>Each batch is quality-sorted, washing away dirt and selecting only perfect whole fruits for juice extraction.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item left">
+            <div class="timeline-card">
+              <h3>3. Cold Pressing</h3>
+              <p>Fruits are cold-pressed to extract vitamin-dense pulp and juice without adding heat or dilute concentrates.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item right">
+            <div class="timeline-card">
+              <h3>4. Aseptic Sealing</h3>
+              <p>Packed under sterile conditions in 6-layer aseptic boxes that lock out 100% of light and oxygen.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item left">
+            <div class="timeline-card">
+              <h3>5. Cold-Chain Delivery</h3>
+              <p>Cartons are shipped in continuous cold-chain logistics to keep beverages nutrient-rich and fresh.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Green Curved Footer -->
+  <footer class="tropicana-footer">
+    
+    <div class="footer-content-wrap">
+      <div class="container">
+        <div class="footer-logo-row text-center">
+          <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+        </div>
+        <div class="footer-columns-grid">
+          <!-- Column 1: Navigation -->
+          <div class="footer-col font-large">
+            <h4>NAVIGATION</h4>
+            <a href="index.html" class="col-link-bold">Home</a>
+            <a href="story.html" class="col-link-bold">Our Story</a>
+            <a href="products.html" class="col-link-bold">Products</a>
+            <a href="partner.html" class="col-link-bold">Become a Partner</a>
+            <a href="contact.html" class="col-link-bold">Contact Us</a>
+          </div>
+          <div class="footer-col font-large"></div>
+          <div class="footer-col font-small"></div>
+          <!-- Column 4: Contact Form -->
+          <div class="footer-col footer-contact-form-col">
+            <h4>GET IN TOUCH</h4>
+            <form id="footer-contact-form" class="footer-contact-form">
+              <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
+              <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
+              <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
+              <button type="submit" class="fc-submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <div class="social-icons-white">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="footer-copyright">
+            <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive toast container -->
+  <div class="toast-container" id="toast-wrapper"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Navbar Toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const active = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        if (active) {
+          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+          toggle.querySelectorAll('span')[1].style.opacity = '0';
+          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+        } else {
+          toggle.querySelectorAll('span')[0].style.transform = 'none';
+          toggle.querySelectorAll('span')[1].style.opacity = '1';
+          toggle.querySelectorAll('span')[2].style.transform = 'none';
+        }
+      });
+    }
+
+    // Toast Notice Helper
+    function showToast(message) {
+      const container = document.getElementById('toast-wrapper');
+      const toast = document.createElement('div');
+      toast.className = 'toast-notice';
+      toast.innerHTML = `
+        <div class="toast-content">
+          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Handle Contact Form Submit
+    const contactForm = document.getElementById('footer-contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Thanks for reaching out! We will contact you soon.");
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>

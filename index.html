@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demi's Tasty — Pure Taste, Real Nature 🍊</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&family=Syne:wght@700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- Swiper & GSAP CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Leaflet.js Map Library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="mockup.css?v=3.0">
+</head>
+<body class="theme-organic">
+
+  <!-- SVG Liquid Distortion Filter -->
+  <svg class="svg-filters" style="display: none;">
+    <defs>
+      <filter id="liquid-distortion">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER / NAVIGATION
+  ══════════════════════════════════════════════ -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link">Our Story</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="partner.html" class="nav-link">Become a partner</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="products.html" class="mobile-link">Products</a>
+      <a href="partner.html" class="mobile-link">Become a partner</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Main Scroll Container -->
+  <main id="scroll-container">
+
+    <!-- ══════════════════════════════════════════════
+         1. VIDEO BACKGROUND HERO SECTION
+    ══════════════════════════════════════════════ -->
+    <section class="video-hero swiper hero-video-slider" id="video-hero-sec">
+      <div class="swiper-wrapper">
+        <!-- Slide 1: Original Video -->
+        <div class="swiper-slide">
+          <video class="video-bg" autoplay loop muted playsinline>
+            <source src="assets/hero_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- Slide 2: New Video -->
+        <div class="swiper-slide">
+          <video class="video-bg" autoplay loop muted playsinline>
+            <source src="assets/hero_video_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      
+      <!-- Subtle Navigation Arrows -->
+      <div class="swiper-button-next hero-slider-next"></div>
+      <div class="swiper-button-prev hero-slider-prev"></div>
+      <!-- Dots Pagination -->
+      <div class="swiper-pagination hero-slider-pagination"></div>
+
+      <div class="video-hero-container">
+        <div class="video-hero-actions">
+          <a href="#hero-sec" class="btn btn-primary video-scroll-btn">Explore Flavors</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         2. ABOUT US SECTION (Collage Graphic Grid)
+    ══════════════════════════════════════════════ -->
+    <section class="about-us-section" id="about-sec">
+      <div class="container about-us-container">
+        <div class="about-us-grid">
+          <!-- Left Column: Compact collage image -->
+          <div class="about-us-visual">
+            <img src="assets/about_us_bg_new_cropped.png" alt="Demi's Product Collage" class="about-collage-img">
+          </div>
+          
+          <!-- Right Column: Content on clean white background -->
+          <div class="about-us-content">
+            <span class="section-label">ABOUT US</span>
+            <h2 class="section-title">Pure Taste, <br><span>Real Nature.</span></h2>
+            <p class="section-desc">At Demi's, we believe that nature knows best. We don't boil away the flavor with pasteurization or dilute it with water-to-concentrate formulas. We source premium fruits from local sustainable orchards, blend the real fiber-rich pulp, and bottle it fresh.</p>
+            <p class="section-desc">From our organic skimmed milk to our sparkling prebiotic craft sodas, every bottle is crafted with 100% transparency, zero refined sugars, and zero preservatives.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ══════════════════════════════════════════════
+         3. CROWD FAVORITES SECTION (The Fresh Press Design)
+    ══════════════════════════════════════════════ -->
+    <section class="crowd-favorites-section" id="favorites-sec">
+      <div class="container favorites-container">
+        <!-- Section Header -->
+        <div class="favorites-header text-center">
+          <span class="section-label">DEMI'S BESTSELLERS</span>
+          <h2 class="section-title">The Crowd <span>Favorites</span></h2>
+          
+          <!-- Category Tabs -->
+          <div class="favorites-categories">
+            <button class="category-tab active" data-target="juices">Juices</button>
+            <button class="category-tab" data-target="soft-drinks">Soft Drinks</button>
+            <button class="category-tab" data-target="milk">Pure Milk</button>
+          </div>
+        </div>
+
+        <!-- Product Grid with Carousel -->
+        <div class="products-carousel-wrapper">
+          <button class="carousel-arrow carousel-prev" aria-label="Previous products"><i class="fas fa-chevron-left"></i></button>
+          <div class="products-grid" id="products-carousel">
+          
+          <!-- JUICES CATEGORY -->
+          <!-- Product Card 1: Alphonso Mango -->
+          <div class="product-card" data-category="juices">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/mango_splash_card.png" class="card-splash-img" alt="Mango Splash">
+              </div>
+              <a href="#" title="Alphonso Mango">
+                <img src="assets/brand_pack_0005.png" alt="Alphonso Mango" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="#">Alphonso Mango Juice</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 180.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2: Fresh Litchi Juice -->
+          <div class="product-card" data-category="juices">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/litchi_splash_card.png" class="card-splash-img" alt="Litchi Splash">
+              </div>
+              <a href="#" title="Fresh Litchi">
+                <img src="assets/brand_pack_0015.png" alt="Fresh Litchi" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="#">Fresh Litchi Juice</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 160.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3: Fresh Apple Juice -->
+          <div class="product-card" data-category="juices">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/apple_splash_card.png" class="card-splash-img" alt="Apple Splash">
+              </div>
+              <a href="#" title="Fresh Apple">
+                <img src="assets/brand_pack_0016.png" alt="Fresh Apple" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="#">Fresh Apple Juice</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 160.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4: Mix Fruit Juice -->
+          <div class="product-card" data-category="juices">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/mixed_fruit_splash_card.png" class="card-splash-img" alt="Mix Fruit Splash">
+              </div>
+              <a href="#" title="Mix Fruit Juice">
+                <img src="assets/brand_pack_0017.png" alt="Mix Fruit Juice" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="#">Mix Fruit Juice</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 170.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 5: Pink Guava Juice -->
+          <div class="product-card" data-category="juices">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/guava_splash_card.png" class="card-splash-img" alt="Guava Splash">
+              </div>
+              <a href="#" title="Pink Guava Juice">
+                <img src="assets/brand_pack_0018.png" alt="Pink Guava Juice" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="#">Pink Guava Juice</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 160.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SOFT DRINKS CATEGORY -->
+          <!-- Product Card 5: Demi's Multani Zeera -->
+          <div class="product-card" data-category="soft-drinks" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/ice_splash.png" class="card-splash-img" alt="Juice Splash">
+              </div>
+              <a href="#" title="Demi's Multani Zeera">
+                <img src="assets/soft_drink_multani_zeera.png" alt="Demi's Multani Zeera" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fizz</div>
+            <h3 class="product-title"><a href="#">Demi's Multani Zeera</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 120.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 6: Demi's Masala Zeera -->
+          <div class="product-card" data-category="soft-drinks" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/ice_splash.png" class="card-splash-img" alt="Juice Splash">
+              </div>
+              <a href="#" title="Demi's Masala Zeera">
+                <img src="assets/soft_drink_masala_zeera.png" alt="Demi's Masala Zeera" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fizz</div>
+            <h3 class="product-title"><a href="#">Demi's Masala Zeera</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 120.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 7: Demi's Lemon -->
+          <div class="product-card" data-category="soft-drinks" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/ice_splash.png" class="card-splash-img" alt="Juice Splash">
+              </div>
+              <a href="#" title="Demi's Lemon">
+                <img src="assets/soft_drink_lemon.png" alt="Demi's Lemon" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fizz</div>
+            <h3 class="product-title"><a href="#">Demi's Lemon</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 120.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 8: Demi's Orange -->
+          <div class="product-card" data-category="soft-drinks" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/ice_splash.png" class="card-splash-img" alt="Juice Splash">
+              </div>
+              <a href="#" title="Demi's Orange">
+                <img src="assets/soft_drink_orange.png" alt="Demi's Orange" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fizz</div>
+            <h3 class="product-title"><a href="#">Demi's Orange</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 130.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 9: Demi's Cola -->
+          <div class="product-card" data-category="soft-drinks" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/ice_splash.png" class="card-splash-img" alt="Juice Splash">
+              </div>
+              <a href="#" title="Demi's Cola">
+                <img src="assets/soft_drink_cola.png" alt="Demi's Cola" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fizz</div>
+            <h3 class="product-title"><a href="#">Demi's Cola</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 130.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MILK CATEGORY -->
+          <!-- Product Card 9: Double Toned Milk -->
+          <div class="product-card" data-category="milk" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/freshness_splash.png" class="card-splash-img" alt="Milk Splash">
+              </div>
+              <a href="#" title="Double Toned Milk">
+                <img src="assets/tasty_milk.png" alt="Double Toned Milk" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Dairy</div>
+            <h3 class="product-title"><a href="#">Double Toned Milk</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 95.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 10: Fresh Cow Milk -->
+          <div class="product-card" data-category="milk" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/freshness_splash.png" class="card-splash-img" alt="Milk Splash">
+              </div>
+              <a href="#" title="Fresh Cow Milk">
+                <img src="assets/brand_milk_fresh.png" alt="Fresh Cow Milk" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Dairy</div>
+            <h3 class="product-title"><a href="#">Fresh Cow Milk</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 90.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="#" class="add-to-cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+          </div>
+          <button class="carousel-arrow carousel-next" aria-label="Next products"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: What's Inside Our Packs -->
+    <section class="ingredients-showcase" id="ingredients-sec">
+      <div class="ingredients-wrap">
+
+        <!-- Heading -->
+        <div class="ingr-heading">
+          <span class="section-tag">Pure Squeeze</span>
+          <h2 class="section-title">What's Inside <span>Our Packs</span></h2>
+        </div>
+
+        <!-- 3-column: left text | center image | right text -->
+        <div class="ingr-stage">
+
+          <!-- Left column -->
+          <div class="ingr-left-col">
+            <div class="ingr-text">
+              <h3>6-Layer Aseptic Carton</h3>
+              <p>Six protective layers lock in fresh flavors, vitamins and enzymes &mdash; shielding 100% of light and oxygen. Farm-fresh with zero preservatives.</p>
+            </div>
+            <div class="ingr-text">
+              <h3>Rich Fruit Pulp</h3>
+              <p>Made with 100% natural fruit pulp, keeping the authentic texture, rich fiber, and natural taste completely intact without any dilution.</p>
+            </div>
+          </div>
+
+          <!-- Center: high-res 1920x950 PNG fills the column fully -->
+          <img src="assets/all_products_collage.png"
+               alt="Demi's Full Product Range"
+               class="ingr-center-img">
+
+          <!-- Right column -->
+          <div class="ingr-right-col">
+            <div class="ingr-text">
+              <h3>Aseptic Freshness Seal</h3>
+              <p>Filled under vacuum in clinically sterile environments. Every sip as pure as the day the fruit was harvested &mdash; no shortcuts, ever.</p>
+            </div>
+            <div class="ingr-text">
+              <h3>100% Recyclable FSC Board</h3>
+              <p>FSC-certified wood fibres and sugarcane bio-caps reduce carbon footprint by 75%. Nature in every sip &mdash; and in every pack.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Premium Testimonials Slider -->
+    <section class="testimonials-slider" id="testimonials-sec">
+      <div class="container">
+        <div class="testimonials-grid-layout">
+          <!-- Left Editorial Column -->
+          <div class="testimonials-editorial">
+            <span class="section-tag">Loved by Families</span>
+            <h2 class="section-title">Healthy Choices, <span>Happy Smiles</span></h2>
+            <p class="section-subtitle">Real feedback from parents, kids, and health enthusiasts who make Demi's a part of their daily life.</p>
+            
+            <div class="testimonials-stats-box">
+              <div class="stars-row">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="stats-text"><strong>4.9 / 5.0</strong> based on 10,000+ reviews.</p>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <div class="testimonials-nav-buttons">
+              <button class="test-nav-btn prev" aria-label="Previous slide"><i class="fas fa-arrow-left"></i></button>
+              <button class="test-nav-btn next" aria-label="Next slide"><i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Right Carousel Column -->
+          <div class="testimonials-carousel-wrapper">
+            <div class="testimonials-carousel-track">
+              <div class="testimonial-slide active">
+                <div class="slide-rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"Finding clean, organic juices without added sugar was nearly impossible until I tried Demi's Alphonso Mango. My kids absolutely love the rich, thick texture, and I love that it's 100% natural."</p>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <h4>Shalini Sen</h4>
+                    <span>Parent of two, Mumbai</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="testimonial-slide">
+                <div class="slide-rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"The Litchi juice is incredibly refreshing after my morning runs. It is not overly sweet like packaged concentrates, and you can truly taste the cold-pressed difference. Highly recommend it!"</p>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <h4>Rohan Malhotra</h4>
+                    <span>Fitness Coach, Delhi</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-slide">
+                <div class="slide-rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"I recommend Demi's Double Toned Milk to my clients because of its purity and nutrient retention. It has the perfect balance of proteins and calcium with lower fats, making it a great daily option."</p>
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <h4>Dr. Meera Rao</h4>
+                    <span>Clinical Nutritionist, Bangalore</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Locate Us / Where to Buy -->
+    <section class="locate-us" id="locate-sec">
+      <div class="container">
+        <div class="locate-grid-layout">
+          <!-- Left Partner Info Column -->
+          <div class="locate-info-col">
+            <span class="section-tag">Find Us Near You</span>
+            <h2 class="section-title">Get Demi's in <span>Minutes</span></h2>
+            <p class="section-subtitle">We partner with leading quick-commerce and supermarket chains to deliver freshness straight to your doorstep.</p>
+            
+            <div class="partners-logo-grid">
+              <div class="partner-logo-item">
+                <i class="fas fa-basket-shopping"></i>
+                <span>Blinkit</span>
+              </div>
+              <div class="partner-logo-item">
+                <i class="fas fa-truck-fast"></i>
+                <span>Instamart</span>
+              </div>
+              <div class="partner-logo-item">
+                <i class="fas fa-bolt"></i>
+                <span>Zepto</span>
+              </div>
+              <div class="partner-logo-item">
+                <i class="fas fa-store"></i>
+                <span>Amazon Fresh</span>
+              </div>
+            </div>
+
+            <!-- Search Availability -->
+            <div class="check-availability-box">
+              <h3>Check Store Availability</h3>
+              <p>Enter your location/pincode to find retail stores stocking Demi's in your area.</p>
+              <div class="availability-form">
+                <input type="text" placeholder="Enter Pincode or City..." id="pincode-input" aria-label="Location Pincode">
+                <button id="check-pincode-btn">Search</button>
+              </div>
+              <div id="availability-result" class="availability-status"></div>
+            </div>
+          </div>
+
+          <!-- Right Interactive Styled Map Column -->
+          <div class="locate-map-col">
+            <div id="map-container">
+              <div id="map"></div>
+              <!-- Styled dark green overlay badge -->
+              <div class="map-floating-badge">
+                <i class="fas fa-location-dot"></i>
+                <span>250+ Partner Outlets</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         FOOTER (Tropicana-inspired Green Curved Design)
+    ══════════════════════════════════════════════ -->
+    
+    <!-- Social Icons Above Footer Curve -->
+    <div class="pre-footer-socials text-center">
+      <div class="container">
+        <div class="social-icons-green">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Green Curved Footer -->
+    <footer class="tropicana-footer">
+
+
+      <!-- Footer Content Area -->
+      <div class="footer-content-wrap">
+        <div class="container" style="position: relative;">
+          <!-- Floating Products Collage in Footer -->
+          <img src="assets/footer png.png" class="footer-floating-collage" alt="Demi's Products Collage">
+          <!-- Centered Master Logo (Demi's Brand Logo) -->
+          <div class="footer-logo-row text-center">
+            <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+          </div>
+
+          <!-- Footer Columns Grid -->
+          <div class="footer-columns-grid">
+            <!-- Column 1: Main Pages -->
+            <div class="footer-col font-large">
+              <h4>NAVIGATION</h4>
+              <a href="index.html" class="col-link-bold">Home</a>
+              <a href="story.html" class="col-link-bold">Our Story</a>
+              <a href="products.html" class="col-link-bold">Products</a>
+              <a href="partner.html" class="col-link-bold">Become a Partner</a>
+              <a href="contact.html" class="col-link-bold">Contact Us</a>
+            </div>
+
+            <!-- Column 2 (Empty/Spacer) -->
+            <div class="footer-col font-large">
+            </div>
+
+            <!-- Column 3 (Empty/Spacer) -->
+            <div class="footer-col font-small">
+            </div>
+
+            <!-- Column 4 (Contact Form) -->
+            <div class="footer-col footer-contact-form-col">
+              <h4>GET IN TOUCH</h4>
+              <form id="footer-contact-form" class="footer-contact-form">
+                <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
+                <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
+                <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
+                <button type="submit" class="fc-submit-btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bottom Row: Socials & Copyright -->
+          <div class="footer-bottom-row">
+            <div class="social-icons-white">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-copyright">
+              <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive toast container -->
+  <div class="toast-container" id="toast-wrapper"></div>
+
+
+  <!-- GSAP & Swiper Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  
+  <script src="mockup.js"></script>
+  <script>
+  // ── Product Carousel Arrows ──
+  (function() {
+    const carousel = document.getElementById('products-carousel');
+    const prevBtn  = document.querySelector('.carousel-prev');
+    const nextBtn  = document.querySelector('.carousel-next');
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    function getScrollStep() {
+      // Scroll by ~1 card width + gap
+      const card = carousel.querySelector('.product-card');
+      return card ? card.offsetWidth + 24 : 260;
+    }
+
+    function updateArrows() {
+      prevBtn.disabled = carousel.scrollLeft <= 0;
+      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+
+    carousel.addEventListener('scroll', updateArrows);
+
+    // Re-run updateArrows whenever a category tab switches (tabs show/hide cards)
+    document.querySelectorAll('.category-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setTimeout(() => { carousel.scrollLeft = 0; updateArrows(); }, 50);
+      });
+    });
+
+    updateArrows();
+  })();
+  </script>
+</body>
+</html>

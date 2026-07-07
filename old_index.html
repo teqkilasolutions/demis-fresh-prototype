@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Demi's Tasty — Pure Juice, Real Flavor 🍊</title>
+  <meta name="description" content="From Day One, Demi's Tasty puts fruit at the center of the table. 100% juices, organic milk and sparkling sodas. No preservatives, no colorants, no nonsense.">
+
+  <!-- Tial's exact fonts -->
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/founders-grotesk-semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/founders-grotesk-x-cond-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/gt-america-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/gt-america-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/gt-america-mono-black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://tial.com.br/wp-content/themes/tial/assets/fonts/gt-america-mono-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+  <!-- TIAL'S ACTUAL CSS BUNDLE -->
+  <link rel="stylesheet" href="https://tial.com.br/wp-content/themes/tial/dist/bundle.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- Our overrides -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER — slim
+  ══════════════════════════════════════════════ -->
+  <header class="main-header dm-header-slim">
+    <div class="container">
+      <div class="main-header-nav-wrapper">
+        <ul class="main-header__nav">
+          <li class="main-header__nav-item"><a href="#sobre" class="main-header__nav-link">About</a></li>
+          <li class="main-header__nav-item"><a href="#produtos" class="main-header__nav-link">Products</a></li>
+        </ul>
+
+        <a href="#" class="main-header__logo">
+          <img src="assets/logo.png" alt="Demi's Tasty" class="dm-logo-small">
+        </a>
+
+        <button class="offcanvas-toggle">
+          <svg class="offcanvas-toggle__menu" xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 28 17" fill="none">
+            <rect width="28" height="3.5" fill="white"/>
+            <rect y="13" width="28" height="3.5" fill="white"/>
+          </svg>
+          <svg class="offcanvas-toggle__close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23" fill="none">
+            <rect x="0.000976562" y="20" width="28" height="3.5" transform="rotate(-45 0.000976562 20)" fill="white"/>
+            <rect x="3" width="28" height="3.5" transform="rotate(45 3 0)" fill="white"/>
+          </svg>
+        </button>
+
+        <ul class="main-header__nav">
+          <li class="main-header__nav-item"><a href="#testimonials" class="main-header__nav-link">Testimonials</a></li>
+          <li class="main-header__nav-item"><a href="#footer-contact-form" class="main-header__nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile offcanvas -->
+  <div class="offcanvas">
+    <nav class="offcanvas-nav container">
+      <ul class="offcanvas-menu">
+        <li class="offcanvas-menu__item"><a href="#sobre">About Demi's</a></li>
+        <li class="offcanvas-menu__item"><a href="#produtos">Products</a></li>
+        <li class="offcanvas-menu__item"><a href="#onde-encontrar">Where to Find</a></li>
+        <li class="offcanvas-menu__item"><a href="#sustentabilidade">Sustainability</a></li>
+        <li class="offcanvas-menu__item"><a href="#fale-conosco">Contact us</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="popup-overlay"></div>
+
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <main class="page-home">
+        <div class="page-scroll-block--one">
+
+          <!-- ══════════════════════════════════════════════
+               VIDEO HERO — kept intact, full viewport
+          ══════════════════════════════════════════════ -->
+          <section class="our-hero" id="hero">
+            <video autoplay loop muted playsinline id="hero-video">
+              <source src="assets/hero_video.mp4" type="video/mp4">
+            </video>
+            <div class="our-hero__overlay"></div>
+            <div class="our-hero__content">
+              <h1 class="our-hero__title">DRINK FRESHNESS</h1>
+            </div>
+            <div class="our-hero__scroll">
+              <div class="hero-scroll-mouse">
+                <div class="hero-scroll-mouse__wheel"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══════════════════════════════════════════════
+               ABOUT SECTION
+          ══════════════════════════════════════════════ -->
+          <section class="about" id="sobre">
+            <div class="container">
+              <div class="about-content">
+                <h2 class="about-title">Since Day One, we've <span>been making real juice.</span></h2>
+                <p>We are the pioneers of pure, cold-pressed, non-pasteurized juices. And we've learned that, from sparkling sodas to organic milk, everything tastes way better when it's 100% natural.</p>
+                <p><strong>No colorants, no chemicals, no nonsense. The recipe is simple: less talk, more pulp.</strong></p>
+                <p>We put fruit center stage so you never have to settle for artificial flavorings. Say goodbye to chemical additives, and say hello to Demi's Tasty.</p>
+                <a href="#produtos" class="btn about-btn">
+                  <span class="btn-wrapper">Discover our products</span>
+                </a>
+              </div>
+            </div>
+            <img src="assets/litchi_about.png" alt="Litchi Fruits" class="about-bg">
+          </section>
+
+          <!-- ══════════════════════════════════════════════
+               MARQUEE STRIP — tight / compact
+          ══════════════════════════════════════════════ -->
+          <div class="marquee dm-marquee-strip" data-direction="left" style="--translate: rotate(-2.5deg) scale(1.05)">
+            <div class="marquee__group">
+              <div class="marquee__item"><span class="marquee__item--icon">🍎</span><span class="marquee__item--text">No nonsense</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍍</span><span class="marquee__item--text">No preservatives</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍇</span><span class="marquee__item--text">No colorants</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍊</span><span class="marquee__item--text">Zero added sugar</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🥭</span><span class="marquee__item--text">100% Real Fruit</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍎</span><span class="marquee__item--text">No nonsense</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍍</span><span class="marquee__item--text">No preservatives</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍇</span><span class="marquee__item--text">No colorants</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🍊</span><span class="marquee__item--text">Zero added sugar</span></div>
+              <div class="marquee__item"><span class="marquee__item--icon">🥭</span><span class="marquee__item--text">100% Real Fruit</span></div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════════
+               CUTE KID SMILING SECTION
+          ══════════════════════════════════════════════ -->
+          <section class="kid-smile-section">
+            <div class="container">
+              <div class="kid-smile-content">
+                <div class="kid-smile-text">
+                  <span class="kid-smile-label">LOVED BY KIDS, TRUSTED BY PARENTS</span>
+                  <h2 class="kid-smile-title">HEALTHY SMILES, <span>NATURALLY!</span></h2>
+                  <p class="kid-smile-desc">Our juices are 100% natural with no added sugar or preservatives. Pure fruit goodness that brings out the happiest, healthiest smiles in your little ones!</p>
+                  <div class="kid-smile-bullets">
+                    <div class="kid-bullet"><span class="bullet-icon">🌱</span> 100% Organic Ingredients</div>
+                    <div class="kid-bullet"><span class="bullet-icon">🚫</span> Zero Added Sugar</div>
+                    <div class="kid-bullet"><span class="bullet-icon">🧃</span> Fun & Healthy Packaging</div>
+                  </div>
+                </div>
+                <div class="kid-smile-media">
+                  <div class="kid-smile-frame">
+                    <img src="assets/kid_smiling.gif" alt="Cute Kid Smiling" class="kid-smile-gif">
+                    <div class="kid-smile-frame-shadow"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══════════════════════════════════════════════
+               PRODUCTS SECTION
+          ══════════════════════════════════════════════ -->
+          <!-- ══════════════════════════════════════════════
+               PRODUCTS SECTION — Rebuilt like thefreshpress.in
+          ══════════════════════════════════════════════ -->
+          <section class="crowd-favorites" id="produtos">
+            <div class="cf-container">
+              <h2 class="cf-section-title">The Crowd Favorites</h2>
+              
+              <div class="cf-grid-wrapper">
+                <div class="cf-grid">
+                  
+                  <!-- Card 1: Mango -->
+                  <div class="cf-card" data-product-id="mango_100">
+                    <div class="cf-card__image-container">
+                      <img src="assets/brand_pack_0005.png" alt="Mango" class="cf-card__image">
+                    </div>
+                    <div class="cf-card__info">
+                      <p class="cf-card__brand">DEMI'S TASTY</p>
+                      <h4 class="cf-card__title">Mango</h4>
+                      <p class="cf-card__price">Rs. 10.00</p>
+                    </div>
+                  </div>
+
+                  <!-- Card 2: Litchi -->
+                  <div class="cf-card" data-product-id="litchi_100">
+                    <div class="cf-card__image-container">
+                      <img src="assets/brand_pack_0015.png" alt="Litchi" class="cf-card__image">
+                    </div>
+                    <div class="cf-card__info">
+                      <p class="cf-card__brand">DEMI'S TASTY</p>
+                      <h4 class="cf-card__title">Litchi</h4>
+                      <p class="cf-card__price">Rs. 10.00</p>
+                    </div>
+                  </div>
+
+                  <!-- Card 3: Mix Fruit -->
+                  <div class="cf-card" data-product-id="mix_fruit_100">
+                    <div class="cf-card__image-container">
+                      <img src="assets/brand_pack_0017.png" alt="Mix Fruit" class="cf-card__image">
+                    </div>
+                    <div class="cf-card__info">
+                      <p class="cf-card__brand">DEMI'S TASTY</p>
+                      <h4 class="cf-card__title">Mix Fruit</h4>
+                      <p class="cf-card__price">Rs. 10.00</p>
+                    </div>
+                  </div>
+
+                  <!-- Card 4: Tasty Milk -->
+                  <div class="cf-card" data-product-id="tasty_milk">
+                    <div class="cf-card__image-container">
+                      <img src="assets/tasty_milk.png" alt="Tasty Milk" class="cf-card__image">
+                    </div>
+                    <div class="cf-card__info">
+                      <p class="cf-card__brand">DEMI'S TASTY</p>
+                      <h4 class="cf-card__title">Tasty Milk</h4>
+                      <p class="cf-card__price">Rs. 90.00</p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Vertical Quick Shop badge -->
+                <div class="cf-quick-shop-badge">
+                  <span>Quick Shop</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /page-scroll-block--one -->
+
+        <!-- ══════════════════════════════════════════════
+             SCROLL PROGRESS BAR (fixed top)
+        ══════════════════════════════════════════════ -->
+        <div class="scroll-progress" id="scrollProgress"></div>
+
+        <!-- ══════════════════════════════════════════════
+             FLOATING INGREDIENTS (page-wide parallax)
+        ══════════════════════════════════════════════ -->
+        <div class="floating-ingredients" id="floatingIngredients" aria-hidden="true">
+          <img src="assets/fruta-manga.webp" class="float-ing float-ing--1" alt="">
+          <img src="assets/fruta-laranja.webp" class="float-ing float-ing--2" alt="">
+          <img src="assets/lemon.png" class="float-ing float-ing--3" alt="">
+          <img src="assets/KIWI-PNG.png" class="float-ing float-ing--4" alt="">
+          <img src="assets/GRAPE-PNG.png" class="float-ing float-ing--5" alt="">
+          <img src="assets/Apple_3.png" class="float-ing float-ing--6" alt="">
+          <img src="assets/fruta-maracuja.webp" class="float-ing float-ing--7" alt="">
+          <img src="assets/fruta-maca.webp" class="float-ing float-ing--8" alt="">
+        </div>
+
+
+        <!-- ══════════════════════════════════════════════
+             SECTION: FRUIT → BOTTLE JOURNEY
+             4-screen scroll-driven storytelling
+        ══════════════════════════════════════════════ -->
+        <section class="journey" id="journey">
+
+          <!-- Journey Progress Indicator -->
+          <div class="journey-progress" id="journeyProgress">
+            <div class="jp-step jp-step--active" data-step="1"><span class="jp-dot"></span><small>Farm</small></div>
+            <div class="jp-line"></div>
+            <div class="jp-step" data-step="2"><span class="jp-dot"></span><small>Fruits</small></div>
+            <div class="jp-line"></div>
+            <div class="jp-step" data-step="3"><span class="jp-dot"></span><small>Process</small></div>
+            <div class="jp-line"></div>
+            <div class="jp-step" data-step="4"><span class="jp-dot"></span><small>Bottle</small></div>
+          </div>
+
+          <!-- SCREEN 1 — FARM -->
+          <div class="journey-screen journey-farm" id="jFarm">
+            <div class="farm-clouds">
+              <div class="farm-cloud farm-cloud--1"></div>
+              <div class="farm-cloud farm-cloud--2"></div>
+              <div class="farm-cloud farm-cloud--3"></div>
+            </div>
+            <div class="farm-content">
+              <h2 class="farm-title">From Nature's Best</h2>
+              <p class="farm-subtitle">Selected fruits, sourced with care</p>
+            </div>
+          </div>
+
+          <!-- SCREEN 2 — FRESH FRUITS -->
+          <div class="journey-screen journey-fruits" id="jFruits">
+            <div class="fruits-content">
+              <span class="fruits-label">HANDPICKED GOODNESS</span>
+              <h2 class="fruits-title">Freshness Locked</h2>
+            </div>
+          </div>
+
+          <!-- SCREEN 3 — PROCESSING -->
+          <div class="journey-screen journey-process" id="jProcess">
+            <div class="process-content">
+              <span class="process-label">CRAFTED WITH PRECISION</span>
+              <h2 class="process-title">Pure Pulp Craft</h2>
+              <p class="process-subtitle">Unlike ordinary brands, we select the richest, thickest natural fruit pulp and blend it to perfection with pure water. This preserves the authentic texture, rich fibers, and natural sweetness of the fruit without any artificial heat or cold pressing. Real flavor, simple crafting.</p>
+            </div>
+          </div>
+
+          <!-- SCREEN 4 — BOTTLE REVEAL -->
+          <div class="journey-screen journey-reveal" id="jReveal">
+            <div class="reveal-particles" id="revealParticles">
+              <span class="rev-particle rev-particle--1"></span>
+              <span class="rev-particle rev-particle--2"></span>
+              <span class="rev-particle rev-particle--3"></span>
+              <span class="rev-particle rev-particle--4"></span>
+              <span class="rev-particle rev-particle--5"></span>
+              <span class="rev-particle rev-particle--6"></span>
+              <span class="rev-particle rev-particle--7"></span>
+              <span class="rev-particle rev-particle--8"></span>
+            </div>
+            <div class="reveal-bottle" id="revealBottle">
+              <img src="assets/brand_pack_0005.png" alt="Demi's Tasty Juice" class="reveal-bottle__img">
+              <div class="reveal-bottle__glow"></div>
+            </div>
+            <div class="reveal-text">
+              <p class="reveal-kicker">And this becomes</p>
+              <h2 class="reveal-headline">Demi's</h2>
+              <p class="reveal-sub">Ready to taste freshness?</p>
+              <a href="#produtos" class="btn reveal-cta">
+                <span class="btn-wrapper">Explore Demi's Drinks</span>
+              </a>
+            </div>
+          </div>
+        </section><!-- /journey -->
+
+
+        <!-- ══════════════════════════════════════════════
+             SECTION: WHY DEMI'S — Trust Cards
+        ══════════════════════════════════════════════ -->
+        <section class="why-demis" id="why-demis">
+          <div class="container">
+            <span class="why-demis__label">THE DEMI'S DIFFERENCE</span>
+            <h2 class="why-demis__title">Why Millions Choose<br><span>Demi's</span></h2>
+            <div class="why-cards">
+
+              <!-- Card 1: Quality -->
+              <div class="why-card" data-theme="quality">
+                <div class="why-card__icon">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M32 6L8 18v16c0 14 10.7 27.1 24 30 13.3-2.9 24-16 24-30V18L32 6z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M22 32l6 6 14-14" stroke="#ffa800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3 class="why-card__heading">Quality</h3>
+                <p class="why-card__body">Made with carefully selected ingredients</p>
+                <p class="why-card__hover-text">Quality checks at every step — from orchard to your glass.</p>
+              </div>
+
+              <!-- Card 2: Taste -->
+              <div class="why-card" data-theme="taste">
+                <div class="why-card__icon">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2.5"/>
+                    <path d="M20 28c2-4 6-6 12-6s10 2 12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M22 38c2 4 6 6 10 6s8-2 10-6" stroke="#ffa800" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="24" cy="26" r="2" fill="currentColor"/><circle cx="40" cy="26" r="2" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3 class="why-card__heading">Taste</h3>
+                <p class="why-card__body">Refreshing flavours made for every mood</p>
+                <div class="why-card__flavours">
+                  <button class="flavour-btn flavour-btn--mango active" data-colour="#ffa800">🥭 Mango</button>
+                  <button class="flavour-btn flavour-btn--litchi" data-colour="#ff6b9d">🍒 Litchi</button>
+                  <button class="flavour-btn flavour-btn--jeera" data-colour="#c9a227">🫚 Jeera</button>
+                </div>
+              </div>
+
+              <!-- Card 3: Hygiene -->
+              <div class="why-card" data-theme="hygiene">
+                <div class="why-card__icon">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M18 44l4-16 6 6 8-14 8 14 6-6 4 16H18z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                    <path d="M28 14c0-3.3 1.8-6 4-6s4 2.7 4 6" stroke="#ffa800" stroke-width="2"/>
+                    <circle cx="32" cy="18" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="28" y1="6" x2="26" y2="2" stroke="#ffa800" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="36" y1="6" x2="38" y2="2" stroke="#ffa800" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="32" y1="4" x2="32" y2="0" stroke="#ffa800" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <h3 class="why-card__heading">Hygiene</h3>
+                <p class="why-card__body">Processed with modern hygiene standards</p>
+                <div class="why-card__mini-timeline">
+                  <div class="mini-step mini-step--done"><span>🧼</span> Cleaning</div>
+                  <div class="mini-step"><span>🔬</span> Testing</div>
+                  <div class="mini-step"><span>📦</span> Packaging</div>
+                </div>
+              </div>
+
+              <!-- Card 4: Trust -->
+              <div class="why-card" data-theme="trust">
+                <div class="why-card__icon">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M32 56s-20-12-20-28c0-8 4-14 10-14 4 0 7.5 2.5 10 7 2.5-4.5 6-7 10-7 6 0 10 6 10 14 0 16-20 28-20 28z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M32 56s-20-12-20-28c0-8 4-14 10-14 4 0 7.5 2.5 10 7 2.5-4.5 6-7 10-7 6 0 10 6 10 14 0 16-20 28-20 28z" fill="#ffa800" opacity=".15"/>
+                  </svg>
+                </div>
+                <h3 class="why-card__heading">Trust</h3>
+                <p class="why-card__body">A taste trusted by families across India</p>
+                <div class="why-card__counters">
+                  <div class="why-counter"><span class="why-counter__num" data-target="15">0</span><small>+ Years</small></div>
+                  <div class="why-counter"><span class="why-counter__num" data-target="10">0</span><small>L+ Customers</small></div>
+                  <div class="why-counter"><span class="why-counter__num" data-target="500">0</span><small>+ Stores</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════════════
+             SECTION: TESTIMONIALS
+        ══════════════════════════════════════════════ -->
+        <section class="testimonials" id="testimonials">
+          <div class="container">
+            <span class="testimonials__label">HAPPY CUSTOMERS</span>
+            <h2 class="testimonials__title">What Our Customers<br><span>Say</span></h2>
+          </div>
+          <div class="testimonials__slider">
+            <div class="swiper testimonials-swiper">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"The mango juice tastes like real mangoes, not artificial nonsense. My whole family is hooked!"</p>
+                    <div class="testi-author">
+                      <div class="testi-avatar testi-avatar--amber">PS</div>
+                      <div><strong>Priya S.</strong><span>Mumbai</span></div>
+                    </div>
+                    <span class="testi-flavour">🥭 Mango Lover</span>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Zeera Masala soda reminds me of my grandmother's recipe. Pure nostalgia in every sip."</p>
+                    <div class="testi-author">
+                      <div class="testi-avatar testi-avatar--gold">RM</div>
+                      <div><strong>Rahul M.</strong><span>Delhi</span></div>
+                    </div>
+                    <span class="testi-flavour">🫚 Jeera Fan</span>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Finally a juice brand my kids love AND I trust. No hidden sugars, no guilt!"</p>
+                    <div class="testi-author">
+                      <div class="testi-avatar testi-avatar--green">AK</div>
+                      <div><strong>Anita K.</strong><span>Bangalore</span></div>
+                    </div>
+                    <span class="testi-flavour">🍎 Apple Enthusiast</span>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"The organic milk quality is unmatched. Creamy, fresh, honest — exactly what milk should be."</p>
+                    <div class="testi-author">
+                      <div class="testi-avatar testi-avatar--green">VD</div>
+                      <div><strong>Vikram D.</strong><span>Pune</span></div>
+                    </div>
+                    <span class="testi-flavour">🥛 Milk Loyalist</span>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Fizzy Orange is my go-to summer drink. Better than any imported soda, honestly."</p>
+                    <div class="testi-author">
+                      <div class="testi-avatar testi-avatar--orange">SR</div>
+                      <div><strong>Sneha R.</strong><span>Hyderabad</span></div>
+                    </div>
+                    <span class="testi-flavour">🍊 Orange Addict</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-pagination testi-pagination"></div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════════════
+             "LET'S TALK" NARROW MARQUEE STRIP (above contact)
+        ══════════════════════════════════════════════ -->
+        <div class="marquee marquee--talk dm-marquee-strip" data-direction="left">
+          <div class="marquee__group">
+            <div class="marquee__item"><span class="marquee__item--icon">📞</span><span class="marquee__item--text">Contact Us</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">💬</span><span class="marquee__item--text">Let's Talk</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">✉️</span><span class="marquee__item--text">Get in Touch</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">🤝</span><span class="marquee__item--text">Partner With Us</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">📞</span><span class="marquee__item--text">Contact Us</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">💬</span><span class="marquee__item--text">Let's Talk</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">✉️</span><span class="marquee__item--text">Get in Touch</span></div>
+            <div class="marquee__item"><span class="marquee__item--icon">🤝</span><span class="marquee__item--text">Partner With Us</span></div>
+          </div>
+        </div>
+
+
+
+
+
+        <!-- ══════════════════════════════════════════════
+             FOOTER — Elegant cream with email subscription
+        ══════════════════════════════════════════════ -->
+        <footer class="dm-footer">
+          <!-- Top newsletter bar -->
+          <div class="dm-footer__newsletter">
+            <div class="container">
+              <div class="dm-footer__newsletter-inner">
+                <div class="dm-footer__nl-text">
+                  <h3>Stay fresh. <span>Stay Demi's.</span></h3>
+                  <p>Get juicy updates, seasonal drops and exclusive offers.</p>
+                </div>
+                <form class="dm-footer__nl-form" onsubmit="event.preventDefault(); dmToast('You\'re subscribed! 🍊')">
+                  <input type="email" placeholder="your@email.com" required>
+                  <button type="submit">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main footer body -->
+          <div class="dm-footer__body">
+            <div class="container">
+              <div class="dm-footer__grid">
+                <!-- Brand col -->
+                <div class="dm-footer__brand">
+                  <img src="assets/logo.png" alt="Demi's Tasty" class="dm-footer__logo">
+                  <p class="dm-footer__tagline">Pure juice. Real flavor.<br>Since Day One.</p>
+                  <div class="dm-footer__social">
+                    <a href="#" aria-label="Instagram" class="dm-footer__social-link">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="dm-footer__social-link">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="dm-footer__social-link">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Nav cols -->
+                <div class="dm-footer__nav-col">
+                  <h4 class="dm-footer__nav-title">Products</h4>
+                  <ul class="dm-footer__nav-list">
+                    <li><a href="#produtos">100% Pure Juice</a></li>
+                    <li><a href="#produtos">Sparkling Sodas</a></li>
+                    <li><a href="#produtos">Organic Milk</a></li>
+                    <li><a href="#produtos">Kids Range</a></li>
+                  </ul>
+                </div>
+
+                <div class="dm-footer__nav-col">
+                  <h4 class="dm-footer__nav-title">Company</h4>
+                  <ul class="dm-footer__nav-list">
+                    <li><a href="#sobre">Our Story</a></li>
+                    <li><a href="#sustentabilidade">Sustainability</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                    <li><a href="#store-locator">Find Us</a></li>
+                  </ul>
+                </div>
+
+                <div class="dm-footer__nav-col dm-footer__contact-col">
+                  <h4 class="dm-footer__nav-title" style="margin-bottom: 0.75rem;">Get in Touch</h4>
+                  <form id="footer-contact-form" class="dm-footer__contact-form" onsubmit="event.preventDefault(); dmToast('Message sent! We\'ll be in touch. 🍊')">
+                    <div class="footer-form-field">
+                      <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="footer-form-field">
+                      <input type="email" placeholder="Your email" required>
+                    </div>
+                    <div class="footer-form-field">
+                      <textarea rows="3" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="footer-form-submit">Send Message</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer bottom bar -->
+          <div class="dm-footer__bottom">
+            <div class="container">
+              <div class="dm-footer__bottom-inner">
+                <p>© 2026 Demi's Tasty. All rights reserved.</p>
+                <div class="dm-footer__stamp">
+                  <img src="assets/selo-naturalmente-brasileiro-desde-1996.png" alt="Naturally Pure Since Day One">
+                </div>
+                <div class="dm-footer__legal">
+                  <a href="#">Privacy Policy</a>
+                  <a href="#">Terms of Use</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Product Detail Popup -->
+  <div class="app-popup" id="product-popup">
+    <div class="app-popup-container">
+      <button class="app-popup__close-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 23 23" fill="none"><rect x="0.000976562" y="20" width="28" height="3" transform="rotate(-45 0.000976562 20)" fill="currentColor"/><rect x="3" width="28" height="3" transform="rotate(45 3 0)" fill="currentColor"/></svg>
+      </button>
+      <div class="app-popup-content product-popup-content">
+        <div class="product-popup__visual">
+          <span class="product-popup__circle-bg"></span>
+          <img class="product-popup__img" src="" alt="Product">
+          <img class="product-popup__fruit-img" src="" alt="Fruit">
+        </div>
+        <div class="product-popup__info">
+          <span class="product-popup__tag">100% Pure Juice</span>
+          <h2 class="product-popup__title">Product Name</h2>
+          <p class="product-popup__desc">Product description.</p>
+          <div class="product-popup__nutrition">
+            <h4>Nutritional Values (Per 100ml)</h4>
+            <table>
+              <tr><td>Energy</td><td id="pp-energy">-- kcal</td></tr>
+              <tr><td>Carbohydrates</td><td id="pp-carbs">-- g</td></tr>
+              <tr><td>Sugars</td><td id="pp-sugars">-- g</td></tr>
+              <tr><td>Proteins</td><td id="pp-protein">-- g</td></tr>
+              <tr><td>Fats</td><td>0.0 g</td></tr>
+              <tr><td>Vitamin C</td><td id="pp-vitc">-- mg</td></tr>
+            </table>
+          </div>
+          <button class="btn product-popup__buy"><span class="btn-wrapper">Add to Box</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor Follower Fruits -->
+  <div class="cursor-fruit cursor-fruit--mango" id="cursorMango">
+    <img src="assets/fruta-manga.webp" alt="" draggable="false">
+  </div>
+  <div class="cursor-fruit cursor-fruit--orange" id="cursorOrange">
+    <img src="assets/fruta-laranja.webp" alt="" draggable="false">
+  </div>
+
+  <!-- Toast container -->
+  <div id="dm-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

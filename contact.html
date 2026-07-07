@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Demi's Tasty 🍊</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&display=swap" rel="stylesheet">
+  
+  <!-- Icons, Leaflet Map & Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="mockup.css?v=3.0">
+  
+  <style>
+    .contact-hero {
+      padding: 180px 0 80px;
+      background: #fbf9f4;
+      text-align: center;
+    }
+    .contact-hero h1 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 3.5rem;
+      color: #016130;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .contact-hero p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-main {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .contact-grid-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+    }
+    .contact-card-box {
+      background: #fbf9f4;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+    .contact-card-box h2 {
+      font-family: 'Calistoga', serif;
+      font-size: 2rem;
+      color: #016130;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-info-col h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      margin-top: 0;
+    }
+    .info-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      font-family: 'Outfit', sans-serif;
+    }
+    .info-item i {
+      font-size: 1.5rem;
+      color: #016130;
+      margin-top: 3px;
+    }
+    .info-item h4 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .info-item p {
+      margin: 0;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Form Styling */
+    .form-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .form-input {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-input:focus {
+      border-color: #016130;
+      background: rgba(1, 97, 48, 0.01);
+    }
+    .form-submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #016130;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(1, 97, 48, 0.2);
+      transition: all 0.25s ease;
+      margin-top: 1rem;
+    }
+    .form-submit-btn:hover {
+      background: #004d26;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(1, 97, 48, 0.3);
+    }
+    
+    /* FAQ Accordion */
+    .faq-section {
+      padding: 100px 0;
+      background: #fbf9f4;
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .faq-header h2 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 2.8rem;
+      color: #016130;
+    }
+    .faq-item {
+      background: #fff;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .faq-question {
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #333;
+      user-select: none;
+    }
+    .faq-answer {
+      padding: 0 30px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+      font-family: 'Outfit', sans-serif;
+      color: #666;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding-bottom: 20px;
+      max-height: 200px;
+    }
+    .faq-icon {
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+    
+    /* Leaflet Map */
+    .map-wrapper-box {
+      margin-top: 4rem;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 400px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      border: 3px solid #fff;
+    }
+    #contact-map {
+      height: 100%;
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .contact-card-box {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body class="theme-organic">
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link">Our Story</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="partner.html" class="nav-link">Become a partner</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="products.html" class="mobile-link">Products</a>
+      <a href="partner.html" class="mobile-link">Become a partner</a>
+      <a href="contact.html" class="mobile-link active">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p>Whether you want to place a wholesale order, distribute our products, or just say hello, we'd love to hear from you.</p>
+      </div>
+    </section>
+
+    <!-- Main Contact Area -->
+    <section class="contact-main">
+      <div class="container">
+        <div class="contact-grid-layout">
+          
+          <!-- Left Column: Form -->
+          <div class="contact-card-box">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form">
+              <div class="b2b-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div>
+                  <label class="form-label" for="c-name">Full Name</label>
+                  <input type="text" id="c-name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div>
+                  <label class="form-label" for="c-email">Email Address</label>
+                  <input type="email" id="c-email" class="form-input" placeholder="name@email.com" required>
+                </div>
+                <div class="form-group-full" style="grid-column: span 2;">
+                  <label class="form-label" for="c-subject">Subject</label>
+                  <input type="text" id="c-subject" class="form-input" placeholder="How can we help?" required>
+                </div>
+                <div class="form-group-full" style="grid-column: span 2;">
+                  <label class="form-label" for="c-message">Message</label>
+                  <textarea id="c-message" class="form-input" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <div class="form-group-full" style="grid-column: span 2;">
+                  <button type="submit" class="form-submit-btn">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Right Column: Info -->
+          <div class="contact-info-col" style="padding: 20px;">
+            <h3>Corporate Headquarters</h3>
+            
+            <div class="info-item">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                <h4>Address</h4>
+                <p>Demigod Agro Food Pvt. Ltd.<br>Plot 80-82, Sector 8A, IIE Sidcul,<br>Haridwar (U.K.), India</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Call Us</h4>
+                <p>+91-639-5045-814<br>Mon - Sat (9 AM - 6 PM)</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email Support</h4>
+                <p>info@demis.com<br>sales@demis.com</p>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+        <!-- Interactive Map -->
+        <div class="map-wrapper-box">
+          <div id="contact-map"></div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-header">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="faq-container">
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is the shelf life of Demi's products?</span>
+              <i class="fas fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Thanks to our advanced 6-layer aseptic packaging, our juices have a shelf life of 6 months without any added artificial chemical preservatives. Once opened, they should be refrigerated and consumed within 3 days.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Why is there a Minimum Order Quantity (MOQ)?</span>
+              <i class="fas fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>As we use cold-pressed fresh pulps and organic cow's milk, maintaining temperature integrity during logistics is vital. An MOQ of 500 units ensures we can deliver fresh batches using chilled distribution vehicles safely.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Are Demi's juices pasteurized?</span>
+              <i class="fas fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>No, we do not boil away the nutrients. We use aseptic flash processing which sterilizes the juice in seconds rather than cooking it, preserving raw aroma, enzymes, and natural fibers.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Green Curved Footer -->
+  <footer class="tropicana-footer">
+    
+    <div class="footer-content-wrap">
+      <div class="container">
+        <div class="footer-logo-row text-center">
+          <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+        </div>
+        <div class="footer-columns-grid">
+          <!-- Column 1 -->
+          <div class="footer-col font-large">
+            <h4>NAVIGATION</h4>
+            <a href="index.html" class="col-link-bold">Home</a>
+            <a href="story.html" class="col-link-bold">Our Story</a>
+            <a href="products.html" class="col-link-bold">Products</a>
+            <a href="partner.html" class="col-link-bold">Become a Partner</a>
+            <a href="contact.html" class="col-link-bold">Contact Us</a>
+          </div>
+          <div class="footer-col font-large"></div>
+          <div class="footer-col font-small"></div>
+          <!-- Column 4: Contact Form -->
+          <div class="footer-col footer-contact-form-col">
+            <h4>GET IN TOUCH</h4>
+            <form id="footer-contact-form" class="footer-contact-form">
+              <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
+              <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
+              <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
+              <button type="submit" class="fc-submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <div class="social-icons-white">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="footer-copyright">
+            <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive toast container -->
+  <div class="toast-container" id="toast-wrapper"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Leaflet Map
+    document.addEventListener('DOMContentLoaded', () => {
+      const mapEl = document.getElementById('contact-map');
+      if (mapEl) {
+        // Haridwar Sidcul coordinate: ~29.95, 78.08
+        const map = L.map('contact-map', {
+          scrollWheelZoom: false
+        }).setView([29.9546, 78.0805], 13);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        L.marker([29.9546, 78.0805]).addTo(map)
+          .bindPopup('<b>Demi\'s Headquarters</b><br>Plot 80-82, Sidcul, Haridwar.')
+          .openPopup();
+      }
+    });
+
+    // Mobile Menu Toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const active = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        if (active) {
+          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+          toggle.querySelectorAll('span')[1].style.opacity = '0';
+          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+        } else {
+          toggle.querySelectorAll('span')[0].style.transform = 'none';
+          toggle.querySelectorAll('span')[1].style.opacity = '1';
+          toggle.querySelectorAll('span')[2].style.transform = 'none';
+        }
+      });
+    }
+
+    // FAQ Accordion Toggle
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+
+    // Toast Notice Helper
+    function showToast(message) {
+      const container = document.getElementById('toast-wrapper');
+      const toast = document.createElement('div');
+      toast.className = 'toast-notice';
+      toast.innerHTML = `
+        <div class="toast-content">
+          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Form Submissions
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Thanks for reaching out! We will contact you soon.");
+        contactForm.reset();
+      });
+    }
+
+    const footerForm = document.getElementById('footer-contact-form');
+    if (footerForm) {
+      footerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Thanks for reaching out! We will contact you soon.");
+        footerForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>

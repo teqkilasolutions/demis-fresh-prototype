@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — Demi's Tasty 🍊</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&display=swap" rel="stylesheet">
+  
+  <!-- Icons & Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="mockup.css?v=3.0">
+  
+  <style>
+    .product-detail-section {
+      padding: 160px 0 100px;
+      background: #fbf9f4;
+      min-height: 80vh;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .detail-visual {
+      position: relative;
+      background: #fff;
+      border-radius: 24px;
+      padding: 4rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+      overflow: hidden;
+    }
+    .detail-splash {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      right: -10px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      opacity: 0.95;
+      z-index: 1;
+    }
+    .detail-pack {
+      position: relative;
+      z-index: 2;
+      max-height: 400px;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+      animation: floatPack 4s ease-in-out infinite alternate;
+    }
+    @keyframes floatPack {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-15px); }
+    }
+    .detail-content {
+      font-family: 'Outfit', sans-serif;
+    }
+    .detail-category {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #016130;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .detail-title {
+      font-family: 'Shrikhand', cursive;
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .detail-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b84a0e;
+      margin-bottom: 1.5rem;
+    }
+    .detail-description {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .moq-notice-box {
+      background: rgba(184, 74, 14, 0.05);
+      border-left: 4px solid #b84a0e;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .moq-notice-box h4 {
+      color: #b84a0e;
+      margin: 0 0 5px;
+      font-weight: bold;
+    }
+    .moq-notice-box p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .order-action-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+    .qty-selector-wrapper {
+      display: flex;
+      align-items: center;
+      border: 2px solid #ddd;
+      border-radius: 50px;
+      padding: 5px;
+      background: #fff;
+    }
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .qty-btn:hover {
+      color: #016130;
+    }
+    .qty-input {
+      width: 80px;
+      border: none;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      font-family: 'Outfit', sans-serif;
+      outline: none;
+    }
+    /* Hide spin buttons */
+    .qty-input::-webkit-outer-spin-button,
+    .qty-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .detail-add-btn {
+      flex: 1;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      background: #016130;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(1, 97, 48, 0.2);
+      transition: all 0.25s ease;
+    }
+    .detail-add-btn:hover {
+      background: #004d26;
+      box-shadow: 0 6px 20px rgba(1, 97, 48, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    /* Nutrition Table */
+    .nutrition-section {
+      background: #fff;
+      padding: 80px 0;
+    }
+    .nutrition-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .nutrition-box {
+      border: 3px solid #333;
+      padding: 30px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .nutrition-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      border-bottom: 8px solid #333;
+      padding-bottom: 5px;
+      margin: 0 0 10px;
+    }
+    .nutrition-box p {
+      margin: 0 0 15px;
+      font-size: 0.95rem;
+    }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .nutrition-table tr {
+      border-bottom: 1px solid #ddd;
+    }
+    .nutrition-table tr.thick-border {
+      border-bottom: 4px solid #333;
+    }
+    .nutrition-table tr.med-border {
+      border-bottom: 2px solid #333;
+    }
+    .nutrition-table td {
+      padding: 8px 0;
+      font-size: 1.05rem;
+    }
+    .nutrition-table td:last-child {
+      text-align: right;
+      font-weight: bold;
+    }
+    .sourcing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .sourcing-card {
+      background: #fbf9f4;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+    .sourcing-card i {
+      font-size: 2.5rem;
+      color: #016130;
+      margin-bottom: 1rem;
+    }
+    .sourcing-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .sourcing-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .detail-grid, .nutrition-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .detail-visual {
+        height: 350px;
+        padding: 2rem;
+      }
+      .sourcing-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="theme-organic">
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link">Our Story</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="partner.html" class="nav-link">Become a partner</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="products.html" class="mobile-link">Products</a>
+      <a href="partner.html" class="mobile-link">Become a partner</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+      <div class="container">
+        <div class="detail-grid">
+          
+          <!-- Left Column: Media mockup -->
+          <div class="detail-visual">
+            <img src="assets/juice_splash.png" alt="Splash Background" id="p-splash" class="detail-splash">
+            <img src="assets/brand_pack_0005.png" alt="Product Pack" id="p-image" class="detail-pack">
+          </div>
+          
+          <!-- Right Column: Content -->
+          <div class="detail-content">
+            <span class="detail-category" id="p-category">Juices</span>
+            <h1 class="detail-title" id="p-title">Alphonso Mango Juice</h1>
+            <div class="detail-price" id="p-price">Rs. 180.00</div>
+            <p class="detail-description" id="p-description">
+              Pure Alphonso mango juice sourced from orchards.
+            </p>
+            
+            <!-- MOQ Notice -->
+            <div class="moq-notice-box">
+              <h4>Minimum Order Quantity (MOQ)</h4>
+              <p>To guarantee batch freshness and cold-chain logistics, we have an MOQ of <strong>500 units</strong> for all corporate and wholesale distribution orders.</p>
+            </div>
+            
+            <!-- Order row -->
+            <div class="order-action-row">
+              <div class="qty-selector-wrapper">
+                <button class="qty-btn" id="qty-minus"><i class="fas fa-minus"></i></button>
+                <input type="number" id="qty-input" class="qty-input" value="500" min="500" step="1" aria-label="Order Quantity">
+                <button class="qty-btn" id="qty-plus"><i class="fas fa-plus"></i></button>
+              </div>
+              <button class="detail-add-btn" id="add-to-cart-action">Add to wholesale cart</button>
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- Nutrition Facts Table -->
+    <section class="nutrition-section">
+      <div class="container">
+        <div class="nutrition-grid">
+          <!-- Left Side: Nutrition Label -->
+          <div class="nutrition-box">
+            <h3>Nutrition Facts</h3>
+            <p>Serving Size: 1 Bottle (200ml)</p>
+            <table class="nutrition-table">
+              <tr class="thick-border">
+                <td><strong>Amount Per Serving</strong></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>Calories</strong></td>
+                <td id="nutr-calories">65 kcal</td>
+              </tr>
+              <tr class="med-border">
+                <td></td>
+                <td><strong>% Daily Value*</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Total Fat</strong> <span id="nutr-fat">0g</span></td>
+                <td>0%</td>
+              </tr>
+              <tr>
+                <td><strong>Carbohydrates</strong> <span id="nutr-carbs">15g</span></td>
+                <td>5%</td>
+              </tr>
+              <tr>
+                <td>  Sugars <span id="nutr-sugars">12g</span></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><strong>Protein</strong> <span id="nutr-protein">0.5g</span></td>
+                <td>1%</td>
+              </tr>
+              <tr class="thick-border">
+                <td>Vitamin C <span id="nutr-vitc">45mg</span></td>
+                <td>50%</td>
+              </tr>
+            </table>
+            <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">*Percent Daily Values are based on a 2,000 calorie diet.</p>
+          </div>
+          
+          <!-- Right Side: Quality Badges -->
+          <div>
+            <h2 class="section-title" style="font-family: 'Shrikhand', cursive; font-size: 2.2rem; color: #016130; margin-bottom: 2rem;">Our Purity Standards</h2>
+            <div class="sourcing-cards">
+              <div class="sourcing-card" style="grid-column: span 3;">
+                <div class="sourcing-cards" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                  <div class="sourcing-card">
+                    <i class="fas fa-seedling"></i>
+                    <h4>100% Organic</h4>
+                    <p>Sourced from sustainable orchards with absolutely no synthetic pesticides or additives.</p>
+                  </div>
+                  <div class="sourcing-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h4>Cold-Chain Transport</h4>
+                    <p>Continuous chilled delivery ensures natural vitamins and enzymes are kept perfectly active.</p>
+                  </div>
+                  <div class="sourcing-card">
+                    <i class="fas fa-glass-water"></i>
+                    <h4>Zero Added Sugars</h4>
+                    <p>Only the natural sweetness of premium fully-ripe fruits. Zero concentrates.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Green Curved Footer -->
+  <footer class="tropicana-footer">
+    
+    <div class="footer-content-wrap">
+      <div class="container">
+        <div class="footer-logo-row text-center">
+          <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+        </div>
+        <div class="footer-columns-grid">
+          <!-- Column 1: Main Pages -->
+          <div class="footer-col font-large">
+            <h4>NAVIGATION</h4>
+            <a href="index.html" class="col-link-bold">Home</a>
+            <a href="story.html" class="col-link-bold">Our Story</a>
+            <a href="products.html" class="col-link-bold">Products</a>
+            <a href="partner.html" class="col-link-bold">Become a Partner</a>
+            <a href="contact.html" class="col-link-bold">Contact Us</a>
+          </div>
+          <div class="footer-col font-large"></div>
+          <div class="footer-col font-small"></div>
+          <!-- Column 4: Contact Form -->
+          <div class="footer-col footer-contact-form-col">
+            <h4>GET IN TOUCH</h4>
+            <form id="footer-contact-form" class="footer-contact-form">
+              <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
+              <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
+              <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
+              <button type="submit" class="fc-submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <div class="social-icons-white">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="footer-copyright">
+            <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive toast container -->
+  <div class="toast-container" id="toast-wrapper"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Product Data Catalog
+    const productsData = {
+      "mango": {
+        name: "Alphonso Mango Juice",
+        price: "Rs. 180.00",
+        category: "Juices",
+        image: "assets/brand_pack_0005.png",
+        splash: "assets/mango_splash_card.png",
+        color: "#f1a100",
+        desc: "Made with 100% premium Alphonso mangoes, hand-picked from the sun-drenched orchards of Ratnagiri. Rich in flavor, smooth in texture, and packed with vitamins A and C. No added sugar or concentrates.",
+        calories: "65 kcal",
+        fat: "0g",
+        carbs: "15g",
+        sugars: "12g",
+        protein: "0.5g",
+        vitc: "45mg"
+      },
+      "litchi": {
+        name: "Fresh Litchi Juice",
+        price: "Rs. 160.00",
+        category: "Juices",
+        image: "assets/brand_pack_0015.png",
+        splash: "assets/litchi_splash_card.png",
+        color: "#e91e63",
+        desc: "The sweetest hand-selected Himalayan litchis cold-pressed to perfection. Enjoy the delicate floral aroma and pure sweet taste of natural litchi juice. Preservative-free.",
+        calories: "60 kcal",
+        fat: "0g",
+        carbs: "14g",
+        sugars: "13g",
+        protein: "0.4g",
+        vitc: "35mg"
+      },
+      "apple": {
+        name: "Fresh Apple Juice",
+        price: "Rs. 160.00",
+        category: "Juices",
+        image: "assets/brand_pack_0016.png",
+        splash: "assets/apple_splash_card.png",
+        color: "#b81d24",
+        desc: "Crisp, refreshing juice pressed from a blend of premium sweet and tart apples sourced from the Shimla valleys. Natural fiber and essential nutrients retained.",
+        calories: "55 kcal",
+        fat: "0g",
+        carbs: "13g",
+        sugars: "11g",
+        protein: "0.3g",
+        vitc: "20mg"
+      },
+      "mixed-fruit": {
+        name: "Mix Fruit Juice",
+        price: "Rs. 170.00",
+        category: "Juices",
+        image: "assets/brand_pack_0017.png",
+        splash: "assets/mixed_fruit_splash_card.png",
+        color: "#c62828",
+        desc: "A vibrant cocktail of five orchard-fresh fruits—mango, guava, apple, banana, and litchi. The ultimate multivitamin boost with a rich, delicious taste.",
+        calories: "62 kcal",
+        fat: "0g",
+        carbs: "14.5g",
+        sugars: "12g",
+        protein: "0.5g",
+        vitc: "40mg"
+      },
+      "guava": {
+        name: "Pink Guava Juice",
+        price: "Rs. 160.00",
+        category: "Juices",
+        image: "assets/brand_pack_0018.png",
+        splash: "assets/guava_splash_card.png",
+        color: "#e05a8d",
+        desc: "Creamy, aromatic juice made from pink guavas. Rich in dietary fiber, potassium, and loaded with four times the Vitamin C of oranges. Perfect daily refresher.",
+        calories: "58 kcal",
+        fat: "0g",
+        carbs: "13.5g",
+        sugars: "10g",
+        protein: "0.6g",
+        vitc: "90mg"
+      },
+      "multani-zeera": {
+        name: "Demi's Multani Zeera",
+        price: "Rs. 120.00",
+        category: "Soft Drinks",
+        image: "assets/soft_drink_multani_zeera.png",
+        splash: "assets/ice_splash.png",
+        color: "#795548",
+        desc: "Classic Multani digestive cooler with pure roasted cumin, black salt, and a refreshing sparkling carbonated kick.",
+        calories: "35 kcal",
+        fat: "0g",
+        carbs: "8g",
+        sugars: "7g",
+        protein: "0.1g",
+        vitc: "5mg"
+      },
+      "masala-zeera": {
+        name: "Demi's Masala Zeera",
+        price: "Rs. 120.00",
+        category: "Soft Drinks",
+        image: "assets/soft_drink_masala_zeera.png",
+        splash: "assets/ice_splash.png",
+        color: "#5d4037",
+        desc: "Robust sparkling masala soda blended with authentic regional spices, roasted cumin, and warm tangy dry ginger.",
+        calories: "35 kcal",
+        fat: "0g",
+        carbs: "8.2g",
+        sugars: "6.8g",
+        protein: "0.1g",
+        vitc: "6mg"
+      },
+      "lemon": {
+        name: "Demi's Lemon",
+        price: "Rs. 120.00",
+        category: "Soft Drinks",
+        image: "assets/soft_drink_lemon.png",
+        splash: "assets/ice_splash.png",
+        color: "#c0ca33",
+        desc: "Prebiotic sparkling ginger lemon soda crafted with real lemon pulp, zesty citrus oils, and raw ginger root extracts.",
+        calories: "32 kcal",
+        fat: "0g",
+        carbs: "7.5g",
+        sugars: "6.5g",
+        protein: "0.1g",
+        vitc: "15mg"
+      },
+      "orange": {
+        name: "Demi's Orange",
+        price: "Rs. 130.00",
+        category: "Soft Drinks",
+        image: "assets/soft_drink_orange.png",
+        splash: "assets/ice_splash.png",
+        color: "#f57c00",
+        desc: "A bright orange soda packed with real orange pulp, natural prebiotic fibers, and dynamic sparkling bubbles.",
+        calories: "38 kcal",
+        fat: "0g",
+        carbs: "9g",
+        sugars: "8g",
+        protein: "0.2g",
+        vitc: "25mg"
+      },
+      "cola": {
+        name: "Demi's Cola",
+        price: "Rs. 130.00",
+        category: "Soft Drinks",
+        image: "assets/soft_drink_cola.png",
+        splash: "assets/ice_splash.png",
+        color: "#3e2723",
+        desc: "Gourmet prebiotic botanical cola made with real vanilla bean, citrus oils, kola nut, and zero artificial colors.",
+        calories: "40 kcal",
+        fat: "0g",
+        carbs: "9.5g",
+        sugars: "8.5g",
+        protein: "0g",
+        vitc: "0mg"
+      },
+      "double-toned-milk": {
+        name: "Double Toned Milk",
+        price: "Rs. 95.00",
+        category: "Pure Milk",
+        image: "assets/tasty_milk.png",
+        splash: "assets/freshness_splash.png",
+        color: "#0288d1",
+        desc: "Clean-purity double-toned milk, pasteurized and chilled to retain natural calcium and proteins with only 1.5% fat. Fresh, rich, and highly nutritious.",
+        calories: "48 kcal",
+        fat: "1.5g",
+        carbs: "4.7g",
+        sugars: "0g",
+        protein: "3.2g",
+        vitc: "0mg"
+      },
+      "cow-milk": {
+        name: "Fresh Cow Milk",
+        price: "Rs. 90.00",
+        category: "Pure Milk",
+        image: "assets/brand_milk_fresh.png",
+        splash: "assets/freshness_splash.png",
+        color: "#00897b",
+        desc: "100% pure cow's milk sourced directly from local organic farms. Homogenized and packed with care. High in protein, vitamin D, and rich in natural flavor.",
+        calories: "60 kcal",
+        fat: "3.5g",
+        carbs: "4.5g",
+        sugars: "0g",
+        protein: "3.3g",
+        vitc: "0mg"
+      }
+    };
+
+    // Parse product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const pId = urlParams.get('id') || 'mango';
+    const product = productsData[pId] || productsData['mango'];
+
+    // Inject data
+    document.getElementById('p-title').innerText = product.name;
+    document.getElementById('p-price').innerText = product.price;
+    document.getElementById('p-category').innerText = product.category;
+    document.getElementById('p-description').innerText = product.desc;
+    document.getElementById('p-image').src = product.image;
+    document.getElementById('p-splash').src = product.splash;
+    document.title = `${product.name} — Demi's Tasty 🍊`;
+
+    // Inject Nutrition
+    document.getElementById('nutr-calories').innerText = product.calories;
+    document.getElementById('nutr-fat').innerText = product.fat;
+    document.getElementById('nutr-carbs').innerText = product.carbs;
+    document.getElementById('nutr-sugars').innerText = product.sugars;
+    document.getElementById('nutr-protein').innerText = product.protein;
+    document.getElementById('nutr-vitc').innerText = product.vitc;
+
+    // Change category color
+    document.getElementById('p-category').style.color = product.color;
+
+    // Quantity Selector logic with MOQ 500
+    const qtyInput = document.getElementById('qty-input');
+    const btnMinus = document.getElementById('qty-minus');
+    const btnPlus = document.getElementById('qty-plus');
+
+    btnMinus.addEventListener('click', () => {
+      let val = parseInt(qtyInput.value) || 500;
+      if (val > 500) {
+        qtyInput.value = val - 50; // decrement by 50 units
+        if (parseInt(qtyInput.value) < 500) qtyInput.value = 500;
+      }
+    });
+
+    btnPlus.addEventListener('click', () => {
+      let val = parseInt(qtyInput.value) || 500;
+      qtyInput.value = val + 50; // increment by 50 units
+    });
+
+    qtyInput.addEventListener('change', () => {
+      let val = parseInt(qtyInput.value);
+      if (isNaN(val) || val < 500) {
+        qtyInput.value = 500;
+      }
+    });
+
+    // Toast Notice Helper
+    function showToast(message) {
+      const container = document.getElementById('toast-wrapper');
+      const toast = document.createElement('div');
+      toast.className = 'toast-notice';
+      toast.innerHTML = `
+        <div class="toast-content">
+          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Add to Cart
+    document.getElementById('add-to-cart-action').addEventListener('click', () => {
+      const qty = qtyInput.value;
+      showToast(`Added ${qty} units of ${product.name} to your wholesale cart!`);
+    });
+
+    // Mobile Navbar Offcanvas
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const active = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        if (active) {
+          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+          toggle.querySelectorAll('span')[1].style.opacity = '0';
+          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+        } else {
+          toggle.querySelectorAll('span')[0].style.transform = 'none';
+          toggle.querySelectorAll('span')[1].style.opacity = '1';
+          toggle.querySelectorAll('span')[2].style.transform = 'none';
+        }
+      });
+    }
+
+    // Handle Contact Form Submit
+    const contactForm = document.getElementById('footer-contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Thanks for reaching out! We will contact you soon.");
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>

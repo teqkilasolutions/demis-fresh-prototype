@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Partner — Demi's Tasty 🍊</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&display=swap" rel="stylesheet">
+  
+  <!-- Icons & Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="mockup.css?v=3.0">
+  
+  <style>
+    .partner-hero {
+      padding: 180px 0 80px;
+      background: #fbf9f4;
+      text-align: center;
+    }
+    .partner-hero h1 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 3.5rem;
+      color: #016130;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .partner-hero p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .benefits-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .benefit-card {
+      padding: 40px 30px;
+      background: #fbf9f4;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(1, 97, 48, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+    .benefit-card i {
+      font-size: 3rem;
+      color: #016130;
+      margin-bottom: 1.5rem;
+    }
+    .benefit-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .benefit-card p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .form-section {
+      padding: 100px 0;
+      background: #fbf9f4;
+    }
+    .form-container-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 50px;
+      border-radius: 24px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.04);
+    }
+    .form-container-box h2 {
+      font-family: 'Calistoga', serif;
+      font-size: 2.2rem;
+      color: #016130;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .form-container-box p {
+      font-family: 'Outfit', sans-serif;
+      color: #666;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    
+    /* Sleek B2B Form styling */
+    .b2b-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .form-group-full {
+      grid-column: span 2;
+    }
+    .form-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .form-input {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-input:focus {
+      border-color: #016130;
+      background: rgba(1, 97, 48, 0.01);
+    }
+    .form-submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #016130;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(1, 97, 48, 0.2);
+      transition: all 0.25s ease;
+      margin-top: 1rem;
+    }
+    .form-submit-btn:hover {
+      background: #004d26;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(1, 97, 48, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .b2b-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-group-full {
+        grid-column: span 1;
+      }
+      .form-container-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body class="theme-organic">
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="story.html" class="nav-link">Our Story</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="partner.html" class="nav-link active">Become a partner</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="products.html" class="mobile-link">Products</a>
+      <a href="partner.html" class="mobile-link active">Become a partner</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Partner Hero -->
+    <section class="partner-hero">
+      <div class="container">
+        <h1>Wholesale & Distribution</h1>
+        <p>Partner with India's fastest-growing organic beverage brand. We provide premium retail margins, robust cold-chain support, and uncompromised organic quality.</p>
+      </div>
+    </section>
+
+    <!-- Partner Benefits -->
+    <section class="benefits-section">
+      <div class="container">
+        <h2 class="text-center" style="font-family: 'Calistoga', serif; font-size: 2.8rem; color: #016130; margin-bottom: 1rem;">Why Partner With Us?</h2>
+        <p class="text-center" style="font-family: 'Outfit', sans-serif; color: #666; max-width: 600px; margin: 0 auto 3rem;">We offer strong B2B advantages that build lasting profitable partnerships.</p>
+        
+        <div class="benefits-grid">
+          
+          <div class="benefit-card">
+            <i class="fas fa-percent"></i>
+            <h3>High Profit Margins</h3>
+            <p>Enjoy industry-leading profit margins with scaling discounts based on monthly targeted volumes.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <i class="fas fa-boxes-packing"></i>
+            <h3>Reliable Aseptic Shelf-Life</h3>
+            <p>Our 6-layer packaging ensures a long preservative-free shelf life, reducing product leakage and spoil rates.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <i class="fas fa-truck-ramp-box"></i>
+            <h3>Active Logistics Support</h3>
+            <p>Get priority access to our continuous cold-chain network for fast and fresh product arrivals.</p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- wholesale Application Form -->
+    <section class="form-section">
+      <div class="container">
+        <div class="form-container-box">
+          <h2>Wholesale Registration</h2>
+          <p>Fill out the application below, and a member of our distribution team will contact you within 24 hours.</p>
+          
+          <form id="wholesale-application-form">
+            <div class="b2b-form-grid">
+              
+              <div>
+                <label class="form-label" for="partner-name">Full Name</label>
+                <input type="text" id="partner-name" class="form-input" placeholder="Your Name" required>
+              </div>
+              
+              <div>
+                <label class="form-label" for="partner-company">Company Name</label>
+                <input type="text" id="partner-company" class="form-input" placeholder="Business Name" required>
+              </div>
+              
+              <div>
+                <label class="form-label" for="partner-email">Work Email</label>
+                <input type="email" id="partner-email" class="form-input" placeholder="name@company.com" required>
+              </div>
+              
+              <div>
+                <label class="form-label" for="partner-phone">Phone Number</label>
+                <input type="tel" id="partner-phone" class="form-input" placeholder="Mobile/Landline" required>
+              </div>
+              
+              <div class="form-group-full">
+                <label class="form-label" for="partner-type">Business Type</label>
+                <select id="partner-type" class="form-input" style="appearance: auto;" required>
+                  <option value="" disabled selected>Select Business Type...</option>
+                  <option value="retail">Supermarket / Retail Store</option>
+                  <option value="distributor">Regional Distributor</option>
+                  <option value="quick-commerce">Quick Commerce Partner</option>
+                  <option value="export">Importer / Exporter</option>
+                  <option value="horeca">Hotel / Restaurant / Catering</option>
+                </select>
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="partner-volume">Targeted Monthly Volume (Units)</label>
+                <select id="partner-volume" class="form-input" style="appearance: auto;" required>
+                  <option value="" disabled selected>Select expected volume...</option>
+                  <option value="small">500 - 2,000 units (MOQ applies)</option>
+                  <option value="medium">2,000 - 10,000 units</option>
+                  <option value="large">10,000+ units</option>
+                </select>
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="partner-message">Additional Details</label>
+                <textarea id="partner-message" class="form-input" rows="4" placeholder="Tell us about your distribution reach, stores, etc..." required></textarea>
+              </div>
+              
+              <div class="form-group-full">
+                <button type="submit" class="form-submit-btn">Submit Application</button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Green Curved Footer -->
+  <footer class="tropicana-footer">
+    
+    <div class="footer-content-wrap">
+      <div class="container">
+        <div class="footer-logo-row text-center">
+          <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+        </div>
+        <div class="footer-columns-grid">
+          <!-- Column 1 -->
+          <div class="footer-col font-large">
+            <h4>NAVIGATION</h4>
+            <a href="index.html" class="col-link-bold">Home</a>
+            <a href="story.html" class="col-link-bold">Our Story</a>
+            <a href="products.html" class="col-link-bold">Products</a>
+            <a href="partner.html" class="col-link-bold">Become a Partner</a>
+            <a href="contact.html" class="col-link-bold">Contact Us</a>
+          </div>
+          <div class="footer-col font-large"></div>
+          <div class="footer-col font-small"></div>
+          <!-- Column 4: Contact Form -->
+          <div class="footer-col footer-contact-form-col">
+            <h4>GET IN TOUCH</h4>
+            <form id="footer-contact-form" class="footer-contact-form">
+              <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
+              <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
+              <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
+              <button type="submit" class="fc-submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <div class="social-icons-white">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="footer-copyright">
+            <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive toast container -->
+  <div class="toast-container" id="toast-wrapper"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Navbar Toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const active = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        if (active) {
+          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+          toggle.querySelectorAll('span')[1].style.opacity = '0';
+          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+        } else {
+          toggle.querySelectorAll('span')[0].style.transform = 'none';
+          toggle.querySelectorAll('span')[1].style.opacity = '1';
+          toggle.querySelectorAll('span')[2].style.transform = 'none';
+        }
+      });
+    }
+
+    // Toast Notice Helper
+    function showToast(message) {
+      const container = document.getElementById('toast-wrapper');
+      const toast = document.createElement('div');
+      toast.className = 'toast-notice';
+      toast.innerHTML = `
+        <div class="toast-content">
+          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Handle B2B Form Submit
+    const b2bForm = document.getElementById('wholesale-application-form');
+    if (b2bForm) {
+      b2bForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Application submitted! Our wholesale manager will contact you shortly.");
+        b2bForm.reset();
+      });
+    }
+
+    // Handle Contact Form Submit
+    const contactForm = document.getElementById('footer-contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Thanks for reaching out! We will contact you soon.");
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
