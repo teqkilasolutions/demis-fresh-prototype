@@ -17,25 +17,7 @@
   <link rel="stylesheet" href="mockup.css?v=3.0">
   
   <style>
-    .contact-hero {
-      padding: 180px 0 80px;
-      background: #fbf9f4;
-      text-align: center;
-    }
-    .contact-hero h1 {
-      font-family: 'Shrikhand', cursive;
-      font-size: 3.5rem;
-      color: #016130;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-    .contact-hero p {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+
     
     .contact-main {
       padding: 80px 0;
@@ -47,20 +29,20 @@
       gap: 4rem;
     }
     .contact-card-box {
-      background: #fbf9f4;
+      background: var(--bg-organic);
       padding: 40px;
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.02);
     }
     .contact-card-box h2 {
-      font-family: 'Calistoga', serif;
+      font-family: var(--font-serif);
       font-size: 2rem;
-      color: #016130;
+      color: var(--accent-primary);
       margin-bottom: 1.5rem;
     }
     
     .contact-info-col h3 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.3rem;
       color: #333;
@@ -71,11 +53,11 @@
       display: flex;
       gap: 1.2rem;
       margin-bottom: 2rem;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
     }
     .info-item i {
       font-size: 1.5rem;
-      color: #016130;
+      color: var(--accent-primary);
       margin-top: 3px;
     }
     .info-item h4 {
@@ -91,7 +73,7 @@
 
     /* Form Styling */
     .form-label {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 0.95rem;
       color: #333;
@@ -103,24 +85,24 @@
       padding: 14px 20px;
       border-radius: 10px;
       border: 2px solid #eee;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       font-size: 1rem;
       transition: all 0.25s ease;
       outline: none;
       box-sizing: border-box;
     }
     .form-input:focus {
-      border-color: #016130;
+      border-color: var(--accent-primary);
       background: rgba(1, 97, 48, 0.01);
     }
     .form-submit-btn {
       width: 100%;
       padding: 16px;
-      background: #016130;
+      background: var(--accent-primary);
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.1rem;
       cursor: pointer;
@@ -137,7 +119,7 @@
     /* FAQ Accordion */
     .faq-section {
       padding: 100px 0;
-      background: #fbf9f4;
+      background: var(--bg-organic);
     }
     .faq-container {
       max-width: 800px;
@@ -148,9 +130,9 @@
       margin-bottom: 3rem;
     }
     .faq-header h2 {
-      font-family: 'Shrikhand', cursive;
+      font-family: var(--font-cursive);
       font-size: 2.8rem;
-      color: #016130;
+      color: var(--accent-primary);
     }
     .faq-item {
       background: #fff;
@@ -165,7 +147,7 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.1rem;
       color: #333;
@@ -176,7 +158,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease-out;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       color: #666;
       line-height: 1.6;
     }
@@ -203,6 +185,73 @@
     #contact-map {
       height: 100%;
       width: 100%;
+    }
+    
+    /* Executive Contacts */
+    .executive-contacts-wrapper {
+      margin-top: 2.5rem;
+      border-top: 1px solid #eee;
+      padding-top: 2rem;
+    }
+    .executive-contacts-wrapper h3 {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+    .executive-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .exec-card {
+      background: var(--bg-organic);
+      border: 1px solid #e0dfd5;
+      padding: 18px 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.25s ease;
+    }
+    .exec-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+      border-color: var(--accent-primary);
+    }
+    .exec-icon {
+      background: var(--accent-primary);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .exec-info h4 {
+      margin: 0 0 4px;
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      color: #333;
+    }
+    .exec-info p {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .exec-info a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .exec-info a:hover {
+      color: var(--accent-orange);
     }
     
     @media (max-width: 768px) {
@@ -253,7 +302,7 @@
 
   <main>
     <!-- Contact Hero -->
-    <section class="contact-hero">
+    <section class="contact-hero hero-with-bg" style="background-image: url('assets/fruits_bg.png');">
       <div class="container">
         <h1>Get in Touch</h1>
         <p>Whether you want to place a wholesale order, distribute our products, or just say hello, we'd love to hear from you.</p>
@@ -298,18 +347,10 @@
             <h3>Corporate Headquarters</h3>
             
             <div class="info-item">
-              <i class="fas fa-location-dot"></i>
+              <i class="fas fa-location-dot" style="margin-top: 5px;"></i>
               <div>
                 <h4>Address</h4>
-                <p>Demigod Agro Food Pvt. Ltd.<br>Plot 80-82, Sector 8A, IIE Sidcul,<br>Haridwar (U.K.), India</p>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <i class="fas fa-phone"></i>
-              <div>
-                <h4>Call Us</h4>
-                <p>+91-639-5045-814<br>Mon - Sat (9 AM - 6 PM)</p>
+                <p><strong>Demigod Agrofood Pvt. Ltd.</strong><br>Plot No 43, 62-63 Sector 8A,<br>Integrated Industrial Estate, Sidcul,<br>Haridwar, Uttarakhand 249403</p>
               </div>
             </div>
             
@@ -317,8 +358,61 @@
               <i class="fas fa-envelope"></i>
               <div>
                 <h4>Email Support</h4>
-                <p>info@demis.com<br>sales@demis.com</p>
+                <p>
+                  <a href="mailto:customercare@demistasty.com" style="color: #666; text-decoration: none;">customercare@demistasty.com</a><br>
+                  <a href="mailto:demistasty@gmail.com" style="color: #666; text-decoration: none;">demistasty@gmail.com</a><br>
+                  <a href="mailto:demisjuices@gmail.com" style="color: #666; text-decoration: none;">demisjuices@gmail.com</a>
+                </p>
               </div>
+            </div>
+
+            <!-- Executive Contacts Section -->
+            <div class="executive-contacts-wrapper">
+              <h3>Executive Contacts</h3>
+              <div class="executive-grid">
+                
+                <!-- CEO Card -->
+                <div class="exec-card">
+                  <div class="exec-icon">
+                    <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div class="exec-info">
+                    <h4>Mr. A.K. Gupta</h4>
+                    <p>Chief Executive Officer</p>
+                    <p>Call: <a href="tel:+919837099335">+91-98370-99335</a></p>
+                  </div>
+                </div>
+
+                <!-- MD Card -->
+                <div class="exec-card">
+                  <div class="exec-icon">
+                    <i class="fas fa-user-shield"></i>
+                  </div>
+                  <div class="exec-info">
+                    <h4>Mr. Shrey Gupta</h4>
+                    <p>Managing Director</p>
+                    <p>Call: <a href="tel:+919927866657">+91-99278-66657</a></p>
+                  </div>
+                </div>
+
+                <!-- Marketing Head Card -->
+                <div class="exec-card">
+                  <div class="exec-icon">
+                    <i class="fas fa-bullhorn"></i>
+                  </div>
+                  <div class="exec-info">
+                    <h4>Marketing Head</h4>
+                    <p>Distribution & Sales</p>
+                    <p>Call: <a href="tel:+918979394665">+91-89793-94665</a></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <!-- Product Showcase Collage -->
+            <div style="margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 2rem; text-align: center;">
+              <img src="assets/contact_collage.png" alt="Demi's Juices Collage" style="width: 100%; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
             </div>
             
           </div>
@@ -344,31 +438,41 @@
           
           <div class="faq-item">
             <div class="faq-question">
-              <span>What is the shelf life of Demi's products?</span>
+              <span>Can I drink from this pack immediately?</span>
               <i class="fas fa-plus faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>Thanks to our advanced 6-layer aseptic packaging, our juices have a shelf life of 6 months without any added artificial chemical preservatives. Once opened, they should be refrigerated and consumed within 3 days.</p>
+              <p>Yes, but the best way to enjoy any Demi’s product is to serve it chilled. Also, always remember to shake the pack well before use.</p>
             </div>
           </div>
           
           <div class="faq-item">
             <div class="faq-question">
-              <span>Why is there a Minimum Order Quantity (MOQ)?</span>
+              <span>How long can I use this pack once opened?</span>
               <i class="fas fa-plus faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>As we use cold-pressed fresh pulps and organic cow's milk, maintaining temperature integrity during logistics is vital. An MOQ of 500 units ensures we can deliver fresh batches using chilled distribution vehicles safely.</p>
+              <p>Once you open the pack, immediately refrigerate and consume within 5 days. For Single Consumption pack, it needs to be consumed immediately after opening.</p>
             </div>
           </div>
           
           <div class="faq-item">
             <div class="faq-question">
-              <span>Are Demi's juices pasteurized?</span>
+              <span>Are Demi's juices made from the best fruits?</span>
               <i class="fas fa-plus faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>No, we do not boil away the nutrients. We use aseptic flash processing which sterilizes the juice in seconds rather than cooking it, preserving raw aroma, enzymes, and natural fibers.</p>
+              <p>Yes, every Demi’s Juice pack is made from the juice of the best farm-fresh fruits only. We do not use fruit concentrates.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What quality protocols does Demi's adhere to?</span>
+              <i class="fas fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>When it comes to quality, we adhere to the strictest protocols from sourcing to manufacturing and until the pack reaches you. We store our raw materials in sealed, tamper-proof containers in ideal temperatures and favourable conditions to retain freshness, taste, and purity. Complete automation and state of the art technology ensures strictly minimum human contact with the product at any time. Also, we abide by the strict guidelines on quality as outlined by FSSAI.</p>
             </div>
           </div>
           
@@ -435,17 +539,17 @@
     document.addEventListener('DOMContentLoaded', () => {
       const mapEl = document.getElementById('contact-map');
       if (mapEl) {
-        // Haridwar Sidcul coordinate: ~29.95, 78.08
+        // Haridwar Sidcul Sector 8A coordinate: ~29.9330, 78.0772
         const map = L.map('contact-map', {
           scrollWheelZoom: false
-        }).setView([29.9546, 78.0805], 13);
+        }).setView([29.9330, 78.0772], 15);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        L.marker([29.9546, 78.0805]).addTo(map)
-          .bindPopup('<b>Demi\'s Headquarters</b><br>Plot 80-82, Sidcul, Haridwar.')
+        L.marker([29.9330, 78.0772]).addTo(map)
+          .bindPopup('<b>Demigod Agrofood Pvt. Ltd.</b><br>Plot No 43, 62-63 Sector 8A, IIE Sidcul, Haridwar.')
           .openPopup();
       }
     });
@@ -485,7 +589,7 @@
       toast.className = 'toast-notice';
       toast.innerHTML = `
         <div class="toast-content">
-          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <i class="fas fa-check-circle" style="color: var(--accent-primary); margin-right: 10px;"></i>
           <span>${message}</span>
         </div>
       `;

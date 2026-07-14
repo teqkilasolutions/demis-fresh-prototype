@@ -17,7 +17,8 @@
   <style>
     .product-detail-section {
       padding: 160px 0 100px;
-      background: #fbf9f4;
+      background: url('assets/testimonials_bg.png') repeat;
+      background-size: auto;
       min-height: 80vh;
     }
     .detail-grid {
@@ -62,19 +63,19 @@
       100% { transform: translateY(-15px); }
     }
     .detail-content {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
     }
     .detail-category {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 2px;
-      color: #016130;
+      color: var(--accent-primary);
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
     }
     .detail-title {
-      font-family: 'Shrikhand', cursive;
+      font-family: var(--font-cursive);
       font-size: 3rem;
       color: #333;
       margin-bottom: 1.5rem;
@@ -83,7 +84,7 @@
     .detail-price {
       font-size: 2rem;
       font-weight: 800;
-      color: #b84a0e;
+      color: var(--accent-orange);
       margin-bottom: 1.5rem;
     }
     .detail-description {
@@ -98,10 +99,10 @@
       padding: 15px 20px;
       border-radius: 4px;
       margin-bottom: 2rem;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
     }
     .moq-notice-box h4 {
-      color: #b84a0e;
+      color: var(--accent-orange);
       margin: 0 0 5px;
       font-weight: bold;
     }
@@ -138,7 +139,7 @@
       transition: color 0.2s;
     }
     .qty-btn:hover {
-      color: #016130;
+      color: var(--accent-primary);
     }
     .qty-input {
       width: 80px;
@@ -146,7 +147,7 @@
       text-align: center;
       font-size: 1.1rem;
       font-weight: bold;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       outline: none;
     }
     /* Hide spin buttons */
@@ -159,9 +160,9 @@
       flex: 1;
       padding: 15px 30px;
       border-radius: 50px;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
-      background: #016130;
+      background: var(--accent-primary);
       color: #fff;
       border: none;
       cursor: pointer;
@@ -189,10 +190,10 @@
     .nutrition-box {
       border: 3px solid #333;
       padding: 30px;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
     }
     .nutrition-box h3 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-size: 2.2rem;
       font-weight: 800;
       border-bottom: 8px solid #333;
@@ -230,18 +231,18 @@
       gap: 2rem;
     }
     .sourcing-card {
-      background: #fbf9f4;
+      background: var(--bg-organic);
       padding: 30px;
       border-radius: 16px;
       text-align: center;
     }
     .sourcing-card i {
       font-size: 2.5rem;
-      color: #016130;
+      color: var(--accent-primary);
       margin-bottom: 1rem;
     }
     .sourcing-card h4 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
@@ -264,6 +265,56 @@
       .sourcing-cards {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Thumbnail Gallery Styles */
+    .gallery-thumb {
+      width: 75px;
+      height: 75px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      padding: 4px;
+      cursor: pointer;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .gallery-thumb:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-primary);
+    }
+    .gallery-thumb.active {
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px rgba(1, 97, 48, 0.15);
+    }
+    .gallery-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    
+    /* Full composition image view styles */
+    .detail-visual.full-image-active {
+      background: #faf9f6 !important;
+      padding: 0 !important;
+      border: 1px solid #eee;
+    }
+    .detail-visual.full-image-active .detail-splash {
+      display: none !important;
+    }
+    .detail-visual.full-image-active .detail-pack {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      object-fit: cover !important;
+      animation: none !important;
+      filter: none !important;
+      border-radius: 24px;
     }
   </style>
 </head>
@@ -309,9 +360,12 @@
         <div class="detail-grid">
           
           <!-- Left Column: Media mockup -->
-          <div class="detail-visual">
-            <img src="assets/juice_splash.png" alt="Splash Background" id="p-splash" class="detail-splash">
-            <img src="assets/brand_pack_0005.png" alt="Product Pack" id="p-image" class="detail-pack">
+          <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+            <div class="detail-visual" id="detail-visual-box">
+              <img src="assets/juice_splash.png" alt="Splash Background" id="p-splash" class="detail-splash">
+              <img src="assets/brand_pack_0005.png" alt="Product Pack" id="p-image" class="detail-pack">
+            </div>
+            <div class="detail-gallery" id="p-gallery" style="display: flex; gap: 12px; justify-content: center; margin-top: 5px;"></div>
           </div>
           
           <!-- Right Column: Content -->
@@ -392,7 +446,7 @@
           
           <!-- Right Side: Quality Badges -->
           <div>
-            <h2 class="section-title" style="font-family: 'Shrikhand', cursive; font-size: 2.2rem; color: #016130; margin-bottom: 2rem;">Our Purity Standards</h2>
+            <h2 class="section-title" style="font-family: var(--font-cursive); font-size: 2.2rem; color: var(--accent-primary); margin-bottom: 2rem;">Our Purity Standards</h2>
             <div class="sourcing-cards">
               <div class="sourcing-card" style="grid-column: span 3;">
                 <div class="sourcing-cards" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
@@ -477,13 +531,13 @@
     // Product Data Catalog
     const productsData = {
       "mango": {
-        name: "Alphonso Mango Juice",
-        price: "Rs. 180.00",
+        name: "Alphonso Mango Juice (200 ml)",
+        price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0005.png",
         splash: "assets/mango_splash_card.png",
         color: "#f1a100",
-        desc: "Made with 100% premium Alphonso mangoes, hand-picked from the sun-drenched orchards of Ratnagiri. Rich in flavor, smooth in texture, and packed with vitamins A and C. No added sugar or concentrates.",
+        desc: "Sourced from the best organic farm fruits, this pure pulp extracted juice (not from concentrate) brings ratnagiri's finest alphonso mango flavor. Aseptic machinery packed to maintain 11 years of consistent purity and excellence in taste.",
         calories: "65 kcal",
         fat: "0g",
         carbs: "15g",
@@ -492,13 +546,13 @@
         vitc: "45mg"
       },
       "litchi": {
-        name: "Fresh Litchi Juice",
-        price: "Rs. 160.00",
+        name: "Fresh Litchi Juice (200 ml)",
+        price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0015.png",
         splash: "assets/litchi_splash_card.png",
         color: "#e91e63",
-        desc: "The sweetest hand-selected Himalayan litchis cold-pressed to perfection. Enjoy the delicate floral aroma and pure sweet taste of natural litchi juice. Preservative-free.",
+        desc: "Exquisite sweet litchi juice, pulp extracted from organic orchard fruits. European machine packed in aseptic packaging to secure pure bliss, consistent purity, and zero preservatives.",
         calories: "60 kcal",
         fat: "0g",
         carbs: "14g",
@@ -507,13 +561,13 @@
         vitc: "35mg"
       },
       "apple": {
-        name: "Fresh Apple Juice",
-        price: "Rs. 160.00",
+        name: "Fresh Apple Juice (200 ml)",
+        price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0016.png",
         splash: "assets/apple_splash_card.png",
         color: "#b81d24",
-        desc: "Crisp, refreshing juice pressed from a blend of premium sweet and tart apples sourced from the Shimla valleys. Natural fiber and essential nutrients retained.",
+        desc: "Pure pulp extracted apple juice sourced from the finest orchard apples. Fully sterilized and aseptic-packaged for natural crispness and premium freshness. Sourced from organic farm fruits.",
         calories: "55 kcal",
         fat: "0g",
         carbs: "13g",
@@ -522,13 +576,13 @@
         vitc: "20mg"
       },
       "mixed-fruit": {
-        name: "Mix Fruit Juice",
-        price: "Rs. 170.00",
+        name: "Mix Fruit Juice (200 ml)",
+        price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0017.png",
         splash: "assets/mixed_fruit_splash_card.png",
         color: "#c62828",
-        desc: "A vibrant cocktail of five orchard-fresh fruits—mango, guava, apple, banana, and litchi. The ultimate multivitamin boost with a rich, delicious taste.",
+        desc: "A rich blend of five organic farm fruits. Pulp extracted with no concentrates, offering complete multivitamin nutrients in state-of-the-art aseptic packaging for daily energy.",
         calories: "62 kcal",
         fat: "0g",
         carbs: "14.5g",
@@ -537,13 +591,13 @@
         vitc: "40mg"
       },
       "guava": {
-        name: "Pink Guava Juice",
-        price: "Rs. 160.00",
+        name: "Pink Guava Juice (200 ml)",
+        price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0018.png",
         splash: "assets/guava_splash_card.png",
         color: "#e05a8d",
-        desc: "Creamy, aromatic juice made from pink guavas. Rich in dietary fiber, potassium, and loaded with four times the Vitamin C of oranges. Perfect daily refresher.",
+        desc: "Organic pink guava juice, pulp extracted with zero concentrate. Extremely rich in dietary fiber and Vitamin C, sealed in aseptic 6-layer packaging for consistent purity.",
         calories: "58 kcal",
         fat: "0g",
         carbs: "13.5g",
@@ -552,28 +606,32 @@
         vitc: "90mg"
       },
       "multani-zeera": {
-        name: "Demi's Multani Zeera",
-        price: "Rs. 120.00",
+        name: "Demi's Multani Zeera (160 ml)",
+        price: "Rs. 10.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_multani_zeera.png",
-        splash: "assets/ice_splash.png",
+        splash: "assets/lime_splash.png",
         color: "#795548",
-        desc: "Classic Multani digestive cooler with pure roasted cumin, black salt, and a refreshing sparkling carbonated kick.",
+        desc: "Classic Multani digestive cooler with best quality roasted cumin (Zeera), black salt, and a refreshing sparkling carbonated kick, made from our traditional secret recipe.",
         calories: "35 kcal",
         fat: "0g",
         carbs: "8g",
         sugars: "7g",
         protein: "0.1g",
-        vitc: "5mg"
+        vitc: "5mg",
+        gallery: [
+          "assets/soft_drink_multani_zeera.png",
+          "assets/multani_zeera_ad.jpg"
+        ]
       },
       "masala-zeera": {
-        name: "Demi's Masala Zeera",
-        price: "Rs. 120.00",
+        name: "Demi's Masala Zeera (160 ml)",
+        price: "Rs. 10.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_masala_zeera.png",
-        splash: "assets/ice_splash.png",
+        splash: "assets/lime_splash.png",
         color: "#5d4037",
-        desc: "Robust sparkling masala soda blended with authentic regional spices, roasted cumin, and warm tangy dry ginger.",
+        desc: "Robust sparkling masala soda blended with authentic regional spices, premium quality roasted cumin (Zeera), and warm dry ginger. Best digestive recipe.",
         calories: "35 kcal",
         fat: "0g",
         carbs: "8.2g",
@@ -582,11 +640,11 @@
         vitc: "6mg"
       },
       "lemon": {
-        name: "Demi's Lemon",
-        price: "Rs. 120.00",
+        name: "Demi's Tasty Spize Lemona (200 ml)",
+        price: "Rs. 20.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_lemon.png",
-        splash: "assets/ice_splash.png",
+        splash: "assets/lemon_splash.png",
         color: "#c0ca33",
         desc: "Prebiotic sparkling ginger lemon soda crafted with real lemon pulp, zesty citrus oils, and raw ginger root extracts.",
         calories: "32 kcal",
@@ -594,11 +652,15 @@
         carbs: "7.5g",
         sugars: "6.5g",
         protein: "0.1g",
-        vitc: "15mg"
+        vitc: "15mg",
+        gallery: [
+          "assets/soft_drink_lemon.png",
+          "assets/lemona_ad.jpg"
+        ]
       },
       "orange": {
-        name: "Demi's Orange",
-        price: "Rs. 130.00",
+        name: "Demi's Tasty Orange (200 ml)",
+        price: "Rs. 20.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_orange.png",
         splash: "assets/ice_splash.png",
@@ -609,31 +671,39 @@
         carbs: "9g",
         sugars: "8g",
         protein: "0.2g",
-        vitc: "25mg"
+        vitc: "25mg",
+        gallery: [
+          "assets/soft_drink_orange.png",
+          "assets/orange_ad.jpg"
+        ]
       },
       "cola": {
-        name: "Demi's Cola",
-        price: "Rs. 130.00",
+        name: "Demi's Tasty Cola (200 ml)",
+        price: "Rs. 20.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_cola.png",
-        splash: "assets/ice_splash.png",
+        splash: "assets/cola_splash.png",
         color: "#3e2723",
-        desc: "Gourmet prebiotic botanical cola made with real vanilla bean, citrus oils, kola nut, and zero artificial colors.",
+        desc: "Gourmet prebiotic botanical cola made with real vanilla bean, citrus oils, kola nut, and zero artificial colors, styled with our signature cola splash.",
         calories: "40 kcal",
         fat: "0g",
         carbs: "9.5g",
         sugars: "8.5g",
         protein: "0g",
-        vitc: "0mg"
+        vitc: "0mg",
+        gallery: [
+          "assets/soft_drink_cola.png",
+          "assets/cola_ad.jpg"
+        ]
       },
       "double-toned-milk": {
-        name: "Double Toned Milk",
-        price: "Rs. 95.00",
+        name: "Demi's TastY Milk (400 ml)",
+        price: "Rs. 35.00",
         category: "Pure Milk",
-        image: "assets/tasty_milk.png",
-        splash: "assets/freshness_splash.png",
+        image: "assets/tasty_milk_400ml.png",
+        splash: "assets/milk_splash.png",
         color: "#0288d1",
-        desc: "Clean-purity double-toned milk, pasteurized and chilled to retain natural calcium and proteins with only 1.5% fat. Fresh, rich, and highly nutritious.",
+        desc: "UHT (Ultra High Temperature) treated skimmed milk, fully sterilized with zero bacteria. Packed in sterile aseptic polypacks with European machinery. Sourced from organic dairy farms, very low fat to stay in slim shape. Needs no refrigeration or boiling. Buy in bulk and enjoy!",
         calories: "48 kcal",
         fat: "1.5g",
         carbs: "4.7g",
@@ -642,13 +712,13 @@
         vitc: "0mg"
       },
       "cow-milk": {
-        name: "Fresh Cow Milk",
-        price: "Rs. 90.00",
+        name: "Demi's Tasty Milk (125 ml)",
+        price: "Rs. 10.00",
         category: "Pure Milk",
-        image: "assets/brand_milk_fresh.png",
-        splash: "assets/freshness_splash.png",
+        image: "assets/tasty_milk_125ml.png",
+        splash: "assets/milk_splash.png",
         color: "#00897b",
-        desc: "100% pure cow's milk sourced directly from local organic farms. Homogenized and packed with care. High in protein, vitamin D, and rich in natural flavor.",
+        desc: "Premium sterilized UHT milk processed in an international level plant and machine packed in aseptic polypacks. Stays completely fresh without refrigeration or daily grocery trips. Low fat, healthy, organic, and ultra-convenient.",
         calories: "60 kcal",
         fat: "3.5g",
         carbs: "4.5g",
@@ -671,6 +741,33 @@
     document.getElementById('p-image').src = product.image;
     document.getElementById('p-splash').src = product.splash;
     document.title = `${product.name} — Demi's Tasty 🍊`;
+
+    // Render Gallery thumbnails if present
+    const galleryContainer = document.getElementById('p-gallery');
+    const visualBox = document.getElementById('detail-visual-box');
+    galleryContainer.innerHTML = '';
+
+    if (product.gallery && product.gallery.length > 1) {
+      product.gallery.forEach((imgSrc, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `<img src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
+        
+        thumb.addEventListener('click', () => {
+          galleryContainer.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          document.getElementById('p-image').src = imgSrc;
+          
+          if (index === 1) {
+            visualBox.classList.add('full-image-active');
+          } else {
+            visualBox.classList.remove('full-image-active');
+          }
+        });
+        
+        galleryContainer.appendChild(thumb);
+      });
+    }
 
     // Inject Nutrition
     document.getElementById('nutr-calories').innerText = product.calories;
@@ -715,7 +812,7 @@
       toast.className = 'toast-notice';
       toast.innerHTML = `
         <div class="toast-content">
-          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <i class="fas fa-check-circle" style="color: var(--accent-primary); margin-right: 10px;"></i>
           <span>${message}</span>
         </div>
       `;

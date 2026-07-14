@@ -15,26 +15,7 @@
   <link rel="stylesheet" href="mockup.css?v=3.0">
   
   <style>
-    .partner-hero {
-      padding: 180px 0 80px;
-      background: #fbf9f4;
-      text-align: center;
-    }
-    .partner-hero h1 {
-      font-family: 'Shrikhand', cursive;
-      font-size: 3.5rem;
-      color: #016130;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-    .partner-hero p {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 650px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+
     
     .benefits-section {
       padding: 80px 0;
@@ -48,7 +29,7 @@
     }
     .benefit-card {
       padding: 40px 30px;
-      background: #fbf9f4;
+      background: var(--bg-organic);
       border-radius: 20px;
       text-align: center;
       transition: all 0.3s ease;
@@ -61,18 +42,18 @@
     }
     .benefit-card i {
       font-size: 3rem;
-      color: #016130;
+      color: var(--accent-primary);
       margin-bottom: 1.5rem;
     }
     .benefit-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.3rem;
       color: #333;
       margin-bottom: 1rem;
     }
     .benefit-card p {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.95rem;
       color: #666;
       line-height: 1.6;
@@ -81,7 +62,7 @@
     
     .form-section {
       padding: 100px 0;
-      background: #fbf9f4;
+      background: var(--bg-organic);
     }
     .form-container-box {
       max-width: 700px;
@@ -92,14 +73,14 @@
       box-shadow: 0 15px 45px rgba(0,0,0,0.04);
     }
     .form-container-box h2 {
-      font-family: 'Calistoga', serif;
+      font-family: var(--font-serif);
       font-size: 2.2rem;
-      color: #016130;
+      color: var(--accent-primary);
       margin-bottom: 1rem;
       text-align: center;
     }
     .form-container-box p {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       color: #666;
       margin-bottom: 2.5rem;
       text-align: center;
@@ -115,7 +96,7 @@
       grid-column: span 2;
     }
     .form-label {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 0.95rem;
       color: #333;
@@ -127,24 +108,24 @@
       padding: 14px 20px;
       border-radius: 10px;
       border: 2px solid #eee;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body);
       font-size: 1rem;
       transition: all 0.25s ease;
       outline: none;
       box-sizing: border-box;
     }
     .form-input:focus {
-      border-color: #016130;
+      border-color: var(--accent-primary);
       background: rgba(1, 97, 48, 0.01);
     }
     .form-submit-btn {
       width: 100%;
       padding: 16px;
-      background: #016130;
+      background: var(--accent-primary);
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-mono);
       font-weight: 600;
       font-size: 1.1rem;
       cursor: pointer;
@@ -211,7 +192,7 @@
 
   <main>
     <!-- Partner Hero -->
-    <section class="partner-hero">
+    <section class="partner-hero hero-with-bg" style="background-image: url('assets/testimonials_bg.png');">
       <div class="container">
         <h1>Wholesale & Distribution</h1>
         <p>Partner with India's fastest-growing organic beverage brand. We provide premium retail margins, robust cold-chain support, and uncompromised organic quality.</p>
@@ -221,8 +202,8 @@
     <!-- Partner Benefits -->
     <section class="benefits-section">
       <div class="container">
-        <h2 class="text-center" style="font-family: 'Calistoga', serif; font-size: 2.8rem; color: #016130; margin-bottom: 1rem;">Why Partner With Us?</h2>
-        <p class="text-center" style="font-family: 'Outfit', sans-serif; color: #666; max-width: 600px; margin: 0 auto 3rem;">We offer strong B2B advantages that build lasting profitable partnerships.</p>
+        <h2 class="text-center" style="font-family: var(--font-serif); font-size: 2.8rem; color: var(--accent-primary); margin-bottom: 1rem;">Why Partner With Us?</h2>
+        <p class="text-center" style="font-family: var(--font-body); color: #666; max-width: 600px; margin: 0 auto 3rem;">We offer strong B2B advantages that build lasting profitable partnerships.</p>
         
         <div class="benefits-grid">
           
@@ -396,7 +377,7 @@
       toast.className = 'toast-notice';
       toast.innerHTML = `
         <div class="toast-content">
-          <i class="fas fa-check-circle" style="color: #016130; margin-right: 10px;"></i>
+          <i class="fas fa-check-circle" style="color: var(--accent-primary); margin-right: 10px;"></i>
           <span>${message}</span>
         </div>
       `;

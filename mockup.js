@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialsSlider();
   initStoreLocatorMap();
   initFooterContactForm();
+  initSmoothScroll();
+  initMagneticButtons();
 });
 
 /* ── 0. Video Background Hero Slider ────────────────────────────────── */
@@ -1051,10 +1053,12 @@ function initStoreLocatorMap() {
 
   if (!mapEl) return;
 
-  // 1. Initialize Map with Leaflet.js (Centered on New Delhi NCR Hub)
+  // 1. Initialize Map with Leaflet.js (Centered on India)
   const map = L.map('map', {
-    center: [28.6139, 77.2090],
-    zoom: 11,
+    center: [22.9734, 78.6569],
+    zoom: 5,
+    minZoom: 4,
+    maxZoom: 8,
     scrollWheelZoom: false
   });
 
@@ -1063,47 +1067,484 @@ function initStoreLocatorMap() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  // Custom vector leaf-style green pin icon
-  const greenPinIcon = L.divIcon({
-    className: 'custom-leaflet-pin',
+  // Custom red pin icons
+  const redPinIcon = L.divIcon({
+    className: 'red-leaflet-pin',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7]
+  });
+
+  const activePinIcon = L.divIcon({
+    className: 'red-leaflet-pin pulse active-pin',
     iconSize: [18, 18],
     iconAnchor: [9, 9]
   });
 
-  // Add Outlet Markers
-  const locations = [
-    { name: "Demi's Outlet - Connaught Place", coords: [28.6304, 77.2177], desc: "SuperMart Central Metro. Open 9 AM - 11 PM." },
-    { name: "Demi's Retailer - Saket Hub", coords: [28.5244, 77.2066], desc: "Select Citywalk Level 1. Open 10 AM - 10 PM." },
-    { name: "Demi's Gurgaon Store", coords: [28.4138, 77.0422], desc: "Sector 49 Market Place. Open 8 AM - 10 PM." }
-  ];
+  // State data with coordinates and descriptions
+  const stateData = {
+    ladakh: { name: "Leh Ladakh", coords: [34.1526, 77.5771], desc: "Now available in organic stores and cafes across Leh." },
+    jk: { name: "Jammu & Kashmir", coords: [33.7782, 76.5762], desc: "Find us in retail supermarkets in Srinagar and Jammu." },
+    hp: { name: "Himachal Pradesh", coords: [31.1048, 77.1734], desc: "Available at local organic farms and shops in Shimla & Manali." },
+    punjab: { name: "Punjab", coords: [31.1471, 75.3412], desc: "Stocked across major supermarkets in Ludhiana, Amritsar & Jalandhar." },
+    haryana: { name: "Haryana", coords: [29.0588, 76.0856], desc: "Available in retail outlets in Gurugram, Panchkula & Ambala." },
+    mp: { name: "Madhya Pradesh", coords: [22.9734, 78.6569], desc: "Available in premium grocery chains in Bhopal, Indore & Gwalior." },
+    rajasthan: { name: "Rajasthan", coords: [27.0238, 74.2179], desc: "Find us in retail stores across Jaipur, Udaipur & Jodhpur." },
+    gujarat: { name: "Gujarat", coords: [22.2587, 71.1924], desc: "Stocked in organic supermarkets in Ahmedabad, Surat & Vadodara." },
+    maharashtra: { name: "Maharashtra", coords: [19.7515, 75.7139], desc: "Find us in wellness & organic stores across Mumbai and Pune." },
+    uttarakhand: { name: "Uttarakhand", coords: [30.0668, 79.0193], desc: "Available in retail outlets in Dehradun, Rishikesh & Haridwar." },
+    up: { name: "Uttar Pradesh", coords: [26.8467, 80.9462], desc: "Available in supermarkets across Noida, Lucknow, Kanpur & Varanasi." },
+    wb: { name: "West Bengal", coords: [22.9868, 87.8550], desc: "Find us in premium stores in Kolkata, Siliguri & Darjeeling." },
+    jharkhand: { name: "Jharkhand", coords: [23.6102, 85.2799], desc: "Available in retail stores across Ranchi, Jamshedpur & Dhanbad." },
+    bihar: { name: "Bihar", coords: [25.0961, 85.3131], desc: "Stocked in leading retail markets in Patna and Gaya." },
+    assam: { name: "Assam", coords: [26.2006, 92.9376], desc: "Now available in tea-estate organic stores and Guwahati supermarkets." }
+  };
 
-  locations.forEach(loc => {
-    L.marker(loc.coords, { icon: greenPinIcon })
-      .addTo(map)
-      .bindPopup(`<strong>${loc.name}</strong><br><span style="font-size: 0.85rem; color: #555;">${loc.desc}</span>`);
+  function normalizeStateName(name) {
+    if (!name) return "";
+    const normalized = name.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (normalized === "jammuandkashmir" || normalized === "jammuandkashmiri" || normalized === "jandk" || normalized === "jk") return "jk";
+    if (normalized === "ladakh" || normalized === "lehladakh") return "ladakh";
+    if (normalized === "himachalpradesh") return "hp";
+    if (normalized === "punjab") return "punjab";
+    if (normalized === "haryana") return "haryana";
+    if (normalized === "madhyapradesh") return "mp";
+    if (normalized === "rajasthan") return "rajasthan";
+    if (normalized === "gujarat") return "gujarat";
+    if (normalized === "maharashtra") return "maharashtra";
+    if (normalized === "uttarakhand") return "uttarakhand";
+    if (normalized === "uttarpradesh" || normalized === "up") return "up";
+    if (normalized === "westbengal") return "wb";
+    if (normalized === "jharkhand") return "jharkhand";
+    if (normalized === "bihar") return "bihar";
+    if (normalized === "assam") return "assam";
+    return "";
+  }
+
+  const markers = {};
+  const stateItems = document.querySelectorAll('.state-item');
+
+  // Helper to add marker for a state
+  function addMarkerForState(key, coords) {
+    if (markers[key]) return; // Avoid duplicates
+    const loc = stateData[key];
+    const marker = L.marker(coords, { icon: redPinIcon }).addTo(map);
+    marker.bindPopup(`<strong>${loc.name}</strong><br><span style="font-size: 0.85rem; color: #555;">${loc.desc}</span>`);
+    
+    markers[key] = marker;
+
+    // Handle marker click to also highlight the list item
+    marker.on('click', () => {
+      document.querySelectorAll('.state-item').forEach(item => item.classList.remove('active'));
+      
+      const item = document.querySelector(`.state-item[data-state="${key}"]`);
+      if (item) {
+        item.classList.add('active');
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      Object.keys(markers).forEach(k => {
+        markers[k].setIcon(redPinIcon);
+      });
+      marker.setIcon(activePinIcon);
+      
+      map.setView(coords, 6);
+    });
+  }
+
+  // Load India States boundaries GeoJSON
+  let geojsonLayer = null;
+  fetch('assets/india-states.geojson')
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
+    .then(geoData => {
+      geojsonLayer = L.geoJSON(geoData, {
+        style: function(feature) {
+          const stateName = feature.properties.ST_NM || feature.properties.state_name || feature.properties.NAME_1;
+          const normalized = normalizeStateName(stateName);
+          const isAvailable = !!normalized;
+
+          return {
+            fillColor: isAvailable ? '#016130' : '#ffffff',
+            fillOpacity: isAvailable ? 0.15 : 0.02,
+            color: isAvailable ? '#016130' : '#dddddd',
+            weight: isAvailable ? 1.5 : 1,
+            opacity: 1
+          };
+        },
+        onEachFeature: function(feature, layer) {
+          const stateName = feature.properties.ST_NM || feature.properties.state_name || feature.properties.NAME_1;
+          const normalized = normalizeStateName(stateName);
+
+          if (normalized && stateData[normalized]) {
+            const loc = stateData[normalized];
+            
+            // Calculate center dynamically from boundaries to ensure perfect accuracy
+            const center = layer.getBounds().getCenter();
+            loc.coords = [center.lat, center.lng];
+
+            // Add marker at exact boundary center
+            addMarkerForState(normalized, loc.coords);
+
+            layer.bindPopup(`<strong>${loc.name}</strong><br><span style="font-size: 0.85rem; color: #555;">${loc.desc}</span>`);
+            
+            layer.on({
+              mouseover: function(e) {
+                recordUserInteraction();
+                const targetLayer = e.target;
+                targetLayer.setStyle({
+                  fillOpacity: 0.3,
+                  weight: 2,
+                  fillColor: '#016130'
+                });
+                
+                // Highlight state list item on left
+                stateItems.forEach(i => i.classList.remove('active'));
+                const item = document.querySelector(`.state-item[data-state="${normalized}"]`);
+                if (item) item.classList.add('active');
+
+                // Trigger map marker popup
+                Object.keys(markers).forEach(k => {
+                  markers[k].setIcon(redPinIcon);
+                });
+                const marker = markers[normalized];
+                if (marker) {
+                  marker.setIcon(activePinIcon);
+                  marker.openPopup();
+                }
+
+                // Draw manual jump from Haridwar on hover
+                animateJumpingArc(haridwarCoords, loc.coords, normalized);
+              },
+              mouseout: function(e) {
+                if (geojsonLayer) geojsonLayer.resetStyle(e.target);
+              },
+              click: function(e) {
+                recordUserInteraction();
+                map.fitBounds(e.target.getBounds(), { padding: [30, 30] });
+                animateJumpingArc(haridwarCoords, loc.coords, normalized);
+              }
+            });
+          }
+        }
+      }).addTo(map);
+      // Start the jumping flow loop once GeoJSON loads
+      startFlowLoop();
+    })
+    .catch(err => {
+      console.warn("Could not load states GeoJSON, falling back to static markers:", err);
+      // Fallback: Add static markers if GeoJSON fails
+      Object.keys(stateData).forEach(key => {
+        addMarkerForState(key, stateData[key].coords);
+      });
+      startFlowLoop();
+    });
+
+  // Connect state list on the left with markers on the map
+  stateItems.forEach(item => {
+    const stateKey = item.getAttribute('data-state');
+    if (!stateKey || !stateData[stateKey]) return;
+
+    item.addEventListener('mouseenter', () => {
+      recordUserInteraction();
+      stateItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Style all lines back to normal, but make the current one highlight
+      Object.keys(supplyLines).forEach(k => {
+        if (supplyLines[k]) {
+          supplyLines[k].setStyle({ color: '#b84a0e', weight: 2, opacity: 0.45 });
+        }
+      });
+      if (supplyLines[stateKey]) {
+        supplyLines[stateKey].setStyle({ color: '#016130', weight: 4.5, opacity: 1 });
+      }
+
+      Object.keys(markers).forEach(k => {
+        markers[k].setIcon(redPinIcon);
+      });
+      
+      const marker = markers[stateKey];
+      if (marker) {
+        marker.setIcon(activePinIcon);
+        marker.openPopup();
+        map.panTo(stateData[stateKey].coords);
+      }
+      
+      // Animate manual pulse on the pre-drawn line
+      animateManualPulse(stateKey);
+    });
+
+    item.addEventListener('click', () => {
+      recordUserInteraction();
+      stateItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      Object.keys(supplyLines).forEach(k => {
+        if (supplyLines[k]) {
+          supplyLines[k].setStyle({ color: '#b84a0e', weight: 2, opacity: 0.45 });
+        }
+      });
+      if (supplyLines[stateKey]) {
+        supplyLines[stateKey].setStyle({ color: '#016130', weight: 4.5, opacity: 1 });
+      }
+
+      Object.keys(markers).forEach(k => {
+        markers[k].setIcon(redPinIcon);
+      });
+      
+      const marker = markers[stateKey];
+      if (marker) {
+        marker.setIcon(activePinIcon);
+        marker.openPopup();
+        map.setView(stateData[stateKey].coords, 7);
+      }
+
+      // Animate manual pulse on the pre-drawn line
+      animateManualPulse(stateKey);
+    });
   });
 
-  // 2. Pincode Availability Checker Form
+  // ── Interactive Map Jumping Arcs & Factory Code ──
+  const haridwarCoords = [29.9457, 78.1642];
+  let isUserInteracting = false;
+  let supplyLines = {};
+  let activeArcMarkers = [];
+  let loopTimeout = null;
+  let interactionResetTimeout = null;
+
+  // Add Special pulsing factory marker at Haridwar
+  const factoryIcon = L.divIcon({
+    className: 'gold-factory-pin',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+  });
+  const factoryMarker = L.marker(haridwarCoords, { icon: factoryIcon }).addTo(map);
+  factoryMarker.bindPopup(`<strong>Demi's Sourcing Plant & Factory</strong><br><span style="font-size: 0.85rem; color: #555;">Haridwar, Uttarakhand. Sourcing and distribution center.</span>`);
+
+  function getBezierPoints(start, end, numPoints = 30) {
+    const points = [];
+    const midLat = (start[0] + end[0]) / 2;
+    const midLng = (start[1] + end[1]) / 2;
+    const dLat = end[0] - start[0];
+    const dLng = end[1] - start[1];
+    
+    // Add curvature perpendicular to the straight line
+    const heightFactor = 0.25;
+    const controlLat = midLat + dLng * heightFactor;
+    const controlLng = midLng - dLat * heightFactor;
+    const control = [controlLat, controlLng];
+    
+    for (let i = 0; i <= numPoints; i++) {
+      const t = i / numPoints;
+      const lat = Math.pow(1 - t, 2) * start[0] + 2 * (1 - t) * t * control[0] + Math.pow(t, 2) * end[0];
+      const lng = Math.pow(1 - t, 2) * start[1] + 2 * (1 - t) * t * control[1] + Math.pow(t, 2) * end[1];
+      points.push([lat, lng]);
+    }
+    return points;
+  }
+
+  // Draw all static supply lines radiating out from Haridwar
+  function drawAllSupplyLines() {
+    Object.keys(supplyLines).forEach(k => {
+      if (supplyLines[k]) supplyLines[k].remove();
+    });
+    supplyLines = {};
+    
+    Object.keys(stateData).forEach(key => {
+      const start = haridwarCoords;
+      const end = stateData[key].coords;
+      const points = getBezierPoints(start, end, 30);
+      
+      const line = L.polyline(points, {
+        color: '#b84a0e',
+        weight: 2,
+        opacity: 0.45,
+        className: 'jumping-arc-path'
+      }).addTo(map);
+      
+      supplyLines[key] = line;
+    });
+  }
+
+  // Animate a single manual pulse from Haridwar to target state
+  function animateManualPulse(key) {
+    const start = haridwarCoords;
+    const end = stateData[key].coords;
+    const points = getBezierPoints(start, end, 30);
+    
+    const movingMarker = L.circleMarker(start, {
+      radius: 6,
+      color: '#016130', // Green color for user selection flow
+      fillColor: '#016130',
+      fillOpacity: 1,
+      weight: 1
+    }).addTo(map);
+    
+    activeArcMarkers.push(movingMarker);
+
+    let step = 0;
+    function animate() {
+      if (step < points.length) {
+        movingMarker.setLatLng(points[step]);
+        step++;
+        requestAnimationFrame(animate);
+      } else {
+        movingMarker.remove();
+        activeArcMarkers = activeArcMarkers.filter(m => m !== movingMarker);
+        
+        // Trigger arrival!
+        const marker = markers[key];
+        if (marker) {
+          marker.setIcon(activePinIcon);
+          marker.openPopup();
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+
+  // Send waves of supply pulses from Haridwar to all states simultaneously
+  function sendSupplyPulses() {
+    if (isUserInteracting) return;
+    
+    Object.keys(stateData).forEach(key => {
+      const start = haridwarCoords;
+      const end = stateData[key].coords;
+      const points = getBezierPoints(start, end, 30);
+      
+      const movingMarker = L.circleMarker(start, {
+        radius: 5,
+        color: '#b84a0e',
+        fillColor: '#b84a0e',
+        fillOpacity: 0.9,
+        weight: 1
+      }).addTo(map);
+      
+      activeArcMarkers.push(movingMarker);
+
+      let step = 0;
+      function animate() {
+        if (isUserInteracting) {
+          movingMarker.remove();
+          return;
+        }
+        if (step < points.length) {
+          movingMarker.setLatLng(points[step]);
+          step++;
+          requestAnimationFrame(animate);
+        } else {
+          movingMarker.remove();
+          activeArcMarkers = activeArcMarkers.filter(m => m !== movingMarker);
+          
+          // Flash destination pin briefly
+          const marker = markers[key];
+          if (marker) {
+            marker.setIcon(activePinIcon);
+            setTimeout(() => {
+              // Reset back to standard pin if user has not set it active
+              const item = document.querySelector(`.state-item[data-state="${key}"]`);
+              if (!item || !item.classList.contains('active')) {
+                marker.setIcon(redPinIcon);
+              }
+            }, 1200);
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    });
+  }
+
+  function recordUserInteraction() {
+    isUserInteracting = true;
+    activeArcMarkers.forEach(m => m.remove());
+    activeArcMarkers = [];
+    
+    // Set all lines to normal weight, except if one is active
+    Object.keys(supplyLines).forEach(k => {
+      if (supplyLines[k]) {
+        supplyLines[k].setStyle({ color: '#b84a0e', weight: 2, opacity: 0.45 });
+      }
+    });
+
+    clearTimeout(interactionResetTimeout);
+    interactionResetTimeout = setTimeout(() => {
+      isUserInteracting = false;
+      // Reset line styles to default supply flow
+      Object.keys(supplyLines).forEach(k => {
+        if (supplyLines[k]) {
+          supplyLines[k].setStyle({ color: '#b84a0e', weight: 2, opacity: 0.45 });
+        }
+      });
+    }, 10000);
+  }
+
+  function startFlowLoop() {
+    // Draw all lines immediately
+    drawAllSupplyLines();
+    
+    // Trigger initial pulses with a short delay
+    setTimeout(() => {
+      sendSupplyPulses();
+    }, 1000);
+    
+    // Repeat waves every 7 seconds
+    loopTimeout = setInterval(() => {
+      if (!isUserInteracting) {
+        sendSupplyPulses();
+      }
+    }, 7000);
+  }
+
+  // 2. State Availability Checker Form
   if (checkBtn && inputEl && resultEl) {
     checkBtn.addEventListener('click', () => {
       const code = inputEl.value.trim();
 
       if (!code) {
         resultEl.className = "availability-status";
-        resultEl.textContent = "Please enter a pincode or city name.";
+        resultEl.textContent = "Please enter a state name or city.";
         return;
       }
 
-      // Check standard Delhi/Gurgaon NCR pincodes
-      const availableCodes = ["110001", "110017", "122018", "110002", "110020", "122001", "Delhi", "Gurgaon"];
-      const isAvailable = availableCodes.some(term => code.toLowerCase().includes(term.toLowerCase()));
+      const query = code.toLowerCase();
+      let matchedState = null;
+      let matchedKey = null;
 
-      if (isAvailable) {
+      // Find match in state names or descriptions
+      Object.keys(stateData).forEach(key => {
+        const state = stateData[key];
+        if (state.name.toLowerCase().includes(query) || state.desc.toLowerCase().includes(query) || query.includes(state.name.toLowerCase())) {
+          matchedState = state;
+          matchedKey = key;
+        }
+      });
+
+      if (matchedState) {
         resultEl.className = "availability-status available";
-        resultEl.innerHTML = `<i class="fas fa-circle-check"></i> Available in your area! 🚚 Delivery in 10-15 mins via Blinkit & Instamart.`;
+        resultEl.innerHTML = `<i class="fas fa-circle-check"></i> Available in ${matchedState.name}! Find us in premium grocery chains & supermarkets.`;
+        
+        // Highlight on map & list
+        stateItems.forEach(i => i.classList.remove('active'));
+        const item = document.querySelector(`.state-item[data-state="${matchedKey}"]`);
+        if (item) {
+          item.classList.add('active');
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        Object.keys(markers).forEach(k => {
+          markers[k].setIcon(redPinIcon);
+        });
+        const marker = markers[matchedKey];
+        if (marker) {
+          marker.setIcon(activePinIcon);
+          marker.openPopup();
+          map.setView(matchedState.coords, 7);
+        }
       } else {
         resultEl.className = "availability-status unavailable";
-        resultEl.innerHTML = `<i class="fas fa-circle-xmark"></i> Currently unavailable. We are expanding fast! Sign up to get notified.`;
+        resultEl.innerHTML = `<i class="fas fa-circle-xmark"></i> Currently unavailable in "${code}". We are expanding fast! Sign up to get notified.`;
       }
     });
   }
@@ -1122,5 +1563,100 @@ function initFooterContactForm() {
       form.reset();
     });
   }
+}
+
+/* ── 17. Lenis Smooth Scroll Integration ──────────────────────────────── */
+function initSmoothScroll() {
+  if (typeof Lenis !== 'undefined') {
+    startLenis();
+  } else {
+    // Dynamically load Lenis from CDN
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js';
+    script.onload = startLenis;
+    document.head.appendChild(script);
+  }
+
+  function startLenis() {
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    // If GSAP & ScrollTrigger are available, let GSAP control the ticker rendering loop
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+      
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      
+      console.log("Lenis running synced with GSAP ticker loop.");
+    } else {
+      // Otherwise, run raw requestAnimationFrame loop
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+      console.log("Lenis running with native requestAnimationFrame loop.");
+    }
+    
+    window.lenis = lenis;
+  }
+}
+
+/* ── 18. Magnetic Physics Button Effects ─────────────────────────────── */
+function initMagneticButtons() {
+  // Select all interactive buttons
+  const buttonsSelector = '.btn, .add-to-cart-btn, .filter-tab, .carousel-arrow, .fc-submit-btn, .form-submit-btn';
+  
+  document.addEventListener('mousemove', (e) => {
+    const buttons = document.querySelectorAll(buttonsSelector);
+    buttons.forEach(btn => {
+      const bound = btn.getBoundingClientRect();
+      const centerX = bound.left + bound.width / 2;
+      const centerY = bound.top + bound.height / 2;
+      
+      const distanceX = e.clientX - centerX;
+      const distanceY = e.clientY - centerY;
+      
+      const distance = Math.hypot(distanceX, distanceY);
+      const threshold = 75; // Distance threshold in pixels
+      
+      if (distance < threshold) {
+        // Pull towards cursor
+        const power = 0.35;
+        if (typeof gsap !== 'undefined') {
+          gsap.to(btn, {
+            x: distanceX * power,
+            y: distanceY * power,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        } else {
+          // CSS fallback
+          btn.style.transform = `translate(${distanceX * power}px, ${distanceY * power}px)`;
+          btn.style.transition = 'transform 0.1s ease-out';
+        }
+      } else {
+        // Snap back to origin
+        if (typeof gsap !== 'undefined') {
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            ease: 'elastic.out(1, 0.3)'
+          });
+        } else {
+          btn.style.transform = 'none';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        }
+      }
+    });
+  });
 }
 
