@@ -430,6 +430,96 @@
       transform: rotate(45deg);
       color: var(--accent-orange);
     }
+
+    /* ── Faint Hand-Drawn Timeline Spell ─────────────────────────── */
+    .story-timeline-wrap {
+      position: relative;
+      margin-top: 5rem;
+      padding: 2rem 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      opacity: 0.15; /* Faint opacity so it is subtle */
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .story-timeline-line {
+      position: absolute;
+      top: 45px;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      border-top: 2px dashed #016130;
+      z-index: 1;
+    }
+
+    .story-timeline-steps {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 900px;
+      z-index: 2;
+    }
+
+    .story-timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .story-timeline-step .step-icon {
+      width: 50px;
+      height: 50px;
+      background: #fdfcf7;
+      border: 1.5px solid #016130;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #016130;
+      box-shadow: 0 4px 10px rgba(1, 97, 48, 0.05);
+    }
+
+    .story-timeline-step .step-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #016130;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .story-timeline-wrap {
+        margin-top: 3rem;
+        opacity: 0.12;
+      }
+      .story-timeline-line {
+        left: 25px;
+        top: 5%;
+        width: 2px;
+        height: 90%;
+        border-left: 2px dashed #016130;
+        border-top: none;
+      }
+      .story-timeline-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding-left: 10px;
+      }
+      .story-timeline-step {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body class="theme-organic">
@@ -489,6 +579,37 @@
           </div>
           <div class="story-image-wrap">
             <img src="assets/about_us_bg_new_cropped.jpg" alt="Demi's Orchard harvesting">
+          </div>
+        </div>
+
+        <!-- Faint Hand-Drawn Timeline -->
+        <div class="story-timeline-wrap">
+          <div class="story-timeline-line"></div>
+          <div class="story-timeline-steps">
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-seedling"></i></div>
+              <div class="step-label">Seed</div>
+            </div>
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-tree"></i></div>
+              <div class="step-label">Orchard</div>
+            </div>
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-shopping-basket"></i></div>
+              <div class="step-label">Harvest</div>
+            </div>
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-tint"></i></div>
+              <div class="step-label">Washing</div>
+            </div>
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-apple-alt"></i></div>
+              <div class="step-label">Fresh Fruit</div>
+            </div>
+            <div class="story-timeline-step">
+              <div class="step-icon"><i class="fas fa-box-open"></i></div>
+              <div class="step-label">Aseptic Carton</div>
+            </div>
           </div>
         </div>
 
