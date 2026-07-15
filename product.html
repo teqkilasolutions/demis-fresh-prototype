@@ -15,29 +15,62 @@
   <link rel="stylesheet" href="mockup.css?v=3.0">
   
   <style>
+    /* ── Single Product Redesign CSS ── */
     .product-detail-section {
-      padding: 160px 0 100px;
-      background: url('assets/testimonials_bg.png') repeat;
-      background-size: auto;
-      min-height: 80vh;
+      padding: 140px 0 60px;
+      background-color: var(--bg-organic);
     }
+    
+    /* Breadcrumbs */
+    .breadcrumbs {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .breadcrumbs a {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumbs a:hover {
+      color: var(--accent-primary);
+    }
+    .breadcrumbs i {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+    
+    /* Layout Grid */
     .detail-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 4rem;
-      align-items: center;
+      align-items: start;
+    }
+    
+    /* Left Column: Visuals Box */
+    .detail-visual-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
     .detail-visual {
       position: relative;
       background: #fff;
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 4rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 500px;
+      height: 480px;
       overflow: hidden;
+      border: 1px solid #e0dfd5;
+      transition: background-color 0.3s;
     }
     .detail-splash {
       position: absolute;
@@ -53,225 +86,50 @@
     .detail-pack {
       position: relative;
       z-index: 2;
-      max-height: 400px;
+      max-height: 380px;
       object-fit: contain;
-      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.12));
       animation: floatPack 4s ease-in-out infinite alternate;
     }
     @keyframes floatPack {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-15px); }
+      100% { transform: translateY(-12px); }
     }
-    .detail-content {
-      font-family: var(--font-body);
-    }
-    .detail-category {
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: var(--accent-primary);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    .detail-title {
-      font-family: var(--font-cursive);
-      font-size: 3rem;
-      color: #333;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    .detail-price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent-orange);
-      margin-bottom: 1.5rem;
-    }
-    .detail-description {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-    .moq-notice-box {
-      background: rgba(184, 74, 14, 0.05);
-      border-left: 4px solid #b84a0e;
-      padding: 15px 20px;
-      border-radius: 4px;
-      margin-bottom: 2rem;
-      font-family: var(--font-mono);
-    }
-    .moq-notice-box h4 {
-      color: var(--accent-orange);
-      margin: 0 0 5px;
-      font-weight: bold;
-    }
-    .moq-notice-box p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .order-action-row {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-    .qty-selector-wrapper {
-      display: flex;
-      align-items: center;
-      border: 2px solid #ddd;
-      border-radius: 50px;
-      padding: 5px;
-      background: #fff;
-    }
-    .qty-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: transparent;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #333;
+    
+    /* Navigation Gallery Rows */
+    .gallery-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.2s;
+      gap: 1rem;
     }
-    .qty-btn:hover {
-      color: var(--accent-primary);
-    }
-    .qty-input {
-      width: 80px;
-      border: none;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: bold;
-      font-family: var(--font-body);
-      outline: none;
-    }
-    /* Hide spin buttons */
-    .qty-input::-webkit-outer-spin-button,
-    .qty-input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    .detail-add-btn {
-      flex: 1;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-family: var(--font-mono);
-      font-weight: 600;
-      background: var(--accent-primary);
-      color: #fff;
-      border: none;
+    .gallery-arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid #ddd;
+      background: #fff;
       cursor: pointer;
-      font-size: 1.1rem;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(1, 97, 48, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
       transition: all 0.25s ease;
     }
-    .detail-add-btn:hover {
-      background: #004d26;
-      box-shadow: 0 6px 20px rgba(1, 97, 48, 0.3);
-      transform: translateY(-2px);
+    .gallery-arrow-btn:hover {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #fff;
     }
-    
-    /* Nutrition Table */
-    .nutrition-section {
-      background: #fff;
-      padding: 80px 0;
+    .gallery-thumbs {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
     }
-    .nutrition-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-    .nutrition-box {
-      border: 3px solid #333;
-      padding: 30px;
-      font-family: var(--font-body);
-    }
-    .nutrition-box h3 {
-      font-family: var(--font-mono);
-      font-size: 2.2rem;
-      font-weight: 800;
-      border-bottom: 8px solid #333;
-      padding-bottom: 5px;
-      margin: 0 0 10px;
-    }
-    .nutrition-box p {
-      margin: 0 0 15px;
-      font-size: 0.95rem;
-    }
-    .nutrition-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .nutrition-table tr {
-      border-bottom: 1px solid #ddd;
-    }
-    .nutrition-table tr.thick-border {
-      border-bottom: 4px solid #333;
-    }
-    .nutrition-table tr.med-border {
-      border-bottom: 2px solid #333;
-    }
-    .nutrition-table td {
-      padding: 8px 0;
-      font-size: 1.05rem;
-    }
-    .nutrition-table td:last-child {
-      text-align: right;
-      font-weight: bold;
-    }
-    .sourcing-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .sourcing-card {
-      background: var(--bg-organic);
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-    }
-    .sourcing-card i {
-      font-size: 2.5rem;
-      color: var(--accent-primary);
-      margin-bottom: 1rem;
-    }
-    .sourcing-card h4 {
-      font-family: var(--font-mono);
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .sourcing-card p {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.5;
-    }
-    
-    @media (max-width: 768px) {
-      .detail-grid, .nutrition-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .detail-visual {
-        height: 350px;
-        padding: 2rem;
-      }
-      .sourcing-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Thumbnail Gallery Styles */
     .gallery-thumb {
-      width: 75px;
-      height: 75px;
-      border: 2px solid #eee;
+      width: 70px;
+      height: 70px;
+      border: 2px solid #ddd;
       border-radius: 12px;
       padding: 4px;
       cursor: pointer;
@@ -281,7 +139,6 @@
       align-items: center;
       overflow: hidden;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
     .gallery-thumb:hover {
       transform: translateY(-2px);
@@ -298,11 +155,11 @@
       border-radius: 6px;
     }
     
-    /* Full composition image view styles */
+    /* Full composition view overrides */
     .detail-visual.full-image-active {
       background: #faf9f6 !important;
       padding: 0 !important;
-      border: 1px solid #eee;
+      border: 1px solid #ddd;
     }
     .detail-visual.full-image-active .detail-splash {
       display: none !important;
@@ -314,7 +171,576 @@
       object-fit: cover !important;
       animation: none !important;
       filter: none !important;
+      border-radius: 28px;
+    }
+    
+    /* Right Column: Content Box */
+    .detail-content {
+      font-family: var(--font-body);
+    }
+    .detail-category {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+    .detail-title {
+      font-family: var(--font-heading);
+      font-size: 2.25rem;
+      color: #1a1a1a;
+      margin-bottom: 0.75rem;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+    
+    /* Ratings */
+    .detail-ratings {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .stars-gold {
+      color: #ffb400;
+      font-size: 0.95rem;
+    }
+    .rating-count {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    /* Badges */
+    .tag-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 5px 12px;
+      border-radius: 50px;
+      background: rgba(1, 97, 48, 0.05);
+      color: var(--accent-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(1, 97, 48, 0.12);
+    }
+    .tag-badge i {
+      font-size: 0.85rem;
+    }
+    
+    .detail-price {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent-primary);
+      margin-bottom: 1.75rem;
+    }
+    
+    /* Pack size selector */
+    .pack-size-container {
+      margin-bottom: 1.75rem;
+    }
+    .selector-label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .size-options {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .size-option-btn {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 1.5px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      color: #555;
+    }
+    .size-option-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+    .size-option-btn.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(1, 97, 48, 0.15);
+    }
+    
+    /* Quantity & Button */
+    .order-action-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.75rem;
+    }
+    .qty-selector-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #ddd;
+      border-radius: 50px;
+      padding: 4px;
+      background: #fff;
+    }
+    .qty-btn {
+      width: 38px;
+      height: 38px;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .qty-btn:hover {
+      color: var(--accent-primary);
+    }
+    .qty-input {
+      width: 70px;
+      border: none;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      outline: none;
+      -appearance: textfield;
+      -moz-appearance: textfield;
+    }
+    .qty-input::-webkit-outer-spin-button,
+    .qty-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    .detail-add-btn {
+      flex: 1;
+      padding: 14px 28px;
+      border-radius: 50px;
+      background: var(--accent-primary);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(1, 97, 48, 0.15);
+    }
+    .detail-add-btn:hover {
+      background: #004d26;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(1, 97, 48, 0.22);
+    }
+    
+    .delivery-notice-box {
+      border-top: 1px solid #ddd;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .delivery-notice-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .delivery-notice-item i {
+      color: var(--accent-primary);
+      font-size: 1rem;
+    }
+    
+    /* ── Tabbed Section ── */
+    .tabs-section {
+      background: #fff;
+      padding: 80px 0 60px;
+      border-top: 1px solid #e0dfd5;
+      border-bottom: 1px solid #e0dfd5;
+    }
+    .tab-headers {
+      display: flex;
+      gap: 3rem;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 3rem;
+      justify-content: start;
+    }
+    .tab-header-btn {
+      border: none;
+      background: transparent;
+      padding: 0 0 1rem;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #999;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .tab-header-btn:hover {
+      color: var(--accent-primary);
+    }
+    .tab-header-btn.active {
+      color: var(--accent-primary);
+    }
+    .tab-header-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--accent-primary);
+      border-radius: 5px;
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeInTab 0.5s ease forwards;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Ingredients Tab content */
+    .ingredients-tab-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .ingredient-stats-row {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .ingredient-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .ingredient-stat-label {
+      font-size: 0.95rem;
+      color: #666;
+      font-weight: 600;
+    }
+    .ingredient-stat-val {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent-primary);
+      line-height: 1;
+    }
+    .ingredients-description-box {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    /* Nutrition Tab content */
+    .nutrition-box {
+      border: 3px solid #1a1a1a;
+      padding: 30px;
+      max-width: 550px;
+      background: #faf9f6;
+    }
+    .nutrition-box h3 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      border-bottom: 8px solid #1a1a1a;
+      padding-bottom: 5px;
+      margin: 0 0 10px;
+    }
+    .nutrition-box p {
+      margin: 0 0 15px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .nutrition-table tr {
+      border-bottom: 1px solid #ddd;
+    }
+    .nutrition-table tr.thick-border {
+      border-bottom: 4px solid #1a1a1a;
+    }
+    .nutrition-table tr.med-border {
+      border-bottom: 2px solid #1a1a1a;
+    }
+    .nutrition-table td {
+      padding: 8px 0;
+      font-size: 1.05rem;
+    }
+    .nutrition-table td:last-child {
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    /* Sourcing Tab content */
+    .sourcing-tab-box {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 800px;
+    }
+    
+    /* ── Our Natural Ingredients Section ── */
+    .natural-ingredients-section {
+      background-color: #f5f3e9;
+      padding: 80px 0;
+      border-bottom: 1px solid #e0dfd5;
+    }
+    .natural-ingredients-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 2.25rem;
+      color: var(--accent-primary);
+      text-align: center;
+      margin-bottom: 3.5rem;
+      letter-spacing: 1px;
+    }
+    .ingredients-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .ingredient-detail-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      border: 1px solid #e2e0d3;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.015);
+      transition: all 0.3s ease;
+    }
+    .ingredient-detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(1, 97, 48, 0.05);
+      border-color: var(--accent-primary);
+    }
+    .ingredient-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      background: rgba(1, 97, 48, 0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: var(--accent-primary);
+      font-size: 1.75rem;
+    }
+    .ingredient-detail-card h3 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #1a1a1a;
+      margin-bottom: 0.75rem;
+    }
+    .ingredient-detail-card p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    /* ── Opinions / Reviews Section ── */
+    .opinions-section {
+      background-color: #ffb400; /* Warm gold */
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .opinions-section::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+    .opinions-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: var(--accent-primary);
+      text-align: center;
+      margin-bottom: 4rem;
+      letter-spacing: 2px;
+    }
+    .opinions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .reviews-list-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .review-item-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .review-author {
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: 1rem;
+    }
+    .review-stars {
+      color: #ff9800;
+      font-size: 0.85rem;
+    }
+    .review-comment {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* Write Review Form */
+    .review-form-col {
+      background: #fff;
       border-radius: 24px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+      border: 1px solid #eee;
+    }
+    .review-form-col h3 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-input-field {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 50px;
+      border: 1.5px solid #ddd;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+    .form-input-field:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(1, 97, 48, 0.08);
+    }
+    textarea.form-input-field {
+      border-radius: 18px;
+      resize: none;
+    }
+    .form-submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 50px;
+      background: var(--accent-primary);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .form-submit-btn:hover {
+      background: #004d26;
+    }
+    
+    /* ── Recently Viewed Section ── */
+    .recently-viewed-section {
+      background: var(--bg-organic);
+      padding: 90px 0;
+    }
+    .recently-viewed-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 2.25rem;
+      color: var(--accent-primary);
+      margin-bottom: 3.5rem;
+    }
+    .recent-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .ingredients-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .recent-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .detail-grid, .tab-headers, .ingredients-tab-layout, .opinions-grid, .recent-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .ingredients-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .tab-headers {
+        gap: 1.5rem;
+        flex-direction: column;
+        border-bottom: none;
+      }
+      .tab-header-btn {
+        padding: 0.5rem 0;
+        text-align: left;
+      }
+      .tab-header-btn.active::after {
+        bottom: 0;
+      }
+      .detail-visual {
+        height: 350px;
+        padding: 2rem;
+      }
+      .opinions-grid {
+        gap: 3rem;
+      }
     }
   </style>
 </head>
@@ -337,6 +763,7 @@
         <button class="mobile-toggle" aria-label="Toggle Menu">
           <span></span>
           <span></span>
+          <span></span>
         </button>
       </div>
     </div>
@@ -357,118 +784,219 @@
     <!-- Product Detail Section -->
     <section class="product-detail-section">
       <div class="container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
+          <a href="products.html">Products</a> <i class="fas fa-chevron-right"></i>
+          <a href="products.html" id="p-bread-category">Juices</a> <i class="fas fa-chevron-right"></i>
+          <span id="p-bread-title">Alphonso Mango Juice</span>
+        </div>
+        
         <div class="detail-grid">
           
-          <!-- Left Column: Media mockup -->
-          <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+          <!-- Left Column: Visuals -->
+          <div class="detail-visual-wrapper">
             <div class="detail-visual" id="detail-visual-box">
-              <img src="assets/juice_splash.png" alt="Splash Background" id="p-splash" class="detail-splash">
-              <img src="assets/brand_pack_0005.png" alt="Product Pack" id="p-image" class="detail-pack">
+              <img src="assets/mango_splash_card.png" id="p-splash" class="detail-splash" alt="Splash Background">
+              <img src="assets/brand_pack_0005.png" id="p-image" class="detail-pack" alt="Product Pack">
             </div>
-            <div class="detail-gallery" id="p-gallery" style="display: flex; gap: 12px; justify-content: center; margin-top: 5px;"></div>
+            
+            <div class="gallery-row">
+              <button class="gallery-arrow-btn" id="gallery-prev-btn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+              <div class="gallery-thumbs" id="p-gallery">
+                <!-- Javascript dynamic thumbnails -->
+              </div>
+              <button class="gallery-arrow-btn" id="gallery-next-btn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+            </div>
           </div>
           
-          <!-- Right Column: Content -->
+          <!-- Right Column: Info -->
           <div class="detail-content">
             <span class="detail-category" id="p-category">Juices</span>
-            <h1 class="detail-title" id="p-title">Alphonso Mango Juice</h1>
-            <div class="detail-price" id="p-price">Rs. 180.00</div>
-            <p class="detail-description" id="p-description">
-              Pure Alphonso mango juice sourced from orchards.
-            </p>
+            <h1 class="detail-title" id="p-title">Alphonso Mango Juice (200 ml)</h1>
             
-            <!-- MOQ Notice -->
-            <div class="moq-notice-box">
-              <h4>Minimum Order Quantity (MOQ)</h4>
-              <p>To guarantee batch freshness and cold-chain logistics, we have an MOQ of <strong>500 units</strong> for all corporate and wholesale distribution orders.</p>
+            <div class="detail-ratings">
+              <div class="stars-gold">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="rating-count" id="p-reviews-count">(24 Reviews)</span>
             </div>
             
-            <!-- Order row -->
+            <div class="tag-badges">
+              <span class="tag-badge" id="badge-1"><i class="fas fa-check-circle"></i> 100% Organic</span>
+              <span class="tag-badge" id="badge-2"><i class="fas fa-check-circle"></i> No Preservatives</span>
+              <span class="tag-badge" id="badge-3"><i class="fas fa-check-circle"></i> Aseptic Packed</span>
+            </div>
+            
+            <div class="detail-price" id="p-price">Rs. 20.00</div>
+            
+            <div class="pack-size-container">
+              <span class="selector-label">Pack size:</span>
+              <div class="size-options">
+                <button class="size-option-btn active" id="size-single-btn">Single (200 ml)</button>
+                <button class="size-option-btn" id="size-crate-btn">Crate (24 Units)</button>
+              </div>
+            </div>
+            
             <div class="order-action-row">
               <div class="qty-selector-wrapper">
-                <button class="qty-btn" id="qty-minus"><i class="fas fa-minus"></i></button>
-                <input type="number" id="qty-input" class="qty-input" value="500" min="500" step="1" aria-label="Order Quantity">
-                <button class="qty-btn" id="qty-plus"><i class="fas fa-plus"></i></button>
+                <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity"><i class="fas fa-minus"></i></button>
+                <input type="number" id="qty-input" class="qty-input" value="500" min="500" step="50" aria-label="Quantity">
+                <button class="qty-btn" id="qty-plus" aria-label="Increase quantity"><i class="fas fa-plus"></i></button>
               </div>
-              <button class="detail-add-btn" id="add-to-cart-action">Add to wholesale cart</button>
+              <button class="detail-add-btn" id="add-to-cart-action">Add to basket</button>
             </div>
             
+            <div class="delivery-notice-box">
+              <div class="delivery-notice-item">
+                <i class="fas fa-truck"></i>
+                <span>Free delivery over Rs. 1000</span>
+              </div>
+              <div class="delivery-notice-item">
+                <i class="fas fa-clock"></i>
+                <span>Express delivery options available at checkout</span>
+              </div>
+            </div>
           </div>
           
         </div>
       </div>
     </section>
     
-    <!-- Nutrition Facts Table -->
-    <section class="nutrition-section">
+    <!-- Tabbed Nutritional & Process Section -->
+    <section class="tabs-section">
       <div class="container">
-        <div class="nutrition-grid">
-          <!-- Left Side: Nutrition Label -->
-          <div class="nutrition-box">
-            <h3>Nutrition Facts</h3>
-            <p>Serving Size: 1 Bottle (200ml)</p>
-            <table class="nutrition-table">
-              <tr class="thick-border">
-                <td><strong>Amount Per Serving</strong></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><strong>Calories</strong></td>
-                <td id="nutr-calories">65 kcal</td>
-              </tr>
-              <tr class="med-border">
-                <td></td>
-                <td><strong>% Daily Value*</strong></td>
-              </tr>
-              <tr>
-                <td><strong>Total Fat</strong> <span id="nutr-fat">0g</span></td>
-                <td>0%</td>
-              </tr>
-              <tr>
-                <td><strong>Carbohydrates</strong> <span id="nutr-carbs">15g</span></td>
-                <td>5%</td>
-              </tr>
-              <tr>
-                <td>  Sugars <span id="nutr-sugars">12g</span></td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td><strong>Protein</strong> <span id="nutr-protein">0.5g</span></td>
-                <td>1%</td>
-              </tr>
-              <tr class="thick-border">
-                <td>Vitamin C <span id="nutr-vitc">45mg</span></td>
-                <td>50%</td>
-              </tr>
-            </table>
-            <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">*Percent Daily Values are based on a 2,000 calorie diet.</p>
-          </div>
-          
-          <!-- Right Side: Quality Badges -->
-          <div>
-            <h2 class="section-title" style="font-family: var(--font-cursive); font-size: 2.2rem; color: var(--accent-primary); margin-bottom: 2rem;">Our Purity Standards</h2>
-            <div class="sourcing-cards">
-              <div class="sourcing-card" style="grid-column: span 3;">
-                <div class="sourcing-cards" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
-                  <div class="sourcing-card">
-                    <i class="fas fa-seedling"></i>
-                    <h4>100% Organic</h4>
-                    <p>Sourced from sustainable orchards with absolutely no synthetic pesticides or additives.</p>
-                  </div>
-                  <div class="sourcing-card">
-                    <i class="fas fa-snowflake"></i>
-                    <h4>Cold-Chain Transport</h4>
-                    <p>Continuous chilled delivery ensures natural vitamins and enzymes are kept perfectly active.</p>
-                  </div>
-                  <div class="sourcing-card">
-                    <i class="fas fa-glass-water"></i>
-                    <h4>Zero Added Sugars</h4>
-                    <p>Only the natural sweetness of premium fully-ripe fruits. Zero concentrates.</p>
-                  </div>
-                </div>
+        
+        <div class="tab-headers">
+          <button class="tab-header-btn active" data-tab="ingredients">Ingredients</button>
+          <button class="tab-header-btn" data-tab="nutrition">Nutrition Facts</button>
+          <button class="tab-header-btn" data-tab="sourcing">Sourcing & Process</button>
+        </div>
+        
+        <!-- Ingredients Tab Content -->
+        <div class="tab-content active" id="tab-ingredients">
+          <div class="ingredients-tab-layout">
+            <div class="ingredient-stats-col">
+              <div class="ingredient-stats-row" id="p-ingredient-stats">
+                <!-- Javascript injected stats (like Chicken 31% / Mango Pulp 35%) -->
               </div>
             </div>
+            <div class="ingredients-description-box" id="p-process-desc-box">
+              <!-- Javascript injected process details -->
+            </div>
           </div>
+        </div>
+        
+        <!-- Nutrition Facts Tab Content -->
+        <div class="tab-content" id="tab-nutrition">
+          <div class="nutrition-box">
+            <h3>Nutrition Facts</h3>
+            <p>Serving Size: 1 Pack (200 ml)</p>
+            <table class="nutrition-table">
+              <thead>
+                <tr class="thick-border">
+                  <td>Amount Per Serving</td>
+                  <td>% Daily Value*</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Calories</strong></td>
+                  <td id="nutr-calories">65 kcal</td>
+                </tr>
+                <tr class="med-border">
+                  <td>Total Fat</td>
+                  <td id="nutr-fat">0g</td>
+                </tr>
+                <tr>
+                  <td>Total Carbohydrates</td>
+                  <td id="nutr-carbs">15g</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;Sugars</td>
+                  <td id="nutr-sugars">12g</td>
+                </tr>
+                <tr>
+                  <td>Protein</td>
+                  <td id="nutr-protein">0.5g</td>
+                </tr>
+                <tr class="thick-border">
+                  <td>Vitamin C</td>
+                  <td id="nutr-vitc">45mg</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 15px; font-weight: normal;">* Percent Daily Values are based on a 2,000 calorie diet.</p>
+          </div>
+        </div>
+        
+        <!-- Sourcing Tab Content -->
+        <div class="tab-content" id="tab-sourcing">
+          <div class="sourcing-tab-box" id="p-sourcing-box">
+            <!-- Sourcing & Process Details -->
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <!-- Our Natural Ingredients Section -->
+    <section class="natural-ingredients-section">
+      <div class="container">
+        <h2>OUR NATURAL INGREDIENTS</h2>
+        
+        <div class="ingredients-cards-grid" id="p-ingredients-row">
+          <!-- Dynamic 4 ingredient cards -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Opinions & Reviews Section -->
+    <section class="opinions-section">
+      <div class="container">
+        <h2>OPINIONS</h2>
+        
+        <div class="opinions-grid">
+          
+          <!-- Left Column: Reviews Feed -->
+          <div class="reviews-list-col" id="p-reviews-list">
+            <!-- Dynamic Review Items -->
+          </div>
+          
+          <!-- Right Column: Submission Form -->
+          <div class="review-form-col">
+            <h3>Write a review</h3>
+            <form id="product-review-form">
+              <div class="form-group-row">
+                <input type="text" id="rev-name" class="form-input-field" placeholder="Your Name" required>
+                <select id="rev-rating" class="form-input-field" required style="border-radius: 50px;">
+                  <option value="5">★★★★★ (5 Stars)</option>
+                  <option value="4">★★★★☆ (4 Stars)</option>
+                  <option value="3">★★★☆☆ (3 Stars)</option>
+                  <option value="2">★★☆☆☆ (2 Stars)</option>
+                  <option value="1">★☆☆☆☆ (1 Star)</option>
+                </select>
+              </div>
+              <div style="margin-bottom: 1.25rem;">
+                <textarea id="rev-comment" class="form-input-field" rows="4" placeholder="Write your review here..." required></textarea>
+              </div>
+              <button type="submit" class="form-submit-btn">Submit review</button>
+            </form>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <!-- Recently Viewed Section -->
+    <section class="recently-viewed-section">
+      <div class="container">
+        <h2 style="font-family: var(--font-heading); font-weight: 900; color: var(--accent-primary); text-align: center; margin-bottom: 3.5rem;">Recently viewed</h2>
+        
+        <div class="recent-cards-grid" id="p-recent-grid">
+          <!-- Injected dynamically based on current product -->
         </div>
       </div>
     </section>
@@ -537,13 +1065,36 @@
         image: "assets/brand_pack_0005.png",
         splash: "assets/mango_splash_card.png",
         color: "#f1a100",
-        desc: "Sourced from the best organic farm fruits, this pure pulp extracted juice (not from concentrate) brings ratnagiri's finest alphonso mango flavor. Aseptic machinery packed to maintain 11 years of consistent purity and excellence in taste.",
+        desc: "Sourced from the best organic farm fruits, this pure pulp extracted juice (not from concentrate) brings ratnagiri's finest alphonso mango flavor. Aseptic machinery packed to maintain purity and excellence in taste.",
         calories: "65 kcal",
         fat: "0g",
         carbs: "15g",
         sugars: "12g",
         protein: "0.5g",
-        vitc: "45mg"
+        vitc: "45mg",
+        badge1: "100% Organic",
+        badge2: "No Added Color",
+        badge3: "Aseptic Packed",
+        ingredientPills: [
+          { name: "Mango Pulp", percent: "35%" },
+          { name: "Pure Water", percent: "55%" },
+          { name: "Cane Sugar", percent: "10%" }
+        ],
+        ingredientsList: [
+          { name: "Ratnagiri Alphonso", desc: "Handpicked premium organic mangoes from Ratnagiri farms.", icon: "fa-leaf" },
+          { name: "Pure Spring Water", desc: "Filtered mountain spring water for natural hydration.", icon: "fa-tint" },
+          { name: "Natural Cane Sugar", desc: "Minimally processed cane sugar for clean sweetness.", icon: "fa-cubes" },
+          { name: "Vitamin C", desc: "Rich in antioxidants to boost immunity and wellness.", icon: "fa-shield-halved" }
+        ],
+        processDesc: "Our mangoes are handpicked and transported directly to our certified facility in Haridwar. The pulp is extracted, sterilized using state-of-the-art European UHT machinery, and vacuum-sealed in multi-layer aseptic packaging. This locks in the natural nutrients and orchard-fresh flavor without requiring any refrigeration or preservatives.",
+        reviews: [
+          { name: "Rajesh Kumar", rating: 5, comment: "Absolutely delicious! The taste is so authentic, just like freshly squeezed mango pulp. High quality carton packaging!" },
+          { name: "Shalini Sharma", rating: 5, comment: "Our family's favorite. Excellent consistency, and the wholesale quantity is perfect for hosting events." }
+        ],
+        gallery: [
+          "assets/brand_pack_0005.png",
+          "assets/juice_pack_litchi.jpg"
+        ]
       },
       "litchi": {
         name: "Fresh Litchi Juice (200 ml)",
@@ -558,7 +1109,25 @@
         carbs: "14g",
         sugars: "13g",
         protein: "0.4g",
-        vitc: "35mg"
+        vitc: "35mg",
+        badge1: "Orchard Picked",
+        badge2: "No Preservatives",
+        badge3: "Aseptic Boxed",
+        ingredientPills: [
+          { name: "Litchi Pulp", percent: "30%" },
+          { name: "Spring Water", percent: "60%" },
+          { name: "Cane Sugar", percent: "10%" }
+        ],
+        ingredientsList: [
+          { name: "Fresh Litchi Fruit", desc: "Tender and sweet litchi pulp sourced from Muzaffarpur orchards.", icon: "fa-leaf" },
+          { name: "Pure Spring Water", desc: "Filtered mountain spring water for natural hydration.", icon: "fa-tint" },
+          { name: "Natural Cane Sugar", desc: "Minimally processed cane sugar for clean sweetness.", icon: "fa-cubes" },
+          { name: "Vitamin C", desc: "Rich in antioxidants to boost immunity and wellness.", icon: "fa-shield-halved" }
+        ],
+        gallery: [
+          "assets/brand_pack_0015.png",
+          "assets/juice_pack_litchi.jpg"
+        ]
       },
       "apple": {
         name: "Fresh Apple Juice (200 ml)",
@@ -568,27 +1137,27 @@
         splash: "assets/apple_splash_card.png",
         color: "#b81d24",
         desc: "Pure pulp extracted apple juice sourced from the finest orchard apples. Fully sterilized and aseptic-packaged for natural crispness and premium freshness. Sourced from organic farm fruits.",
-        calories: "55 kcal",
+        calories: "62 kcal",
         fat: "0g",
-        carbs: "13g",
-        sugars: "11g",
+        carbs: "14.5g",
+        sugars: "11.5g",
         protein: "0.3g",
-        vitc: "20mg"
+        vitc: "40mg"
       },
       "mixed-fruit": {
         name: "Mix Fruit Juice (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0017.png",
-        splash: "assets/mixed_fruit_splash_card.png",
-        color: "#c62828",
-        desc: "A rich blend of five organic farm fruits. Pulp extracted with no concentrates, offering complete multivitamin nutrients in state-of-the-art aseptic packaging for daily energy.",
-        calories: "62 kcal",
+        splash: "assets/mix_fruit_splash_card.png",
+        color: "#e65100",
+        desc: "A premium healthy blend of ratnagiri alphonso mango, sweet litchi, fresh apple, pink guava, and banana pulp. Rich in natural fibers, vitamins, and minerals for daily wellness.",
+        calories: "68 kcal",
         fat: "0g",
-        carbs: "14.5g",
-        sugars: "12g",
-        protein: "0.5g",
-        vitc: "40mg"
+        carbs: "16g",
+        sugars: "13.5g",
+        protein: "0.6g",
+        vitc: "50mg"
       },
       "guava": {
         name: "Pink Guava Juice (200 ml)",
@@ -596,29 +1165,43 @@
         category: "Juices",
         image: "assets/brand_pack_0018.png",
         splash: "assets/guava_splash_card.png",
-        color: "#e05a8d",
-        desc: "Organic pink guava juice, pulp extracted with zero concentrate. Extremely rich in dietary fiber and Vitamin C, sealed in aseptic 6-layer packaging for consistent purity.",
-        calories: "58 kcal",
+        color: "#4caf50",
+        desc: "Lush, pulp-rich pink guava juice sourced from organic orchard fruits. Packed under completely sterile conditions using European aseptic lines to guarantee natural aroma and vitamins.",
+        calories: "64 kcal",
         fat: "0g",
-        carbs: "13.5g",
-        sugars: "10g",
-        protein: "0.6g",
+        carbs: "15.2g",
+        sugars: "12.8g",
+        protein: "0.5g",
         vitc: "90mg"
       },
       "multani-zeera": {
         name: "Demi's Multani Zeera (160 ml)",
-        price: "Rs. 10.00",
+        price: "Rs. 20.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_multani_zeera.png",
         splash: "assets/lime_splash.png",
         color: "#795548",
-        desc: "Classic Multani digestive cooler with best quality roasted cumin (Zeera), black salt, and a refreshing sparkling carbonated kick, made from our traditional secret recipe.",
+        desc: "Tangy carbonated drink with roasted cumin extracts, black salt, and digestive minerals. Sourced and processed in Haridwar, Uttarakhand for traditional quality and taste.",
         calories: "35 kcal",
         fat: "0g",
-        carbs: "8g",
-        sugars: "7g",
-        protein: "0.1g",
-        vitc: "5mg",
+        carbs: "8.5g",
+        sugars: "7.5g",
+        protein: "0g",
+        vitc: "10mg",
+        badge1: "Roasted Cumin",
+        badge2: "Digestive Aid",
+        badge3: "No Added Color",
+        ingredientPills: [
+          { name: "Cumin Extract", percent: "5%" },
+          { name: "Lemon Juice", percent: "2%" },
+          { name: "Carbonated Water", percent: "93%" }
+        ],
+        ingredientsList: [
+          { name: "Roasted Cumin", desc: "Freshly roasted and grounded cumin seeds.", icon: "fa-seedling" },
+          { name: "Black Salt", desc: "Traditional rock salt for digestive ease.", icon: "fa-mortar-pestle" },
+          { name: "Mint Leaves", desc: "Cooling mint extracts for freshness.", icon: "fa-leaf" },
+          { name: "Lemon Juice", desc: "Zesty lemon pulp for tangy punch.", icon: "fa-lemon" }
+        ],
         gallery: [
           "assets/soft_drink_multani_zeera.png",
           "assets/multani_zeera_ad.jpg"
@@ -630,29 +1213,43 @@
         category: "Soft Drinks",
         image: "assets/soft_drink_masala_zeera.png",
         splash: "assets/lime_splash.png",
-        color: "#5d4037",
-        desc: "Robust sparkling masala soda blended with authentic regional spices, premium quality roasted cumin (Zeera), and warm dry ginger. Best digestive recipe.",
-        calories: "35 kcal",
+        color: "#795548",
+        desc: "A carbonated digestive drink filled with roasted spices, mint, and black salt, processed at our Haridwar plant.",
+        calories: "30 kcal",
         fat: "0g",
-        carbs: "8.2g",
-        sugars: "6.8g",
-        protein: "0.1g",
-        vitc: "6mg"
+        carbs: "7.0g",
+        sugars: "6.0g",
+        protein: "0g",
+        vitc: "8mg"
       },
       "lemon": {
         name: "Demi's Tasty Spize Lemona (200 ml)",
         price: "Rs. 20.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_lemon.png",
-        splash: "assets/lemon_splash.png",
+        splash: "assets/lime_splash.png",
         color: "#c0ca33",
-        desc: "Prebiotic sparkling ginger lemon soda crafted with real lemon pulp, zesty citrus oils, and raw ginger root extracts.",
+        desc: "Refreshing carbonated lemon lime soda packed with real lime pulp, crushed black pepper, ginger extracts, and gut-healthy prebiotics.",
         calories: "32 kcal",
         fat: "0g",
         carbs: "7.5g",
         sugars: "6.5g",
         protein: "0.1g",
         vitc: "15mg",
+        badge1: "Fresh Lime Pulp",
+        badge2: "Prebiotic Fibers",
+        badge3: "Low Calories",
+        ingredientPills: [
+          { name: "Lime Pulp", percent: "4%" },
+          { name: "Prebiotic Fiber", percent: "2%" },
+          { name: "Carbonated Water", percent: "94%" }
+        ],
+        ingredientsList: [
+          { name: "Lime Juice", desc: "Fresh cold-pressed limes.", icon: "fa-lemon" },
+          { name: "Black Pepper", desc: "Crushed black pepper for a spicy kick.", icon: "fa-seedling" },
+          { name: "Prebiotic Fiber", desc: "Improves gut health and digestion.", icon: "fa-heart" },
+          { name: "Carbonated Water", desc: "Crisp and fizzy bubbles.", icon: "fa-wind" }
+        ],
         gallery: [
           "assets/soft_drink_lemon.png",
           "assets/lemona_ad.jpg"
@@ -672,6 +1269,20 @@
         sugars: "8g",
         protein: "0.2g",
         vitc: "25mg",
+        badge1: "Real Orange Pulp",
+        badge2: "Prebiotic Fiber",
+        badge3: "Rich in Vit C",
+        ingredientPills: [
+          { name: "Orange Pulp", percent: "6%" },
+          { name: "Prebiotic Fiber", percent: "2%" },
+          { name: "Carbonated Water", percent: "92%" }
+        ],
+        ingredientsList: [
+          { name: "Orange Juice", desc: "Pulp-rich orange juice.", icon: "fa-lemon" },
+          { name: "Prebiotic Fiber", desc: "Healthy plant fibers for gut health.", icon: "fa-heart" },
+          { name: "Spring Water", desc: "Sparkling clean spring water.", icon: "fa-tint" },
+          { name: "Vitamin C", desc: "Natural immune booster.", icon: "fa-shield-halved" }
+        ],
         gallery: [
           "assets/soft_drink_orange.png",
           "assets/orange_ad.jpg"
@@ -691,6 +1302,20 @@
         sugars: "8.5g",
         protein: "0g",
         vitc: "0mg",
+        badge1: "Vanilla Bean",
+        badge2: "Kola Nut Extract",
+        badge3: "Prebiotic Fiber",
+        ingredientPills: [
+          { name: "Vanilla Extract", percent: "1%" },
+          { name: "Kola Nut Extract", percent: "1%" },
+          { name: "Carbonated Water", percent: "98%" }
+        ],
+        ingredientsList: [
+          { name: "Kola Nut", desc: "Real African kola nut extracts.", icon: "fa-cookie" },
+          { name: "Vanilla Bean", desc: "Madagascan vanilla pod infusion.", icon: "fa-leaf" },
+          { name: "Citrus Oils", desc: "Blend of orange, lime, and neroli oils.", icon: "fa-droplet" },
+          { name: "Prebiotic Fiber", desc: "Natural root chicory fiber.", icon: "fa-heart" }
+        ],
         gallery: [
           "assets/soft_drink_cola.png",
           "assets/cola_ad.jpg"
@@ -703,7 +1328,7 @@
         image: "assets/tasty_milk_400ml.png",
         splash: "assets/milk_splash.png",
         color: "#0288d1",
-        desc: "UHT (Ultra High Temperature) treated skimmed milk, fully sterilized with zero bacteria. Packed in sterile aseptic polypacks with European machinery. Sourced from organic dairy farms, very low fat to stay in slim shape. Needs no refrigeration or boiling. Buy in bulk and enjoy!",
+        desc: "UHT treated skimmed milk, fully sterilized with zero bacteria. Packed in sterile aseptic polypacks with European machinery. Sourced from organic dairy farms, low fat to stay in slim shape.",
         calories: "48 kcal",
         fat: "1.5g",
         carbs: "4.7g",
@@ -718,7 +1343,7 @@
         image: "assets/tasty_milk_125ml.png",
         splash: "assets/milk_splash.png",
         color: "#00897b",
-        desc: "Premium sterilized UHT milk processed in an international level plant and machine packed in aseptic polypacks. Stays completely fresh without refrigeration or daily grocery trips. Low fat, healthy, organic, and ultra-convenient.",
+        desc: "Premium sterilized UHT milk processed in an international level plant and machine packed in aseptic polypacks. Stays completely fresh without refrigeration. Low fat, healthy, organic.",
         calories: "60 kcal",
         fat: "3.5g",
         carbs: "4.5g",
@@ -728,48 +1353,204 @@
       }
     };
 
+    // Auto-initialize default properties for database entries to keep code extremely clean
+    Object.keys(productsData).forEach(key => {
+      const p = productsData[key];
+      if (!p.cratePrice) p.cratePrice = "Rs. " + (parseFloat(p.price.replace(/[^0-9.]/g, '')) * 24).toFixed(2);
+      if (!p.badge1) p.badge1 = "100% Pure";
+      if (!p.badge2) p.badge2 = "Sterilized UHT";
+      if (!p.badge3) p.badge3 = "Aseptic Packed";
+      if (!p.gallery) p.gallery = [p.image];
+      
+      // Default ingredients based on category
+      if (!p.ingredientPills) {
+        if (p.category === "Juices") {
+          p.ingredientPills = [
+            { name: "Fruit Pulp", percent: "30%" },
+            { name: "Spring Water", percent: "60%" },
+            { name: "Cane Sugar", percent: "10%" }
+          ];
+        } else if (p.category === "Soft Drinks") {
+          p.ingredientPills = [
+            { name: "Natural Extract", percent: "5%" },
+            { name: "Lemon/Lime Juice", percent: "3%" },
+            { name: "Carbonated Water", percent: "92%" }
+          ];
+        } else { // Milk
+          p.ingredientPills = [
+            { name: "Cow Milk", percent: "99.5%" },
+            { name: "Calcium & Vit D3", percent: "0.5%" }
+          ];
+        }
+      }
+      
+      if (!p.ingredientsList) {
+        if (p.category === "Juices") {
+          p.ingredientsList = [
+            { name: "Organic Fruits", desc: "Sourced from local farms.", icon: "fa-apple-whole" },
+            { name: "Filtered Water", desc: "Ultra-filtered spring water.", icon: "fa-tint" },
+            { name: "Cane Sugar", desc: "Natural unrefined sweetness.", icon: "fa-cubes" },
+            { name: "Vitamin C", desc: "Immunity boosting antioxidant.", icon: "fa-shield-halved" }
+          ];
+        } else if (p.category === "Soft Drinks") {
+          p.ingredientsList = [
+            { name: "Active Botanical Extracts", desc: "Premium prebiotic herbs.", icon: "fa-seedling" },
+            { name: "Carbonated Water", desc: "Crisp and refreshing bubbles.", icon: "fa-wind" },
+            { name: "Natural Sweeteners", desc: "No artificial chemical sugars.", icon: "fa-cookie" },
+            { name: "Essential Fruit Oils", desc: "Cold-pressed zesty extract.", icon: "fa-droplet" }
+          ];
+        } else { // Milk
+          p.ingredientsList = [
+            { name: "Fresh Cow Milk", desc: "Directly from organic dairy farms.", icon: "fa-cow" },
+            { name: "Calcium", desc: "Essential minerals for bone strength.", icon: "fa-bone" },
+            { name: "Vitamin D3", desc: "For optimal calcium absorption.", icon: "fa-sun" },
+            { name: "Prebiotics", desc: "Promotes healthy gut flora.", icon: "fa-heart" }
+          ];
+        }
+      }
+      
+      if (!p.processDesc) {
+        p.processDesc = `Our raw ingredients are sourced directly from certified organic farms and processed in our state-of-the-art facility in Haridwar, Uttarakhand. We utilize fully automatic European UHT sterilization plants and aseptic packing machinery to seal our products in multi-layer carton packaging. This preserves natural nutrients, fresh taste, and absolute hygiene without using any artificial preservatives or refrigeration.`;
+      }
+      
+      if (!p.reviews) {
+        p.reviews = [
+          { name: "Franny May", rating: 5, comment: "High quality ingredients. Very refreshing, and the packaging keeps it fresh without refrigeration." },
+          { name: "John Kowalski", rating: 5, comment: "Excellent taste! Perfect for wholesale stocking. Prompt deliveries and great customer support." }
+        ];
+      }
+    });
+
     // Parse product ID from URL
     const urlParams = new URLSearchParams(window.location.search);
     const pId = urlParams.get('id') || 'mango';
     const product = productsData[pId] || productsData['mango'];
+    let selectedUnitMode = 'single'; // single vs crate
 
-    // Inject data
+    // Update Title, Breadcrumbs, Category
+    document.title = `${product.name} — Demi's Tasty 🍊`;
     document.getElementById('p-title').innerText = product.name;
-    document.getElementById('p-price').innerText = product.price;
+    document.getElementById('p-bread-title').innerText = product.name;
+    document.getElementById('p-bread-category').innerText = product.category;
+    document.getElementById('p-bread-category').href = `products.html?category=${product.category.toLowerCase()}`;
     document.getElementById('p-category').innerText = product.category;
-    document.getElementById('p-description').innerText = product.desc;
+    document.getElementById('p-category').style.color = product.color;
+    
+    // Inject Price & Description
+    function updatePriceDisplay() {
+      if (selectedUnitMode === 'single') {
+        document.getElementById('p-price').innerText = product.price;
+      } else {
+        document.getElementById('p-price').innerText = product.cratePrice;
+      }
+    }
+    updatePriceDisplay();
+    
+    document.getElementById('badge-1').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge1}`;
+    document.getElementById('badge-2').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge2}`;
+    document.getElementById('badge-3').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge3}`;
+
+    // Load main visual images
     document.getElementById('p-image').src = product.image;
     document.getElementById('p-splash').src = product.splash;
-    document.title = `${product.name} — Demi's Tasty 🍊`;
 
-    // Render Gallery thumbnails if present
+    // Unit size pill toggle
+    const sizeSingleBtn = document.getElementById('size-single-btn');
+    const sizeCrateBtn = document.getElementById('size-crate-btn');
+    
+    sizeSingleBtn.addEventListener('click', () => {
+      sizeSingleBtn.classList.add('active');
+      sizeCrateBtn.classList.remove('active');
+      selectedUnitMode = 'single';
+      updatePriceDisplay();
+    });
+    
+    sizeCrateBtn.addEventListener('click', () => {
+      sizeCrateBtn.classList.add('active');
+      sizeSingleBtn.classList.remove('active');
+      selectedUnitMode = 'crate';
+      updatePriceDisplay();
+    });
+
+    // Render Gallery thumbnails
     const galleryContainer = document.getElementById('p-gallery');
     const visualBox = document.getElementById('detail-visual-box');
     galleryContainer.innerHTML = '';
-
-    if (product.gallery && product.gallery.length > 1) {
+    
+    let currentGalleryIndex = 0;
+    
+    if (product.gallery && product.gallery.length > 0) {
       product.gallery.forEach((imgSrc, index) => {
         const thumb = document.createElement('div');
         thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
         thumb.innerHTML = `<img src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
         
         thumb.addEventListener('click', () => {
-          galleryContainer.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
-          thumb.classList.add('active');
-          document.getElementById('p-image').src = imgSrc;
-          
-          if (index === 1) {
-            visualBox.classList.add('full-image-active');
-          } else {
-            visualBox.classList.remove('full-image-active');
-          }
+          currentGalleryIndex = index;
+          updateGalleryDisplay();
         });
-        
         galleryContainer.appendChild(thumb);
       });
     }
+    
+    function updateGalleryDisplay() {
+      galleryContainer.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
+        if (idx === currentGalleryIndex) t.classList.add('active');
+        else t.classList.remove('active');
+      });
+      
+      const imgSrc = product.gallery[currentGalleryIndex];
+      document.getElementById('p-image').src = imgSrc;
+      
+      if (currentGalleryIndex === 1 && product.gallery.length > 1) {
+        visualBox.classList.add('full-image-active');
+      } else {
+        visualBox.classList.remove('full-image-active');
+      }
+    }
+    
+    document.getElementById('gallery-prev-btn').addEventListener('click', () => {
+      if (product.gallery && product.gallery.length > 1) {
+        currentGalleryIndex = (currentGalleryIndex - 1 + product.gallery.length) % product.gallery.length;
+        updateGalleryDisplay();
+      }
+    });
+    
+    document.getElementById('gallery-next-btn').addEventListener('click', () => {
+      if (product.gallery && product.gallery.length > 1) {
+        currentGalleryIndex = (currentGalleryIndex + 1) % product.gallery.length;
+        updateGalleryDisplay();
+      }
+    });
 
-    // Inject Nutrition
+    // Render Tabs Section Content
+    // Tab Header buttons swapping
+    document.querySelectorAll('.tab-header-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-header-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        btn.classList.add('active');
+        const tabId = `tab-${btn.getAttribute('data-tab')}`;
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Tab 1: Ingredients statistics
+    const statsContainer = document.getElementById('p-ingredient-stats');
+    statsContainer.innerHTML = '';
+    product.ingredientPills.forEach(p => {
+      const statBox = document.createElement('div');
+      statBox.className = 'ingredient-stat';
+      statBox.innerHTML = `
+        <span class="ingredient-stat-val">${p.percent}</span>
+        <span class="ingredient-stat-label">${p.name}</span>
+      `;
+      statsContainer.appendChild(statBox);
+    });
+    document.getElementById('p-process-desc-box').innerText = product.desc;
+
+    // Tab 2: Nutrition values
     document.getElementById('nutr-calories').innerText = product.calories;
     document.getElementById('nutr-fat').innerText = product.fat;
     document.getElementById('nutr-carbs').innerText = product.carbs;
@@ -777,8 +1558,91 @@
     document.getElementById('nutr-protein').innerText = product.protein;
     document.getElementById('nutr-vitc').innerText = product.vitc;
 
-    // Change category color
-    document.getElementById('p-category').style.color = product.color;
+    // Tab 3: Sourcing desc
+    document.getElementById('p-sourcing-box').innerText = product.processDesc;
+
+    // Render Ingredients Card Row
+    const cardsRow = document.getElementById('p-ingredients-row');
+    cardsRow.innerHTML = '';
+    product.ingredientsList.forEach(ing => {
+      const card = document.createElement('div');
+      card.className = 'ingredient-detail-card';
+      card.innerHTML = `
+        <div class="ingredient-icon-wrapper">
+          <i class="fas ${ing.icon}"></i>
+        </div>
+        <h3>${ing.name}</h3>
+        <p>${ing.desc}</p>
+      `;
+      cardsRow.appendChild(card);
+    });
+
+    // Render Opinions/Reviews
+    const reviewsFeed = document.getElementById('p-reviews-list');
+    
+    function renderReviews() {
+      reviewsFeed.innerHTML = '';
+      product.reviews.forEach(rev => {
+        const starsHtml = '<i class="fas fa-star"></i>'.repeat(rev.rating) + '<i class="far fa-star"></i>'.repeat(5 - rev.rating);
+        const card = document.createElement('div');
+        card.className = 'review-item-card';
+        card.innerHTML = `
+          <div class="review-header">
+            <span class="review-author">${rev.name}</span>
+            <div class="review-stars">${starsHtml}</div>
+          </div>
+          <p class="review-comment">${rev.comment}</p>
+        `;
+        reviewsFeed.appendChild(card);
+      });
+      document.getElementById('p-reviews-count').innerText = `(${product.reviews.length} Reviews)`;
+    }
+    renderReviews();
+
+    // Handle Review Form Submission
+    const reviewForm = document.getElementById('product-review-form');
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('rev-name').value;
+      const rating = parseInt(document.getElementById('rev-rating').value) || 5;
+      const comment = document.getElementById('rev-comment').value;
+      
+      product.reviews.unshift({ name, rating, comment });
+      renderReviews();
+      reviewForm.reset();
+      showToast("Thank you! Your review was submitted successfully.");
+    });
+
+    // Render Recently Viewed cards dynamically (excluding current product)
+    const recentGrid = document.getElementById('p-recent-grid');
+    recentGrid.innerHTML = '';
+    
+    const allKeys = Object.keys(productsData);
+    const otherKeys = allKeys.filter(k => k !== pId).slice(0, 4); // Pick first 4 other products
+    
+    otherKeys.forEach(k => {
+      const p = productsData[k];
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.style.background = '#fff';
+      card.style.borderRadius = '24px';
+      card.style.border = '1px solid #e0dfd5';
+      card.style.padding = '1.5rem';
+      
+      // Calculate normal or customized elements
+      card.innerHTML = `
+        <figure class="product-thumbnail" style="height: 180px; position: relative; display: flex; align-items: center; justify-content: center; background: var(--bg-organic); border-radius: 18px; overflow: hidden; margin-bottom: 1.25rem;">
+          <img src="${p.image}" alt="${p.name}" style="max-height: 140px; object-fit: contain; z-index: 2;">
+        </figure>
+        <span class="product-vendor" style="font-size: 0.75rem; font-family: var(--font-mono); text-transform: uppercase; color: #777; letter-spacing: 1px; display: block; margin-bottom: 0.35rem;">DEMI'S FRESH</span>
+        <h3 class="product-title" style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem; line-height: 1.3;"><a href="product.html?id=${k}" style="color: inherit; text-decoration: none;">${p.name}</a></h3>
+        <div class="product-meta" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+          <span class="product-price" style="font-family: var(--font-heading); font-weight: 900; color: var(--accent-primary); font-size: 1.15rem;">${p.price}</span>
+          <a href="product.html?id=${k}" class="quick-buy-btn" style="padding: 6px 14px; border-radius: 50px; background: var(--accent-primary); color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600;">View</a>
+        </div>
+      `;
+      recentGrid.appendChild(card);
+    });
 
     // Quantity Selector logic with MOQ 500
     const qtyInput = document.getElementById('qty-input');
@@ -788,14 +1652,14 @@
     btnMinus.addEventListener('click', () => {
       let val = parseInt(qtyInput.value) || 500;
       if (val > 500) {
-        qtyInput.value = val - 50; // decrement by 50 units
+        qtyInput.value = val - 50;
         if (parseInt(qtyInput.value) < 500) qtyInput.value = 500;
       }
     });
 
     btnPlus.addEventListener('click', () => {
       let val = parseInt(qtyInput.value) || 500;
-      qtyInput.value = val + 50; // increment by 50 units
+      qtyInput.value = val + 50;
     });
 
     qtyInput.addEventListener('change', () => {
@@ -827,10 +1691,11 @@
     // Add to Cart
     document.getElementById('add-to-cart-action').addEventListener('click', () => {
       const qty = qtyInput.value;
-      showToast(`Added ${qty} units of ${product.name} to your wholesale cart!`);
+      const unitText = selectedUnitMode === 'single' ? 'individual bottles' : 'crates';
+      showToast(`Added ${qty} ${unitText} of ${product.name} to your wholesale cart!`);
     });
 
-    // Mobile Navbar Offcanvas
+    // Mobile Navbar Offcanvas Toggle
     const toggle = document.querySelector('.mobile-toggle');
     const menu = document.querySelector('.mobile-menu');
     if (toggle && menu) {
@@ -849,7 +1714,7 @@
       });
     }
 
-    // Handle Contact Form Submit
+    // Handle Contact Form Submit (Footer)
     const contactForm = document.getElementById('footer-contact-form');
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
