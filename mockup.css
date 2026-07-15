@@ -4044,3 +4044,10 @@ body.cursor-active .cursor-particle {
     background-image: url('assets/about_us_bg_new_mobile.jpg') !important;
   }
 }
+
+/* Mobile Bestsellers Background Override */
+@media (max-width: 768px) {
+  .crowd-favorites-section {
+    background-image: url('assets/bestsellers_bg_mobile.jpg') !important;
+  }
+}
