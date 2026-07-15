@@ -790,7 +790,7 @@
           <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
           <a href="products.html">Products</a> <i class="fas fa-chevron-right"></i>
           <a href="products.html" id="p-bread-category">Juices</a> <i class="fas fa-chevron-right"></i>
-          <span id="p-bread-title">Alphonso Mango Juice</span>
+          <span id="p-bread-title">Mango Drink</span>
         </div>
         
         <div class="detail-grid">
@@ -814,7 +814,7 @@
           <!-- Right Column: Info -->
           <div class="detail-content">
             <span class="detail-category" id="p-category">Juices</span>
-            <h1 class="detail-title" id="p-title">Alphonso Mango Juice (200 ml)</h1>
+            <h1 class="detail-title" id="p-title">Mango Drink (200 ml)</h1>
             
             <div class="detail-ratings">
               <div class="stars-gold">
@@ -1059,7 +1059,7 @@
     // Product Data Catalog
     const productsData = {
       "mango": {
-        name: "Alphonso Mango Juice (200 ml)",
+        name: "Mango Drink (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0005.png",
@@ -1145,19 +1145,33 @@
         vitc: "40mg"
       },
       "mixed-fruit": {
-        name: "Mix Fruit Juice (200 ml)",
+        name: "Fruit Aam Rus (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
         image: "assets/brand_pack_0017.png",
         splash: "assets/mix_fruit_splash_card.png",
         color: "#e65100",
-        desc: "A premium healthy blend of ratnagiri alphonso mango, sweet litchi, fresh apple, pink guava, and banana pulp. Rich in natural fibers, vitamins, and minerals for daily wellness.",
+        desc: "A rich and luscious traditional Indian mango pulp drink made from organic orchard mangoes, sterilized and aseptic packed for natural sweetness and freshness.",
         calories: "68 kcal",
         fat: "0g",
         carbs: "16g",
         sugars: "13.5g",
         protein: "0.6g",
-        vitc: "50mg"
+        vitc: "50mg",
+        badge1: "100% Mango Pulp",
+        badge2: "Sterilized UHT",
+        badge3: "Aseptic Boxed",
+        ingredientPills: [
+          { name: "Mango Pulp", percent: "35%" },
+          { name: "Pure Water", percent: "55%" },
+          { name: "Cane Sugar", percent: "10%" }
+        ],
+        ingredientsList: [
+          { name: "Organic Mango Pulp", desc: "Pure sweet pulp from farm-harvested mangoes.", icon: "fa-leaf" },
+          { name: "Pure Spring Water", desc: "Filtered mountain spring water for natural dilution.", icon: "fa-tint" },
+          { name: "Natural Cane Sugar", desc: "Minimally processed cane sugar for clean sweetness.", icon: "fa-cubes" },
+          { name: "Vitamin C", desc: "Natural antioxidant for health booster.", icon: "fa-shield-halved" }
+        ]
       },
       "guava": {
         name: "Pink Guava Juice (200 ml)",
