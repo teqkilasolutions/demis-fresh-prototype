@@ -282,7 +282,7 @@
     }
     .size-option-btn:disabled {
       cursor: not-allowed;
-      opacity: 0.8;
+      opacity: 0.9;
     }
     
     /* Quantity & Button */
@@ -818,7 +818,7 @@
           <!-- Right Column: Info -->
           <div class="detail-content">
             <span class="detail-category" id="p-category">Juices</span>
-            <h1 class="detail-title" id="p-title">Alphonso Mango Juice (200 ml)</h1>
+            <h1 class="detail-title" id="p-title">Alphonso Mango Juice (160 ml)</h1>
             
             <div class="detail-ratings">
               <div class="stars-gold">
@@ -833,9 +833,9 @@
               <span class="tag-badge" id="badge-3"><i class="fas fa-check-circle"></i> Aseptic Packed</span>
             </div>
             
-            <div class="detail-price" id="p-price">Rs. 20.00</div>
+            <div class="detail-price" id="p-price">Rs. 10.00</div>
             
-            <!-- Volume Selector (160ml vs 200ml) -->
+            <!-- Volume Selector (160ml) -->
             <div class="pack-size-container" id="volume-variant-container" style="margin-bottom: 1.25rem;">
               <span class="selector-label">Volume:</span>
               <div class="size-options" id="volume-options">
@@ -1072,26 +1072,22 @@
     // Product Data Catalog
     const productsData = {
       "mango": {
-        name: "Alphonso Mango Juice (200 ml)",
-        price: "Rs. 20.00",
+        name: "Alphonso Mango Juice (160 ml)",
+        price: "Rs. 10.00",
         category: "Juices",
-        image: "assets/brand_pack_0005_200ml.png",
+        image: "assets/brand_pack_0005.png",
         splash: "assets/mango_splash_card.png",
         color: "#f1a100",
         desc: "Sourced from the best organic farm fruits, this pure pulp extracted juice (not from concentrate) brings ratnagiri's finest alphonso mango flavor. Aseptic machinery packed to maintain purity and excellence in taste.",
-        calories: "65 kcal",
+        calories: "52 kcal",
         fat: "0g",
-        carbs: "15g",
-        sugars: "12g",
-        protein: "0.5g",
-        vitc: "45mg",
+        carbs: "12g",
+        sugars: "10g",
+        protein: "0.4g",
+        vitc: "35mg",
         badge1: "100% Organic",
         badge2: "No Added Color",
         badge3: "Aseptic Packed",
-        variants: {
-          "160ml": { name: "Alphonso Mango Juice (160 ml)", price: 10, image: "assets/brand_pack_0005.png" },
-          "200ml": { name: "Mango Drink (200 ml)", price: 20, image: "assets/brand_pack_0005_200ml.png" }
-        },
         ingredientPills: [
           { name: "Mango Pulp", percent: "35%" },
           { name: "Pure Water", percent: "55%" },
@@ -1109,31 +1105,27 @@
           { name: "Shalini Sharma", rating: 5, comment: "Our family's favorite. Excellent consistency, and the wholesale quantity is perfect for hosting events." }
         ],
         gallery: [
-          "assets/brand_pack_0005_200ml.png",
+          "assets/brand_pack_0005.png",
           "assets/juice_pack_litchi.jpg"
         ]
       },
       "litchi": {
-        name: "Fresh Litchi Juice (200 ml)",
-        price: "Rs. 20.00",
+        name: "Fresh Litchi Juice (160 ml)",
+        price: "Rs. 10.00",
         category: "Juices",
-        image: "assets/brand_pack_0015_200ml.png",
+        image: "assets/brand_pack_0015.png",
         splash: "assets/litchi_splash_card.png",
         color: "#e91e63",
         desc: "Exquisite sweet litchi juice, pulp extracted from organic orchard fruits. European machine packed in aseptic packaging to secure pure bliss, consistent purity, and zero preservatives.",
-        calories: "60 kcal",
+        calories: "48 kcal",
         fat: "0g",
-        carbs: "14g",
-        sugars: "13g",
-        protein: "0.4g",
-        vitc: "35mg",
+        carbs: "11g",
+        sugars: "10g",
+        protein: "0.3g",
+        vitc: "28mg",
         badge1: "Orchard Picked",
         badge2: "No Preservatives",
         badge3: "Aseptic Boxed",
-        variants: {
-          "160ml": { name: "Fresh Litchi Juice (160 ml)", price: 10, image: "assets/brand_pack_0015.png" },
-          "200ml": { name: "Fresh Litchi Drink (200 ml)", price: 20, image: "assets/brand_pack_0015_200ml.png" }
-        },
         ingredientPills: [
           { name: "Litchi Pulp", percent: "30%" },
           { name: "Spring Water", percent: "60%" },
@@ -1146,80 +1138,57 @@
           { name: "Vitamin C", desc: "Rich in antioxidants to boost immunity and wellness.", icon: "fa-shield-halved" }
         ],
         gallery: [
-          "assets/brand_pack_0015_200ml.png",
+          "assets/brand_pack_0015.png",
           "assets/juice_pack_litchi.jpg"
         ]
       },
       "apple": {
-        name: "Fresh Apple Juice (200 ml)",
-        price: "Rs. 20.00",
+        name: "Fresh Apple Juice (160 ml)",
+        price: "Rs. 10.00",
         category: "Juices",
-        image: "assets/brand_pack_0016_200ml.png",
+        image: "assets/brand_pack_0016.png",
         splash: "assets/apple_splash_card.png",
         color: "#b81d24",
         desc: "Pure pulp extracted apple juice sourced from the finest orchard apples. Fully sterilized and aseptic-packaged for natural crispness and premium freshness. Sourced from organic farm fruits.",
-        calories: "62 kcal",
+        calories: "50 kcal",
         fat: "0g",
-        carbs: "14.5g",
-        sugars: "11.5g",
-        protein: "0.3g",
-        vitc: "40mg",
-        variants: {
-          "160ml": { name: "Fresh Apple Juice (160 ml)", price: 10, image: "assets/brand_pack_0016.png" },
-          "200ml": { name: "Fresh Apple Drink (200 ml)", price: 20, image: "assets/brand_pack_0016_200ml.png" }
-        }
+        carbs: "11.6g",
+        sugars: "9.2g",
+        protein: "0.2g",
+        vitc: "32mg"
       },
       "mixed-fruit": {
-        name: "Fruit Aam Rus (200 ml)",
-        price: "Rs. 20.00",
+        name: "Mix Fruit Juice (160 ml)",
+        price: "Rs. 10.00",
         category: "Juices",
-        image: "assets/brand_pack_0017_200ml.png",
+        image: "assets/brand_pack_0017.png",
         splash: "assets/mix_fruit_splash_card.png",
         color: "#e65100",
-        desc: "A rich and luscious traditional Indian mango pulp drink made from organic orchard mangoes, sterilized and aseptic packed for natural sweetness and freshness.",
-        calories: "68 kcal",
+        desc: "A premium healthy blend of ratnagiri alphonso mango, sweet litchi, fresh apple, pink guava, and banana pulp. Rich in natural fibers, vitamins, and minerals for daily wellness.",
+        calories: "54 kcal",
         fat: "0g",
-        carbs: "16g",
-        sugars: "13.5g",
-        protein: "0.6g",
-        vitc: "50mg",
-        badge1: "100% Mango Pulp",
+        carbs: "12.8g",
+        sugars: "10.8g",
+        protein: "0.5g",
+        vitc: "40mg",
+        badge1: "100% Pure Fruit",
         badge2: "Sterilized UHT",
-        badge3: "Aseptic Boxed",
-        variants: {
-          "160ml": { name: "Mix Fruit Juice (160 ml)", price: 10, image: "assets/brand_pack_0017.png" },
-          "200ml": { name: "Fruit Aam Rus (200 ml)", price: 20, image: "assets/brand_pack_0017_200ml.png" }
-        },
-        ingredientPills: [
-          { name: "Mango Pulp", percent: "35%" },
-          { name: "Pure Water", percent: "55%" },
-          { name: "Cane Sugar", percent: "10%" }
-        ],
-        ingredientsList: [
-          { name: "Organic Mango Pulp", desc: "Pure sweet pulp from farm-harvested mangoes.", icon: "fa-leaf" },
-          { name: "Pure Spring Water", desc: "Filtered mountain spring water for natural dilution.", icon: "fa-tint" },
-          { name: "Natural Cane Sugar", desc: "Minimally processed cane sugar for clean sweetness.", icon: "fa-cubes" },
-          { name: "Vitamin C", desc: "Natural antioxidant for health booster.", icon: "fa-shield-halved" }
-        ]
+        badge3: "Aseptic Boxed"
       },
       "guava": {
-        name: "Pink Guava Juice (200 ml)",
-        price: "Rs. 20.00",
+        name: "Pink Guava Juice (160 ml)",
+        price: "Rs. 10.00",
         category: "Juices",
-        image: "assets/brand_pack_0018_200ml.png",
+        image: "assets/brand_pack_0018.png",
         splash: "assets/guava_splash_card.png",
         color: "#4caf50",
         desc: "Lush, pulp-rich pink guava juice sourced from organic orchard fruits. Packed under completely sterile conditions using European aseptic lines to guarantee natural aroma and vitamins.",
-        calories: "64 kcal",
+        calories: "51 kcal",
         fat: "0g",
-        carbs: "15.2g",
-        sugars: "12.8g",
-        protein: "0.5g",
-        vitc: "90mg",
-        variants: {
-          "160ml": { name: "Pink Guava Juice (160 ml)", price: 10, image: "assets/brand_pack_0018.png" },
-          "200ml": { name: "Guava Rus (200 ml)", price: 20, image: "assets/brand_pack_0018_200ml.png" }
-        }
+        carbs: "12.2g",
+        sugars: "10.2g",
+        protein: "0.4g",
+        vitc: "72mg"
       },
       "multani-zeera": {
         name: "Demi's Multani Zeera (160 ml)",
@@ -1474,24 +1443,17 @@
     const product = productsData[pId] || productsData['mango'];
     
     // Select active variant
-    let selectedVolume = "200ml"; // default selected
     let selectedPkg = "single";  // single vs crate
 
-    // If product does not have the selected default variant, fallback to what's available
-    if (product.variants && !product.variants[selectedVolume]) {
-      selectedVolume = Object.keys(product.variants)[0];
-    }
-
-    // Function to get active details based on selected variant
-    function getActiveVariantData() {
-      if (product.variants && product.variants[selectedVolume]) {
-        return product.variants[selectedVolume];
-      }
-      // Fallback for non-variant products (like soft drinks)
+    function getActiveData() {
       let volumeText = "200 ml";
-      if (pId === "multani-zeera" || pId === "masala-zeera") volumeText = "160 ml";
-      else if (pId === "double-toned-milk") volumeText = "400 ml";
-      else if (pId === "cow-milk") volumeText = "125 ml";
+      if (pId === "mango" || pId === "litchi" || pId === "apple" || pId === "mixed-fruit" || pId === "guava" || pId === "multani-zeera" || pId === "masala-zeera") {
+        volumeText = "160 ml";
+      } else if (pId === "double-toned-milk") {
+        volumeText = "400 ml";
+      } else if (pId === "cow-milk") {
+        volumeText = "125 ml";
+      }
       
       return {
         name: product.name,
@@ -1501,32 +1463,15 @@
       };
     }
 
-    // Function to render all variant buttons
+    // Render volume info
     const volumeOptionsContainer = document.getElementById('volume-options');
     volumeOptionsContainer.innerHTML = '';
-    
-    if (product.variants) {
-      Object.keys(product.variants).forEach(vol => {
-        const btn = document.createElement('button');
-        btn.className = `size-option-btn ${vol === selectedVolume ? 'active' : ''}`;
-        btn.innerText = vol === "160ml" ? "160 ml" : "200 ml";
-        btn.addEventListener('click', () => {
-          selectedVolume = vol;
-          document.querySelectorAll('#volume-options .size-option-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          updatePageContent();
-        });
-        volumeOptionsContainer.appendChild(btn);
-      });
-    } else {
-      // Create single active disabled button for non-variant products
-      const activeData = getActiveVariantData();
-      const btn = document.createElement('button');
-      btn.className = "size-option-btn active";
-      btn.disabled = true;
-      btn.innerText = activeData.volume;
-      volumeOptionsContainer.appendChild(btn);
-    }
+    const activeData = getActiveData();
+    const btn = document.createElement('button');
+    btn.className = "size-option-btn active";
+    btn.disabled = true;
+    btn.innerText = activeData.volume;
+    volumeOptionsContainer.appendChild(btn);
 
     // Toggle Packaging Selector
     const sizeSingleBtn = document.getElementById('size-single-btn');
@@ -1548,7 +1493,7 @@
 
     // Update Price Display
     function updatePriceDisplay() {
-      const activeData = getActiveVariantData();
+      const activeData = getActiveData();
       if (selectedPkg === 'single') {
         document.getElementById('p-price').innerText = "Rs. " + activeData.price.toFixed(2);
       } else {
@@ -1557,9 +1502,9 @@
       }
     }
 
-    // Update Content based on Variant
+    // Update Content
     function updatePageContent() {
-      const activeData = getActiveVariantData();
+      const activeData = getActiveData();
       
       // Update Title & Image
       document.getElementById('p-title').innerText = activeData.name;
@@ -1798,7 +1743,7 @@
     // Add to Cart
     document.getElementById('add-to-cart-action').addEventListener('click', () => {
       const qty = qtyInput.value;
-      const activeData = getActiveVariantData();
+      const activeData = getActiveData();
       const unitText = selectedPkg === 'single' ? 'individual bottles' : 'crates';
       showToast(`Added ${qty} ${unitText} of ${activeData.name} to your wholesale cart!`);
     });
