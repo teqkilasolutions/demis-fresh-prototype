@@ -3015,7 +3015,8 @@ body.cursor-active .cursor-particle {
    Layout: PNG floats at center, 4 free texts in corners
    ══════════════════════════════════════════════════════ */
 .ingredients-showcase {
-  background-color: var(--bg-organic);
+  background: url('assets/ingredients_bg.jpg') no-repeat center center;
+  background-size: cover;
   padding: 5rem 0 6rem;
   overflow: visible;
 }
