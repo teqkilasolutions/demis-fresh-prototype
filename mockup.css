@@ -4052,3 +4052,10 @@ body.cursor-active .cursor-particle {
     background-image: url('assets/bestsellers_bg_mobile.jpg') !important;
   }
 }
+
+/* Mobile Ingredients Background Override */
+@media (max-width: 768px) {
+  .ingredients-showcase {
+    background-image: url('assets/ingredients_bg_mobile.jpg') !important;
+  }
+}
