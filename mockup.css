@@ -3094,8 +3094,8 @@ body.cursor-active .cursor-particle {
 }
 
 .ingr-text h3 {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
   font-weight: 400;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
@@ -3119,9 +3119,9 @@ body.cursor-active .cursor-particle {
 
 .ingr-text p {
   font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #444444;
 }
 
 /* Responsive */
