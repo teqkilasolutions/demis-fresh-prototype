@@ -60,16 +60,14 @@
     }
     .detail-visual {
       position: relative;
-      background: #fff;
+      background: transparent;
       border-radius: 28px;
-      padding: 4rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      padding: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 480px;
       overflow: hidden;
-      border: 1px solid #e0dfd5;
       transition: background-color 0.3s;
     }
     .detail-splash {
@@ -129,11 +127,12 @@
     .gallery-thumb {
       width: 70px;
       height: 70px;
-      border: 2px solid #ddd;
+      border: 2.5px solid rgba(1, 97, 48, 0.08);
       border-radius: 12px;
       padding: 4px;
       cursor: pointer;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: center;
       align-items: center;
