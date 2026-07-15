@@ -3779,7 +3779,7 @@ body.cursor-active .cursor-particle {
   z-index: 1;
 }
 .hero-with-bg.dark-overlay::before {
-  background: linear-gradient(135deg, rgba(1, 97, 48, 0.8) 0%, rgba(14, 17, 17, 0.92) 100%);
+  background: linear-gradient(135deg, rgba(1, 97, 48, 0.42) 0%, rgba(14, 17, 17, 0.52) 100%);
 }
 .hero-with-bg .container {
   position: relative;
@@ -3794,6 +3794,7 @@ body.cursor-active .cursor-particle {
 }
 .hero-with-bg.dark-overlay h1 {
   color: #fff;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.35);
 }
 .hero-with-bg p {
   font-family: var(--font-body);
@@ -3805,7 +3806,8 @@ body.cursor-active .cursor-particle {
   opacity: 0.95;
 }
 .hero-with-bg.dark-overlay p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 768px) {
