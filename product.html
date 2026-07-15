@@ -280,6 +280,10 @@
       color: #fff;
       box-shadow: 0 4px 12px rgba(1, 97, 48, 0.15);
     }
+    .size-option-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
     
     /* Quantity & Button */
     .order-action-row {
@@ -790,7 +794,7 @@
           <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
           <a href="products.html">Products</a> <i class="fas fa-chevron-right"></i>
           <a href="products.html" id="p-bread-category">Juices</a> <i class="fas fa-chevron-right"></i>
-          <span id="p-bread-title">Mango Drink</span>
+          <span id="p-bread-title">Alphonso Mango Juice</span>
         </div>
         
         <div class="detail-grid">
@@ -814,7 +818,7 @@
           <!-- Right Column: Info -->
           <div class="detail-content">
             <span class="detail-category" id="p-category">Juices</span>
-            <h1 class="detail-title" id="p-title">Mango Drink (200 ml)</h1>
+            <h1 class="detail-title" id="p-title">Alphonso Mango Juice (200 ml)</h1>
             
             <div class="detail-ratings">
               <div class="stars-gold">
@@ -831,10 +835,19 @@
             
             <div class="detail-price" id="p-price">Rs. 20.00</div>
             
-            <div class="pack-size-container">
-              <span class="selector-label">Pack size:</span>
+            <!-- Volume Selector (160ml vs 200ml) -->
+            <div class="pack-size-container" id="volume-variant-container" style="margin-bottom: 1.25rem;">
+              <span class="selector-label">Volume:</span>
+              <div class="size-options" id="volume-options">
+                <!-- Dynamically injected volume options -->
+              </div>
+            </div>
+            
+            <!-- Packaging Selector (Single vs Crate) -->
+            <div class="pack-size-container" style="margin-bottom: 1.75rem;">
+              <span class="selector-label">Packaging:</span>
               <div class="size-options">
-                <button class="size-option-btn active" id="size-single-btn">Single (200 ml)</button>
+                <button class="size-option-btn active" id="size-single-btn">Single Bottle</button>
                 <button class="size-option-btn" id="size-crate-btn">Crate (24 Units)</button>
               </div>
             </div>
@@ -879,7 +892,7 @@
           <div class="ingredients-tab-layout">
             <div class="ingredient-stats-col">
               <div class="ingredient-stats-row" id="p-ingredient-stats">
-                <!-- Javascript injected stats (like Chicken 31% / Mango Pulp 35%) -->
+                <!-- Javascript injected stats -->
               </div>
             </div>
             <div class="ingredients-description-box" id="p-process-desc-box">
@@ -892,7 +905,7 @@
         <div class="tab-content" id="tab-nutrition">
           <div class="nutrition-box">
             <h3>Nutrition Facts</h3>
-            <p>Serving Size: 1 Pack (200 ml)</p>
+            <p>Serving Size: 1 Pack</p>
             <table class="nutrition-table">
               <thead>
                 <tr class="thick-border">
@@ -1059,10 +1072,10 @@
     // Product Data Catalog
     const productsData = {
       "mango": {
-        name: "Mango Drink (200 ml)",
+        name: "Alphonso Mango Juice (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
-        image: "assets/brand_pack_0005.png",
+        image: "assets/brand_pack_0005_200ml.png",
         splash: "assets/mango_splash_card.png",
         color: "#f1a100",
         desc: "Sourced from the best organic farm fruits, this pure pulp extracted juice (not from concentrate) brings ratnagiri's finest alphonso mango flavor. Aseptic machinery packed to maintain purity and excellence in taste.",
@@ -1075,6 +1088,10 @@
         badge1: "100% Organic",
         badge2: "No Added Color",
         badge3: "Aseptic Packed",
+        variants: {
+          "160ml": { name: "Alphonso Mango Juice (160 ml)", price: 10, image: "assets/brand_pack_0005.png" },
+          "200ml": { name: "Mango Drink (200 ml)", price: 20, image: "assets/brand_pack_0005_200ml.png" }
+        },
         ingredientPills: [
           { name: "Mango Pulp", percent: "35%" },
           { name: "Pure Water", percent: "55%" },
@@ -1092,7 +1109,7 @@
           { name: "Shalini Sharma", rating: 5, comment: "Our family's favorite. Excellent consistency, and the wholesale quantity is perfect for hosting events." }
         ],
         gallery: [
-          "assets/brand_pack_0005.png",
+          "assets/brand_pack_0005_200ml.png",
           "assets/juice_pack_litchi.jpg"
         ]
       },
@@ -1100,7 +1117,7 @@
         name: "Fresh Litchi Juice (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
-        image: "assets/brand_pack_0015.png",
+        image: "assets/brand_pack_0015_200ml.png",
         splash: "assets/litchi_splash_card.png",
         color: "#e91e63",
         desc: "Exquisite sweet litchi juice, pulp extracted from organic orchard fruits. European machine packed in aseptic packaging to secure pure bliss, consistent purity, and zero preservatives.",
@@ -1113,6 +1130,10 @@
         badge1: "Orchard Picked",
         badge2: "No Preservatives",
         badge3: "Aseptic Boxed",
+        variants: {
+          "160ml": { name: "Fresh Litchi Juice (160 ml)", price: 10, image: "assets/brand_pack_0015.png" },
+          "200ml": { name: "Fresh Litchi Drink (200 ml)", price: 20, image: "assets/brand_pack_0015_200ml.png" }
+        },
         ingredientPills: [
           { name: "Litchi Pulp", percent: "30%" },
           { name: "Spring Water", percent: "60%" },
@@ -1125,7 +1146,7 @@
           { name: "Vitamin C", desc: "Rich in antioxidants to boost immunity and wellness.", icon: "fa-shield-halved" }
         ],
         gallery: [
-          "assets/brand_pack_0015.png",
+          "assets/brand_pack_0015_200ml.png",
           "assets/juice_pack_litchi.jpg"
         ]
       },
@@ -1133,7 +1154,7 @@
         name: "Fresh Apple Juice (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
-        image: "assets/brand_pack_0016.png",
+        image: "assets/brand_pack_0016_200ml.png",
         splash: "assets/apple_splash_card.png",
         color: "#b81d24",
         desc: "Pure pulp extracted apple juice sourced from the finest orchard apples. Fully sterilized and aseptic-packaged for natural crispness and premium freshness. Sourced from organic farm fruits.",
@@ -1142,13 +1163,17 @@
         carbs: "14.5g",
         sugars: "11.5g",
         protein: "0.3g",
-        vitc: "40mg"
+        vitc: "40mg",
+        variants: {
+          "160ml": { name: "Fresh Apple Juice (160 ml)", price: 10, image: "assets/brand_pack_0016.png" },
+          "200ml": { name: "Fresh Apple Drink (200 ml)", price: 20, image: "assets/brand_pack_0016_200ml.png" }
+        }
       },
       "mixed-fruit": {
         name: "Fruit Aam Rus (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
-        image: "assets/brand_pack_0017.png",
+        image: "assets/brand_pack_0017_200ml.png",
         splash: "assets/mix_fruit_splash_card.png",
         color: "#e65100",
         desc: "A rich and luscious traditional Indian mango pulp drink made from organic orchard mangoes, sterilized and aseptic packed for natural sweetness and freshness.",
@@ -1161,6 +1186,10 @@
         badge1: "100% Mango Pulp",
         badge2: "Sterilized UHT",
         badge3: "Aseptic Boxed",
+        variants: {
+          "160ml": { name: "Mix Fruit Juice (160 ml)", price: 10, image: "assets/brand_pack_0017.png" },
+          "200ml": { name: "Fruit Aam Rus (200 ml)", price: 20, image: "assets/brand_pack_0017_200ml.png" }
+        },
         ingredientPills: [
           { name: "Mango Pulp", percent: "35%" },
           { name: "Pure Water", percent: "55%" },
@@ -1177,7 +1206,7 @@
         name: "Pink Guava Juice (200 ml)",
         price: "Rs. 20.00",
         category: "Juices",
-        image: "assets/brand_pack_0018.png",
+        image: "assets/brand_pack_0018_200ml.png",
         splash: "assets/guava_splash_card.png",
         color: "#4caf50",
         desc: "Lush, pulp-rich pink guava juice sourced from organic orchard fruits. Packed under completely sterile conditions using European aseptic lines to guarantee natural aroma and vitamins.",
@@ -1186,11 +1215,15 @@
         carbs: "15.2g",
         sugars: "12.8g",
         protein: "0.5g",
-        vitc: "90mg"
+        vitc: "90mg",
+        variants: {
+          "160ml": { name: "Pink Guava Juice (160 ml)", price: 10, image: "assets/brand_pack_0018.png" },
+          "200ml": { name: "Guava Rus (200 ml)", price: 20, image: "assets/brand_pack_0018_200ml.png" }
+        }
       },
       "multani-zeera": {
         name: "Demi's Multani Zeera (160 ml)",
-        price: "Rs. 20.00",
+        price: "Rs. 10.00",
         category: "Soft Drinks",
         image: "assets/soft_drink_multani_zeera.png",
         splash: "assets/lime_splash.png",
@@ -1439,64 +1472,122 @@
     const urlParams = new URLSearchParams(window.location.search);
     const pId = urlParams.get('id') || 'mango';
     const product = productsData[pId] || productsData['mango'];
-    let selectedUnitMode = 'single'; // single vs crate
-
-    // Update Title, Breadcrumbs, Category
-    document.title = `${product.name} — Demi's Tasty 🍊`;
-    document.getElementById('p-title').innerText = product.name;
-    document.getElementById('p-bread-title').innerText = product.name;
-    document.getElementById('p-bread-category').innerText = product.category;
-    document.getElementById('p-bread-category').href = `products.html?category=${product.category.toLowerCase()}`;
-    document.getElementById('p-category').innerText = product.category;
-    document.getElementById('p-category').style.color = product.color;
     
-    // Inject Price & Description
-    function updatePriceDisplay() {
-      if (selectedUnitMode === 'single') {
-        document.getElementById('p-price').innerText = product.price;
-      } else {
-        document.getElementById('p-price').innerText = product.cratePrice;
-      }
+    // Select active variant
+    let selectedVolume = "200ml"; // default selected
+    let selectedPkg = "single";  // single vs crate
+
+    // If product does not have the selected default variant, fallback to what's available
+    if (product.variants && !product.variants[selectedVolume]) {
+      selectedVolume = Object.keys(product.variants)[0];
     }
-    updatePriceDisplay();
+
+    // Function to get active details based on selected variant
+    function getActiveVariantData() {
+      if (product.variants && product.variants[selectedVolume]) {
+        return product.variants[selectedVolume];
+      }
+      // Fallback for non-variant products (like soft drinks)
+      let volumeText = "200 ml";
+      if (pId === "multani-zeera" || pId === "masala-zeera") volumeText = "160 ml";
+      else if (pId === "double-toned-milk") volumeText = "400 ml";
+      else if (pId === "cow-milk") volumeText = "125 ml";
+      
+      return {
+        name: product.name,
+        price: parseFloat(product.price.replace(/[^0-9.]/g, '')),
+        image: product.image,
+        volume: volumeText
+      };
+    }
+
+    // Function to render all variant buttons
+    const volumeOptionsContainer = document.getElementById('volume-options');
+    volumeOptionsContainer.innerHTML = '';
     
-    document.getElementById('badge-1').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge1}`;
-    document.getElementById('badge-2').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge2}`;
-    document.getElementById('badge-3').innerHTML = `<i class="fas fa-check-circle"></i> ${product.badge3}`;
+    if (product.variants) {
+      Object.keys(product.variants).forEach(vol => {
+        const btn = document.createElement('button');
+        btn.className = `size-option-btn ${vol === selectedVolume ? 'active' : ''}`;
+        btn.innerText = vol === "160ml" ? "160 ml" : "200 ml";
+        btn.addEventListener('click', () => {
+          selectedVolume = vol;
+          document.querySelectorAll('#volume-options .size-option-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          updatePageContent();
+        });
+        volumeOptionsContainer.appendChild(btn);
+      });
+    } else {
+      // Create single active disabled button for non-variant products
+      const activeData = getActiveVariantData();
+      const btn = document.createElement('button');
+      btn.className = "size-option-btn active";
+      btn.disabled = true;
+      btn.innerText = activeData.volume;
+      volumeOptionsContainer.appendChild(btn);
+    }
 
-    // Load main visual images
-    document.getElementById('p-image').src = product.image;
-    document.getElementById('p-splash').src = product.splash;
-
-    // Unit size pill toggle
+    // Toggle Packaging Selector
     const sizeSingleBtn = document.getElementById('size-single-btn');
     const sizeCrateBtn = document.getElementById('size-crate-btn');
     
     sizeSingleBtn.addEventListener('click', () => {
       sizeSingleBtn.classList.add('active');
       sizeCrateBtn.classList.remove('active');
-      selectedUnitMode = 'single';
+      selectedPkg = 'single';
       updatePriceDisplay();
     });
     
     sizeCrateBtn.addEventListener('click', () => {
       sizeCrateBtn.classList.add('active');
       sizeSingleBtn.classList.remove('active');
-      selectedUnitMode = 'crate';
+      selectedPkg = 'crate';
       updatePriceDisplay();
     });
 
-    // Render Gallery thumbnails
+    // Update Price Display
+    function updatePriceDisplay() {
+      const activeData = getActiveVariantData();
+      if (selectedPkg === 'single') {
+        document.getElementById('p-price').innerText = "Rs. " + activeData.price.toFixed(2);
+      } else {
+        const cratePriceVal = activeData.price * 24;
+        document.getElementById('p-price').innerText = "Rs. " + cratePriceVal.toFixed(2);
+      }
+    }
+
+    // Update Content based on Variant
+    function updatePageContent() {
+      const activeData = getActiveVariantData();
+      
+      // Update Title & Image
+      document.getElementById('p-title').innerText = activeData.name;
+      document.getElementById('p-bread-title').innerText = activeData.name;
+      document.title = `${activeData.name} — Demi's Tasty 🍊`;
+      
+      // Update Image
+      document.getElementById('p-image').src = activeData.image;
+      
+      // Update Gallery Thumbnail Index 0
+      if (product.gallery && product.gallery.length > 0) {
+        product.gallery[0] = activeData.image;
+        renderGalleryThumbs();
+      }
+      
+      updatePriceDisplay();
+    }
+
+    // Render Gallery Thumbnails helper
     const galleryContainer = document.getElementById('p-gallery');
     const visualBox = document.getElementById('detail-visual-box');
-    galleryContainer.innerHTML = '';
-    
     let currentGalleryIndex = 0;
-    
-    if (product.gallery && product.gallery.length > 0) {
+
+    function renderGalleryThumbs() {
+      galleryContainer.innerHTML = '';
       product.gallery.forEach((imgSrc, index) => {
         const thumb = document.createElement('div');
-        thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
+        thumb.className = `gallery-thumb ${index === currentGalleryIndex ? 'active' : ''}`;
         thumb.innerHTML = `<img src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
         
         thumb.addEventListener('click', () => {
@@ -1506,7 +1597,7 @@
         galleryContainer.appendChild(thumb);
       });
     }
-    
+
     function updateGalleryDisplay() {
       galleryContainer.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
         if (idx === currentGalleryIndex) t.classList.add('active');
@@ -1522,7 +1613,7 @@
         visualBox.classList.remove('full-image-active');
       }
     }
-    
+
     document.getElementById('gallery-prev-btn').addEventListener('click', () => {
       if (product.gallery && product.gallery.length > 1) {
         currentGalleryIndex = (currentGalleryIndex - 1 + product.gallery.length) % product.gallery.length;
@@ -1537,8 +1628,7 @@
       }
     });
 
-    // Render Tabs Section Content
-    // Tab Header buttons swapping
+    // Swapping Tabs
     document.querySelectorAll('.tab-header-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-header-btn').forEach(b => b.classList.remove('active'));
@@ -1549,6 +1639,10 @@
         document.getElementById(tabId).classList.add('active');
       });
     });
+
+    // Initialize Page Content
+    updatePageContent();
+    renderGalleryThumbs();
 
     // Tab 1: Ingredients statistics
     const statsContainer = document.getElementById('p-ingredient-stats');
@@ -1643,7 +1737,6 @@
       card.style.border = '1px solid #e0dfd5';
       card.style.padding = '1.5rem';
       
-      // Calculate normal or customized elements
       card.innerHTML = `
         <figure class="product-thumbnail" style="height: 180px; position: relative; display: flex; align-items: center; justify-content: center; background: var(--bg-organic); border-radius: 18px; overflow: hidden; margin-bottom: 1.25rem;">
           <img src="${p.image}" alt="${p.name}" style="max-height: 140px; object-fit: contain; z-index: 2;">
@@ -1705,8 +1798,9 @@
     // Add to Cart
     document.getElementById('add-to-cart-action').addEventListener('click', () => {
       const qty = qtyInput.value;
-      const unitText = selectedUnitMode === 'single' ? 'individual bottles' : 'crates';
-      showToast(`Added ${qty} ${unitText} of ${product.name} to your wholesale cart!`);
+      const activeData = getActiveVariantData();
+      const unitText = selectedPkg === 'single' ? 'individual bottles' : 'crates';
+      showToast(`Added ${qty} ${unitText} of ${activeData.name} to your wholesale cart!`);
     });
 
     // Mobile Navbar Offcanvas Toggle
