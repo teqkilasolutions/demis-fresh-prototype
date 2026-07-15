@@ -4060,3 +4060,10 @@ body.cursor-active .cursor-particle {
     background-image: url('assets/ingredients_bg_mobile.jpg') !important;
   }
 }
+
+/* Mobile Testimonials Background Override */
+@media (max-width: 768px) {
+  .testimonials-slider {
+    background-image: url('assets/testimonials_bg_mobile.jpg') !important;
+  }
+}
