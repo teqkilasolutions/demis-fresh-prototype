@@ -27,6 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── 0. Video Background Hero Slider ────────────────────────────────── */
 function initVideoHeroSlider() {
+  const videos = document.querySelectorAll('.video-bg');
+  const isMobile = window.innerWidth <= 768;
+  videos.forEach(v => {
+    if (isMobile) {
+      v.setAttribute('poster', 'assets/hero_fallback_mobile.jpg');
+    } else {
+      v.setAttribute('poster', 'assets/hero_fallback_desktop.jpg');
+    }
+  });
+
   const sliderEl = document.querySelector('.hero-video-slider');
   if (!sliderEl) return;
 
