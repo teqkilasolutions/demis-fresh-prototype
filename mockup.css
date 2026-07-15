@@ -2733,7 +2733,8 @@ body.cursor-active .cursor-particle {
 
 /* ── 16. Crowd Favorites Section (The Fresh Press Design) ─────────── */
 .crowd-favorites-section {
-  background-color: #ffffff;
+  background: url('assets/bestsellers_bg.jpg') no-repeat center center;
+  background-size: cover;
   padding: 8rem 0;
   width: 100%;
 }
