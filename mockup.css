@@ -3170,8 +3170,9 @@ body.cursor-active .cursor-particle {
 
 /* ── 16. Testimonials Slider ─────────────────────────────────────────── */
 .testimonials-slider {
+  background: url('assets/testimonials_bg.jpg') no-repeat center center;
+  background-size: cover;
   padding: 8rem 0;
-  background-color: #ffffff;
   position: relative;
   overflow: hidden;
 }
