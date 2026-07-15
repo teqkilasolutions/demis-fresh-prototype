@@ -3310,7 +3310,8 @@ body.cursor-active .cursor-particle {
 /* ── 17. Locate Us Map ──────────────────────────────────────────────── */
 .locate-us {
   padding: 8rem 0;
-  background-color: var(--bg-cream);
+  background: url('assets/map_texture.jpg') no-repeat center center;
+  background-size: cover;
   border-bottom: 1px solid rgba(1, 97, 48, 0.05);
 }
 
