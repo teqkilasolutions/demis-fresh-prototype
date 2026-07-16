@@ -535,8 +535,54 @@
     .story-aamrus-section {
       background: url('assets/story_aamrus_bg.jpg') no-repeat center center;
       background-size: cover;
-      padding: 100px 0;
+      padding: 120px 0;
       border-bottom: 1px solid #e0dfd5;
+      position: relative;
+    }
+    .story-aamrus-section .container {
+      max-width: 1350px;
+      width: 92%;
+    }
+    .story-aamrus-section .story-grid {
+      grid-template-columns: 46% 54%;
+      gap: 0;
+      align-items: center;
+    }
+    .story-aamrus-section .story-content {
+      padding-left: 6.5rem;
+      padding-right: 2rem;
+    }
+    .story-aamrus-section .story-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 3rem;
+    }
+    @media (max-width: 1024px) {
+      .story-aamrus-section .story-content {
+        padding-left: 3rem;
+        padding-right: 1rem;
+      }
+      .story-aamrus-section .story-image-wrap {
+        padding-right: 1.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .story-aamrus-section {
+        padding: 60px 0;
+      }
+      .story-aamrus-section .story-grid {
+        grid-template-columns: 1fr;
+        direction: ltr !important;
+      }
+      .story-aamrus-section .story-content {
+        padding: 0 1rem;
+        direction: ltr !important;
+      }
+      .story-aamrus-section .story-image-wrap {
+        padding: 0;
+        margin-top: 2rem;
+      }
     }
   </style>
 </head>
