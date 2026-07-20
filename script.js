@@ -1,3 +1,23 @@
+
+// ── Global Account Modal Functions ──
+window.openAccountModal = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const modal = document.getElementById('account-modal');
+  if (modal) {
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+  }
+};
+
+window.closeAccountModal = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const modal = document.getElementById('account-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    modal.style.display = 'none';
+  }
+};
+
 /* ==========================================================================
    Demi's Tasty — script.js
    GSAP ScrollTrigger scroll animation + tial interaction patterns
@@ -652,3 +672,168 @@ function initTestimonials() {
     },
   });
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   CUSTOMER ACCOUNT PORTAL INTERACTION LOGIC
+   ══════════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  const accountModal = document.getElementById('account-modal');
+  const closeBtn = document.getElementById('close-account-modal');
+  const triggers = document.querySelectorAll('.account-trigger');
+
+  // Open Modal
+  triggers.forEach(trig => {
+    trig.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (accountModal) accountModal.classList.add('active');
+    });
+  });
+
+  // Close Modal
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (accountModal) accountModal.classList.remove('active');
+    });
+  }
+  if (accountModal) {
+    accountModal.addEventListener('click', (e) => {
+      if (e.target === accountModal) accountModal.classList.remove('active');
+    });
+  }
+
+  // Tab switching
+  const tabBtns = document.querySelectorAll('.account-tab-btn');
+  const tabContents = document.querySelectorAll('.account-tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-tab');
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) targetEl.classList.add('active');
+    });
+  });
+
+  // Handle Login Submission
+  const loginForm = document.getElementById('form-customer-login');
+  const dashTabBtn = document.getElementById('tab-dashboard-btn');
+  const loginSubmit = document.getElementById('btn-submit-login');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      loginSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+      setTimeout(() => {
+        loginSubmit.innerHTML = 'Sign In to My Account';
+        if (dashTabBtn) dashTabBtn.style.display = 'block';
+        
+        // Switch to dashboard
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        if (dashTabBtn) dashTabBtn.classList.add('active');
+        const dashContent = document.getElementById('dashboard-tab');
+        if (dashContent) dashContent.classList.add('active');
+      }, 700);
+    });
+  }
+
+  // Handle Logout
+  const logoutBtn = document.getElementById('btn-account-logout');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+      if (dashTabBtn) dashTabBtn.style.display = 'none';
+      tabBtns[0].click(); // Switch back to login
+    });
+  }
+
+  // ── Global Toast Notification Helper ────────────────────────────────────
+  window.showToast = function(title, message, iconClass = 'fa-check') {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+      <div class="toast-icon"><i class="fas ${iconClass}"></i></div>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+      </div>
+      <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+
+    container.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 50);
+
+    // Auto dismiss after 3.5s
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 3500);
+  };
+
+  // Attach Add to Cart Toast handlers for all order buttons
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.add-to-cart-btn, #add-to-basket-btn');
+    if (btn) {
+      const card = btn.closest('.product-card') || btn.closest('.product-detail-area') || btn.closest('.product-detail-wrapper') || document;
+      const titleEl = card.querySelector('.product-title, #p-title, h1, h3');
+      const prodName = titleEl ? titleEl.textContent.trim() : "Demi's Product";
+
+      showToast('Added to Basket!', `${prodName} has been added to your order.`, 'fa-shopping-basket');
+    }
+  });
+
+  // ── Form Submission Handlers ──────────────────────────────────────────
+  const wholesaleForm = document.getElementById('wholesale-application-form');
+  if (wholesaleForm) {
+    wholesaleForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = wholesaleForm.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      
+      setTimeout(() => {
+        if (submitBtn) submitBtn.innerHTML = 'Submit Application';
+        wholesaleForm.reset();
+        showToast('Application Submitted!', 'Thank you! Our wholesale distribution team will contact you within 24 hours.', 'fa-paper-plane');
+      }, 800);
+    });
+  }
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      
+      setTimeout(() => {
+        if (submitBtn) submitBtn.innerHTML = 'Send Message';
+        contactForm.reset();
+        showToast('Message Sent!', 'Thank you for reaching out! Our team will get back to you shortly.', 'fa-paper-plane');
+      }, 800);
+    });
+  }
+
+  // Footer Contact & Newsletter Forms
+  document.querySelectorAll('footer form, .footer-contact-form-col form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.reset();
+      showToast('Message Received!', 'Thank you for connecting with Demi\'s Tasty.', 'fa-check-circle');
+    });
+  });
+});
+
+

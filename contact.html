@@ -14,14 +14,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="mockup.css?v=3.0">
+  <link rel="stylesheet" href="mockup.css?v=5.0">
   
   <style>
 
     
     .contact-main {
       padding: 80px 0;
-      background: #fff;
+      background: linear-gradient(180deg, rgba(253,251,245,0.12) 0%, rgba(253,251,245,0.22) 100%), url('assets/chatgpt_nature.png') center center / cover no-repeat;
+      background-attachment: fixed;
     }
     .contact-grid-layout {
       display: grid;
@@ -29,10 +30,13 @@
       gap: 4rem;
     }
     .contact-card-box {
-      background: var(--bg-organic);
+      background: rgba(253, 251, 245, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 40px;
       border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.85);
     }
     .contact-card-box h2 {
       font-family: var(--font-serif);
@@ -119,7 +123,8 @@
     /* FAQ Accordion */
     .faq-section {
       padding: 100px 0;
-      background: var(--bg-organic);
+      background: linear-gradient(180deg, rgba(253,251,245,0.12) 0%, rgba(253,251,245,0.22) 100%), url('assets/farm_to_bottle_bg.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
     }
     .faq-container {
       max-width: 800px;
@@ -265,7 +270,7 @@
     }
   </style>
 </head>
-<body class="theme-organic">
+<body class="theme-organic page-contact-us">
 
   <!-- HEADER / NAVIGATION -->
   <header class="navbar scrolled">
@@ -279,8 +284,12 @@
         <a href="products.html" class="nav-link">Products</a>
         <a href="partner.html" class="nav-link">Become a partner</a>
         <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="#account" class="nav-link account-trigger" onclick="openAccountModal(event)" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #b84a0e; font-weight: 700;"><i class="far fa-user"></i> Login / Account</a>
       </nav>
       <div class="nav-actions">
+        <button class="nav-btn account-trigger" onclick="openAccountModal(event)" aria-label="Account Portal" title="Customer Login & Account">
+          <i class="far fa-user"></i>
+        </button>
         <button class="mobile-toggle" aria-label="Toggle Menu">
           <span></span>
           <span></span>
@@ -297,12 +306,13 @@
       <a href="products.html" class="mobile-link">Products</a>
       <a href="partner.html" class="mobile-link">Become a partner</a>
       <a href="contact.html" class="mobile-link active">Contact</a>
+      <a href="#account" class="mobile-link account-trigger" onclick="openAccountModal(event)" style="color: #b84a0e; font-weight: 700;"><i class="far fa-user"></i> Login / Account</a>
     </nav>
   </div>
 
   <main>
     <!-- Contact Hero -->
-    <section class="contact-hero hero-with-bg" style="background-image: url('assets/fruits_bg.png');">
+    <section class="contact-hero hero-with-bg" style="background: linear-gradient(180deg, rgba(253,251,245,0.15) 0%, rgba(253,251,245,0.25) 100%), url('assets/faq_section_bg.jpg') center center / cover no-repeat; background-attachment: fixed; padding: 8rem 0 4rem;">
       <div class="container">
         <h1>Get in Touch</h1>
         <p>Whether you want to place a wholesale order, distribute our products, or just say hello, we'd love to hear from you.</p>
@@ -620,5 +630,121 @@
       });
     }
   </script>
+
+  <!-- ══════════════════════════════════════════════
+       CUSTOMER ACCOUNT & LOGIN MODAL
+  ══════════════════════════════════════════════ -->
+  <div class="account-modal-overlay" id="account-modal">
+    <div class="account-modal-card">
+      <div class="account-modal-header">
+        <button class="account-modal-close" id="close-account-modal" onclick="closeAccountModal(event)" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+        <h3>Demi's Customer Portal</h3>
+        <p>Manage your orders, addresses & rewards</p>
+      </div>
+
+      <div class="account-modal-nav">
+        <button class="account-tab-btn active" data-tab="login-tab">Sign In</button>
+        <button class="account-tab-btn" data-tab="register-tab">Sign Up</button>
+        <button class="account-tab-btn" data-tab="dashboard-tab" id="tab-dashboard-btn" style="display: none;">My Profile</button>
+      </div>
+
+      <div class="account-modal-body">
+        <!-- 1. Login Tab -->
+        <div class="account-tab-content active" id="login-tab">
+          <form id="form-customer-login" onsubmit="return false;">
+            <div class="form-group">
+              <label>Email or Mobile Number</label>
+              <div class="form-input-wrap">
+                <i class="far fa-envelope"></i>
+                <input type="text" id="login-input-id" placeholder="rahul@example.com" required value="customer@demistasty.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="login-input-pass" placeholder="••••••••" required value="password123">
+              </div>
+            </div>
+            <div class="form-flex">
+              <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; font-weight: 500;">
+                <input type="checkbox" checked> Remember Me
+              </label>
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn-account-submit" id="btn-submit-login">Sign In to My Account</button>
+          </form>
+        </div>
+
+        <!-- 2. Register Tab -->
+        <div class="account-tab-content" id="register-tab">
+          <form id="form-customer-register" onsubmit="return false;">
+            <div class="form-group">
+              <label>Full Name</label>
+              <div class="form-input-wrap">
+                <i class="far fa-user"></i>
+                <input type="text" placeholder="Rahul Sharma" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <div class="form-input-wrap">
+                <i class="far fa-envelope"></i>
+                <input type="email" placeholder="rahul@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-phone-alt"></i>
+                <input type="tel" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Create Password</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="••••••••" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-account-submit" id="btn-submit-register">Create Account</button>
+          </form>
+        </div>
+
+        <!-- 3. Account Dashboard Tab -->
+        <div class="account-tab-content" id="dashboard-tab">
+          <div class="user-profile-badge">
+            <div class="profile-avatar">RS</div>
+            <div class="profile-info">
+              <h4 id="user-display-name">Rahul Sharma</h4>
+              <p>customer@demistasty.com | +91 98765 43210</p>
+            </div>
+          </div>
+
+          <div class="account-orders-list">
+            <h5>Recent Orders</h5>
+            <div class="order-card-mini">
+              <div class="order-card-info">
+                <strong>Order #DT-9821 (160ml Lemona Pack x10)</strong>
+                <span>Ordered: Today, 11:30 AM • ₹100.00</span>
+              </div>
+              <span class="order-status-tag status-transit">In Transit 🚚</span>
+            </div>
+            <div class="order-card-mini">
+              <div class="order-card-info">
+                <strong>Order #DT-9104 (160ml Litchi Rush x5)</strong>
+                <span>Ordered: 12 July 2026 • ₹50.00</span>
+              </div>
+              <span class="order-status-tag status-delivered">Delivered ✅</span>
+            </div>
+          </div>
+
+          <button class="btn-logout-account" id="btn-account-logout">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  <script src="script.js?v=5.0"></script>
 </body>
 </html>

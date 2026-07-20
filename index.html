@@ -16,7 +16,7 @@
   <!-- Leaflet.js Map Library -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="mockup.css?v=3.0">
+  <link rel="stylesheet" href="mockup.css?v=5.0">
 </head>
 <body class="theme-organic">
 
@@ -44,8 +44,12 @@
         <a href="products.html" class="nav-link">Products</a>
         <a href="partner.html" class="nav-link">Become a partner</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#account" class="nav-link account-trigger" onclick="openAccountModal(event)" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #b84a0e; font-weight: 700;"><i class="far fa-user"></i> Login / Account</a>
       </nav>
       <div class="nav-actions">
+        <button class="nav-btn account-trigger" onclick="openAccountModal(event)" aria-label="Account Portal" title="Customer Login & Account">
+          <i class="far fa-user"></i>
+        </button>
         <button class="mobile-toggle" aria-label="Toggle Menu">
           <span></span>
           <span></span>
@@ -62,6 +66,7 @@
       <a href="products.html" class="mobile-link">Products</a>
       <a href="partner.html" class="mobile-link">Become a partner</a>
       <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="#account" class="mobile-link account-trigger" onclick="openAccountModal(event)" style="color: #b84a0e; font-weight: 700;"><i class="far fa-user"></i> Login / Account</a>
     </nav>
   </div>
 
@@ -413,19 +418,18 @@
             </div>
           </div>
 
-          <!-- Product Card 7: Demi's Tasty Spize Lemona -->
+          <!-- Product Card 7: Demi's Lemona -->
           <div class="product-card" data-category="soft-drinks" style="display: none;">
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
                 <img src="assets/lemon_splash.png" class="card-splash-img" alt="Lemon Splash">
               </div>
-              <a href="product.html?id=lemon" title="Demi's Tasty Spize Lemona (200 ml)">
-                <img src="assets/soft_drink_lemon.png" alt="Demi's Tasty Spize Lemona" class="primary-img">
-                <img src="assets/lemona_ad.jpg" alt="Demi's Tasty Spize Lemona" class="secondary-img">
+              <a href="product.html?id=lemon" title="Demi's Lemona (250 ml)">
+                <img src="assets/lemona_bottle_updated.png" alt="Demi's Lemona" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Fizz</div>
-            <h3 class="product-title"><a href="product.html?id=lemon">Demi's Tasty Spize Lemona (200 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=lemon">Demi's Lemona (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 20.00</span>
@@ -522,7 +526,29 @@
                 <span class="price-amount">Rs. 10.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="#" class="add-to-cart-btn">Add to cart</a>
+                <a href="product.html?id=cow-milk" class="add-to-cart-btn" style="background-color: var(--accent-primary);">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 11: Demi's Amole Double Toned Milk (125 ml) -->
+          <div class="product-card" data-category="milk" style="display: none;">
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
+              </div>
+              <a href="product.html?id=amole-milk" title="Demi's Amole Double Toned Milk (125 ml)">
+                <img src="assets/amole_milk_pack.png" alt="Demi's Amole Double Toned Milk (125 ml)" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Dairy</div>
+            <h3 class="product-title"><a href="product.html?id=amole-milk">Demi's Amole Double Toned Milk (125 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 10.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=amole-milk" class="add-to-cart-btn" style="background-color: var(--accent-primary);">Order Now</a>
               </div>
             </div>
           </div>
@@ -1047,5 +1073,122 @@
     updateArrows();
   })();
   </script>
+
+  <!-- ══════════════════════════════════════════════
+       CUSTOMER ACCOUNT & LOGIN MODAL
+  ══════════════════════════════════════════════ -->
+  <div class="account-modal-overlay" id="account-modal">
+    <div class="account-modal-card">
+      <div class="account-modal-header">
+        <button class="account-modal-close" id="close-account-modal" onclick="closeAccountModal(event)" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+        <h3>Demi's Customer Portal</h3>
+        <p>Manage your orders, addresses & rewards</p>
+      </div>
+
+      <div class="account-modal-nav">
+        <button class="account-tab-btn active" data-tab="login-tab">Sign In</button>
+        <button class="account-tab-btn" data-tab="register-tab">Sign Up</button>
+        <button class="account-tab-btn" data-tab="dashboard-tab" id="tab-dashboard-btn" style="display: none;">My Profile</button>
+      </div>
+
+      <div class="account-modal-body">
+        <!-- 1. Login Tab -->
+        <div class="account-tab-content active" id="login-tab">
+          <form id="form-customer-login" onsubmit="return false;">
+            <div class="form-group">
+              <label>Email or Mobile Number</label>
+              <div class="form-input-wrap">
+                <i class="far fa-envelope"></i>
+                <input type="text" id="login-input-id" placeholder="rahul@example.com" required value="customer@demistasty.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="login-input-pass" placeholder="••••••••" required value="password123">
+              </div>
+            </div>
+            <div class="form-flex">
+              <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; font-weight: 500;">
+                <input type="checkbox" checked> Remember Me
+              </label>
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn-account-submit" id="btn-submit-login">Sign In to My Account</button>
+          </form>
+        </div>
+
+        <!-- 2. Register Tab -->
+        <div class="account-tab-content" id="register-tab">
+          <form id="form-customer-register" onsubmit="return false;">
+            <div class="form-group">
+              <label>Full Name</label>
+              <div class="form-input-wrap">
+                <i class="far fa-user"></i>
+                <input type="text" placeholder="Rahul Sharma" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <div class="form-input-wrap">
+                <i class="far fa-envelope"></i>
+                <input type="email" placeholder="rahul@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-phone-alt"></i>
+                <input type="tel" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Create Password</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="••••••••" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-account-submit" id="btn-submit-register">Create Account</button>
+          </form>
+        </div>
+
+        <!-- 3. Account Dashboard Tab -->
+        <div class="account-tab-content" id="dashboard-tab">
+          <div class="user-profile-badge">
+            <div class="profile-avatar">RS</div>
+            <div class="profile-info">
+              <h4 id="user-display-name">Rahul Sharma</h4>
+              <p>customer@demistasty.com | +91 98765 43210</p>
+            </div>
+          </div>
+
+          <div class="account-orders-list">
+            <h5>Recent Orders</h5>
+            <div class="order-card-mini">
+              <div class="order-card-info">
+                <strong>Order #DT-9821 (160ml Lemona Pack x10)</strong>
+                <span>Ordered: Today, 11:30 AM • ₹100.00</span>
+              </div>
+              <span class="order-status-tag status-transit">In Transit 🚚</span>
+            </div>
+            <div class="order-card-mini">
+              <div class="order-card-info">
+                <strong>Order #DT-9104 (160ml Litchi Rush x5)</strong>
+                <span>Ordered: 12 July 2026 • ₹50.00</span>
+              </div>
+              <span class="order-status-tag status-delivered">Delivered ✅</span>
+            </div>
+          </div>
+
+          <button class="btn-logout-account" id="btn-account-logout">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
