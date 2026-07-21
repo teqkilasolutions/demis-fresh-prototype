@@ -35,7 +35,7 @@
   ══════════════════════════════════════════════ -->
   <header class="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
       </a>
       <nav class="nav-links">
@@ -102,7 +102,7 @@
 
       <div class="video-hero-container">
         <div class="video-hero-actions">
-          <a href="#hero-sec" class="btn btn-primary video-scroll-btn">Explore Flavors</a>
+          <a href="#favorites-sec" class="btn btn-primary video-scroll-btn">Explore Flavors</a>
         </div>
       </div>
     </section>
@@ -493,18 +493,18 @@
               <div class="card-splash-wrapper">
                 <img src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
               </div>
-              <a href="#" title="Demi's TastY Milk (400 ml)">
+              <a href="product.html?id=double-toned-milk" title="Demi's TastY Milk (400 ml)">
                 <img src="assets/tasty_milk_400ml.png" alt="Demi's TastY Milk (400 ml)" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Dairy</div>
-            <h3 class="product-title"><a href="#">Demi's TastY Milk (400 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=double-toned-milk">Demi's TastY Milk (400 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 35.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="#" class="add-to-cart-btn">Add to cart</a>
+                <a href="product.html?id=double-toned-milk" class="add-to-cart-btn" style="background-color: var(--accent-primary);">Order Now</a>
               </div>
             </div>
           </div>
@@ -515,12 +515,12 @@
               <div class="card-splash-wrapper">
                 <img src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
               </div>
-              <a href="#" title="Demi's Tasty Milk (125 ml)">
+              <a href="product.html?id=cow-milk" title="Demi's Tasty Milk (125 ml)">
                 <img src="assets/tasty_milk_125ml.png" alt="Demi's Tasty Milk (125 ml)" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Dairy</div>
-            <h3 class="product-title"><a href="#">Demi's Tasty Milk (125 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=cow-milk">Demi's Tasty Milk (125 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 10.00</span>
@@ -1008,11 +1008,11 @@
           <!-- Bottom Row: Socials & Copyright -->
           <div class="footer-bottom-row">
             <div class="social-icons-white">
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="footer-copyright">
               <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
@@ -1115,7 +1115,7 @@
               <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; font-weight: 500;">
                 <input type="checkbox" checked> Remember Me
               </label>
-              <a href="#">Forgot Password?</a>
+              <a href="javascript:void(0)" onclick="showToast(\'Password Reset\', \'Password reset instructions have been sent to your email.\', \'fa-key\')">Forgot Password?</a>
             </div>
             <button type="submit" class="btn-account-submit" id="btn-submit-login">Sign In to My Account</button>
           </form>
