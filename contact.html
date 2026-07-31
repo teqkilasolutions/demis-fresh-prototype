@@ -13,7 +13,7 @@
   <!-- Icons, Leaflet Map & Styling -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="mockup.css?v=5.0">
   
   <style>
@@ -47,32 +47,45 @@
     
     .contact-info-col h3 {
       font-family: var(--font-mono);
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #333;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #000000;
       margin-bottom: 1.5rem;
       margin-top: 0;
     }
     .info-item {
       display: flex;
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-family: var(--font-body);
+      background: #ffffff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 16px;
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
     .info-item i {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--accent-primary);
       margin-top: 3px;
     }
     .info-item h4 {
-      margin: 0 0 5px;
-      font-size: 1.1rem;
-      color: #333;
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #000000;
     }
     .info-item p {
       margin: 0;
-      color: #666;
-      line-height: 1.5;
+      color: #111111;
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .info-item p strong {
+      color: #000000;
+      font-weight: 900;
+      font-size: 1.1rem;
     }
 
     /* Form Styling */
@@ -200,9 +213,9 @@
     }
     .executive-contacts-wrapper h3 {
       font-family: var(--font-mono);
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #333;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #000000;
       margin-bottom: 1.5rem;
     }
     .executive-grid {
@@ -211,18 +224,19 @@
       gap: 1.2rem;
     }
     .exec-card {
-      background: var(--bg-organic);
-      border: 1px solid #e0dfd5;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
       padding: 18px 24px;
       border-radius: 16px;
       display: flex;
       align-items: center;
       gap: 1.2rem;
       transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     }
     .exec-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       border-color: var(--accent-primary);
     }
     .exec-icon {
@@ -240,23 +254,24 @@
     .exec-info h4 {
       margin: 0 0 4px;
       font-family: var(--font-mono);
-      font-size: 1.05rem;
-      color: #333;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #000000;
     }
     .exec-info p {
       margin: 0;
       font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #111111;
     }
     .exec-info a {
-      color: var(--accent-primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
+      color: #016130;
+      font-weight: 800;
+      text-decoration: underline;
     }
     .exec-info a:hover {
-      color: var(--accent-orange);
+      color: #b84a0e;
     }
     
     @media (max-width: 768px) {
@@ -276,7 +291,7 @@
   <header class="navbar scrolled">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <img src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
+        <img decoding="async" fetchpriority="high" src="assets/logo.png" alt="Demi's Tasty" class="logo-img">
       </a>
       <nav class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
@@ -369,9 +384,9 @@
               <div>
                 <h4>Email Support</h4>
                 <p>
-                  <a href="mailto:customercare@demistasty.com" style="color: #666; text-decoration: none;">customercare@demistasty.com</a><br>
-                  <a href="mailto:demistasty@gmail.com" style="color: #666; text-decoration: none;">demistasty@gmail.com</a><br>
-                  <a href="mailto:demisjuices@gmail.com" style="color: #666; text-decoration: none;">demisjuices@gmail.com</a>
+                  <a href="mailto:customercare@demistasty.com" style="color: #016130; font-weight: 700; text-decoration: underline;">customercare@demistasty.com</a><br>
+                  <a href="mailto:demistasty@gmail.com" style="color: #016130; font-weight: 700; text-decoration: underline;">demistasty@gmail.com</a><br>
+                  <a href="mailto:demisjuices@gmail.com" style="color: #016130; font-weight: 700; text-decoration: underline;">demisjuices@gmail.com</a>
                 </p>
               </div>
             </div>
@@ -422,7 +437,7 @@
             
             <!-- Product Showcase Collage -->
             <div style="margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 2rem; text-align: center;">
-              <img src="assets/contact_collage.png" alt="Demi's Juices Collage" style="width: 100%; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
+              <img decoding="async" loading="lazy" src="assets/contact_collage.png" alt="Demi's Juices Collage" style="width: 100%; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
             </div>
             
           </div>
@@ -497,9 +512,9 @@
     <div class="footer-content-wrap">
       <div class="container" style="position: relative;">
           <!-- Floating Products Collage in Footer -->
-          <img src="assets/footer png.png" class="footer-floating-collage" alt="Demi's Products Collage">
+          <img decoding="async" loading="lazy" src="assets/footer png.png" class="footer-floating-collage" alt="Demi's Products Collage">
         <div class="footer-logo-row text-center">
-          <img src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
+          <img decoding="async" fetchpriority="high" src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
         </div>
         <div class="footer-columns-grid">
           <!-- Column 1 -->
@@ -745,6 +760,6 @@
         </div>
       </div>
     </div>
-  <script src="script.js?v=5.0"></script>
+  <script defer src="script.js?v=5.0"></script>
 </body>
 </html>

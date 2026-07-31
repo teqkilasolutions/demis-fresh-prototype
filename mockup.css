@@ -213,11 +213,12 @@ p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-/* Video Hero Section Sizing and Styles */
+/* Video Hero Section Sizing and Styles (Natural Uncropped 16:9 Expansion) */
 .video-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: #000;
 }
@@ -236,6 +237,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   z-index: 1;
 }
 
@@ -3048,12 +3050,12 @@ body.cursor-active .cursor-particle {
   overflow: visible;
 }
 
-/* Center image — fills the full center column width */
+/* Center image — fills center column at ultra-high resolution */
 .ingr-center-img {
   grid-column: 2;
   display: block;
-  width: 230%;
-  margin-left: -65%;
+  width: 130%;
+  margin-left: -15%;
   height: auto;
   position: relative;
   z-index: 2;
@@ -3735,9 +3737,9 @@ body.cursor-active .cursor-particle {
   bottom: 25px; /* Sit right above the bottom line border, extending high up */
   left: 50%;
   transform: translateX(-50%);
-  width: 38%; /* Scaled for a square layout aspect ratio */
-  min-width: 320px;
-  max-width: 460px;
+  width: 36%; /* Scaled for high-res graphic aspect ratio */
+  min-width: 300px;
+  max-width: 440px;
   height: auto;
   z-index: 6;
   pointer-events: none; /* let clicks pass through to links underneath */
@@ -4993,3 +4995,152 @@ body.page-contact-us,
   pointer-events: none;
 }
 
+/* ── Haridwar Origin Marker & Interactive Map Arrows ── */
+.haridwar-origin-pin-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.haridwar-origin-pin {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  border: 3px solid #b84a0e;
+  border-radius: 50%;
+  box-shadow: 0 4px 18px rgba(184, 74, 14, 0.45), 0 0 0 5px rgba(184, 74, 14, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.haridwar-origin-pin:hover {
+  transform: scale(1.18);
+}
+
+.haridwar-origin-pin img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.haridwar-origin-pin::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid #b84a0e;
+  border-radius: 50%;
+  animation: haridwar-pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  pointer-events: none;
+}
+
+@keyframes haridwar-pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  100% { transform: scale(1.75); opacity: 0; }
+}
+
+.haridwar-origin-badge {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #b84a0e;
+  color: #ffffff;
+  font-family: var(--font-heading, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(184, 74, 14, 0.35);
+  pointer-events: none;
+  letter-spacing: 0.03em;
+}
+
+/* Directional Moving Arrow Pins */
+.directional-arrow-pin {
+  background: transparent;
+  border: none;
+}
+
+.directional-arrow-icon {
+  width: 22px;
+  height: 22px;
+  background: #b84a0e;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  box-shadow: 0 2px 8px rgba(184, 74, 14, 0.4);
+  transition: transform 0.1s linear, background 0.3s;
+}
+
+.directional-arrow-icon.green-arrow {
+  background: #016130;
+  box-shadow: 0 2px 10px rgba(1, 97, 48, 0.5);
+}
+
+.jumping-arc-path {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 25s linear infinite;
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+
+
+
+/* ══════════════════════════════════════════════
+   LIGHTNING SPEED & BROWSER RENDERING OPTIMIZATIONS
+══════════════════════════════════════════════ */
+
+/* 1. Skip rendering off-screen layout trees until scrolled into view */
+.crowd-favorites-section,
+.ingredients-section,
+.craft-section,
+.brand-values-section,
+.map-interactive-section,
+.site-footer,
+.about-us-section,
+.catalog-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
+/* 2. Hardware Acceleration for Animated & Interactive Elements */
+.product-card,
+.mobile-menu,
+.video-hero,
+.secondary-img,
+.btn,
+.toast-notice,
+.brand-value-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* 3. Smooth scrolling & crisp font rendering */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  content-visibility: auto;
+}
