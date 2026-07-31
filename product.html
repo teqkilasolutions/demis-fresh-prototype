@@ -1214,28 +1214,6 @@
           "assets/mango_pack_splash.jpg"
         ]
       },
-      "aamrus-200ml": {
-        name: "Demi's Mango Drink (200 ml)",
-        price: "Rs. 20.00",
-        category: "Juices",
-        image: "assets/mango_drink_200ml.png",
-        splash: "assets/mango_splash_card.png",
-        color: "#d84315",
-        desc: "Traditional rich Aam Rus style mango drink crafted with thick Alphonso puree. High fruit content and smooth golden texture for an authentic royal mango indulgence.",
-        calories: "68 kcal",
-        fat: "0g",
-        carbs: "16g",
-        sugars: "13g",
-        protein: "0.5g",
-        vitc: "50mg",
-        badge1: "Aam Rus Style",
-        badge2: "Thick Puree",
-        badge3: "90 Days Shelf Life",
-        gallery: [
-          "assets/mango_drink_200ml.png",
-          "assets/mango_pack_splash.jpg"
-        ]
-      },
       "litchi-200ml": {
         name: "Fresh Litchi Drink (200 ml)",
         price: "Rs. 20.00",
@@ -1582,7 +1560,7 @@
     const aliasMap = {
       'mango-160ml': 'mango', 'mango-juice': 'mango', 'alphonso-mango': 'mango',
       'mango-200': 'mango-200ml', 'mango-drink': 'mango-200ml',
-      'aamrus': 'aamrus-200ml', 'aam-rus': 'aamrus-200ml', 'aam-rus-200ml': 'aamrus-200ml', 'demi-aamrus': 'aamrus-200ml',
+      'aamrus': 'mango-200ml', 'aam-rus': 'mango-200ml', 'aam-rus-200ml': 'mango-200ml', 'demi-aamrus': 'mango-200ml',
       'litchi-160ml': 'litchi', 'litchi-juice': 'litchi', 'fresh-litchi': 'litchi',
       'litchi-200': 'litchi-200ml', 'litchi-drink': 'litchi-200ml',
       'apple-160ml': 'apple', 'apple-juice': 'apple', 'fresh-apple': 'apple',

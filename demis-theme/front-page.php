@@ -159,7 +159,7 @@
           <div class="product-card" data-category="juices">
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/mixed_fruit_splash_card.png" class="card-splash-img" alt="Fruit Aam Rus Splash">
+                <img decoding="async" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/mixed_fruit_splash_card.png" class="card-splash-img" alt="Mixed Fruit Splash">
               </div>
               <a href="product.html?id=mixed-fruit" title="Mix Fruit Juice (160 ml)">
                 <img decoding="async" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/brand_pack_0017.png" alt="Mix Fruit Juice" class="primary-img">
