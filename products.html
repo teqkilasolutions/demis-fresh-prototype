@@ -1,92 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Products — Demi's Tasty 🍊</title>
-  
-  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@400;600&family=Outfit:wght@300;400;600;800&family=Calistoga&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Product Range | Demi's Tasty Fresh Beverages & Dairy</title>
+  <meta name="description" content="Explore Demi's full range of 100% organic fruit juices, UHT sterilized dairy milk, and prebiotic craft soft drinks. Direct wholesale manufacturer supply from Uttarakhand.">
   
-  <!-- Icons & Styling -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="mockup.css?v=5.0">
-  <style>
-    /* Catalog Specific Styles */
-
-    .catalog-container {
-      padding: 40px 0 100px;
-    }
-    .catalog-filters {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-    .filter-tab {
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-family: var(--font-mono);
-      font-weight: 600;
-      font-size: 1rem;
-      border: 2px solid rgba(1, 97, 48, 0.2);
-      background: transparent;
-      color: var(--accent-primary);
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .filter-tab.active, .filter-tab:hover {
-      background: var(--accent-primary);
-      color: #fff;
-      border-color: var(--accent-primary);
-      box-shadow: 0 4px 12px rgba(1, 97, 48, 0.2);
-    }
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 2.5rem;
-    }
-    .product-card {
-      max-width: none !important;
-      min-width: 0 !important;
-      flex: none !important;
-    }
-    .moq-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(184, 74, 14, 0.9);
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 30px;
-      z-index: 2;
-    }
-    
-    @media (max-width: 576px) {
-      .catalog-filters {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-      }
-      .filter-tab {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-      }
-      .catalog-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-  </style>
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="mockup.css">
 </head>
-<body class="theme-organic page-products-catalog">
+<body class="page-products-catalog">
 
-  <!-- HEADER / NAVIGATION -->
+  <!-- Master Header -->
   <header class="navbar scrolled">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -101,20 +38,16 @@
         <a href="#account" class="nav-link account-trigger" onclick="openAccountModal(event)" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #b84a0e; font-weight: 700;"><i class="far fa-user"></i> Login / Account</a>
       </nav>
       <div class="nav-actions">
-        <button class="nav-btn account-trigger" onclick="openAccountModal(event)" aria-label="Account Portal" title="Customer Login & Account">
-          <i class="far fa-user"></i>
-        </button>
-        <button class="mobile-toggle" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
+        <button class="mobile-toggle" aria-label="Toggle Navigation">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Offcanvas Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <nav class="mobile-nav-links">
+    <nav class="mobile-nav">
       <a href="index.html" class="mobile-link">Home</a>
       <a href="story.html" class="mobile-link">Our Story</a>
       <a href="products.html" class="mobile-link active">Products</a>
@@ -125,49 +58,195 @@
   </div>
 
   <main>
-    <!-- Catalog Hero -->
-    <section class="catalog-hero hero-with-bg" style="background: linear-gradient(180deg, rgba(253,251,245,0.15) 0%, rgba(253,251,245,0.25) 100%), url('assets/bestsellers_bg.jpg') center center / cover no-repeat; background-attachment: fixed; padding: 8rem 0 4rem;">
+    <!-- ══════════════════════════════════════════════
+         PRODUCTS HERO HEADER
+    ══════════════════════════════════════════════ -->
+    <section class="catalog-hero hero-with-bg">
       <div class="container">
-        <h1>Our Products</h1>
-        <p>100% natural, fresh-pressed beverages crafted with premium ingredients and zero preservatives.</p>
+        <div class="catalog-hero-card text-center">
+          <span class="section-label">DEMI'S FULL BEVERAGE & DAIRY CATALOG</span>
+          <h1 class="section-title">Pure Taste, <span>Real Nature.</span></h1>
+          <p class="section-desc">From 100% pulp-extracted fruit juices to European UHT sterile milk pouches and sparkling prebiotic craft sodas. Direct distributor supply available nationwide.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Catalog Content -->
-    <section class="catalog-container" style="background: linear-gradient(180deg, rgba(253,251,245,0.12) 0%, rgba(253,251,245,0.22) 100%), url('assets/ingredients_bg.jpg') center center / cover no-repeat; background-attachment: fixed; padding: 4rem 0 6rem;">
+    <!-- ══════════════════════════════════════════════
+         MAIN CATALOG SECTION
+    ══════════════════════════════════════════════ -->
+    <section class="catalog-container">
       <div class="container">
-        <!-- Live Product Search Bar -->
+        
+        <!-- Search Input Bar -->
         <div class="catalog-search-wrapper">
           <i class="fas fa-search catalog-search-icon"></i>
-          <input type="text" id="catalog-search-input" class="catalog-search-input" placeholder="Search products (e.g. Mango, Lemona, Zeera, Milk)..." aria-label="Search products">
+          <input type="text" id="catalog-search-input" class="catalog-search-input" placeholder="Search juices, milk, sodas, flavors...">
         </div>
 
-        <!-- Category Tabs -->
-        <div class="catalog-filters">
-          <button class="filter-tab active" data-filter="all">All Items</button>
-          <button class="filter-tab" data-filter="juices">Juices</button>
-          <button class="filter-tab" data-filter="soft-drinks">Soft Drinks</button>
-          <button class="filter-tab" data-filter="milk">Pure Milk</button>
+        <!-- Category Filter Tabs -->
+        <div class="favorites-categories text-center" style="margin-bottom: 2.5rem;">
+          <button class="filter-tab active" data-filter="all"><i class="fas fa-th-large"></i> All Products <span class="badge-count">17</span></button>
+          <button class="filter-tab" data-filter="juices"><i class="fas fa-wine-glass-alt"></i> Organic Juices <span class="badge-count">9</span></button>
+          <button class="filter-tab" data-filter="soft-drinks"><i class="fas fa-prescription-bottle"></i> Craft Sodas <span class="badge-count">5</span></button>
+          <button class="filter-tab" data-filter="milk"><i class="fas fa-glass-water"></i> Pure Milk <span class="badge-count">3</span></button>
         </div>
 
         <!-- Catalog Product Grid -->
-        <div class="catalog-grid" id="catalog-grid">
+        <div class="catalog-grid">
           
-          <!-- JUICES -->
-          <!-- Mango -->
-          
-          </div>
-
-          <!-- Guava -->
+          <!-- 1. Alphonso Mango 160ml -->
           <div class="product-card" data-category="juices">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/guava_splash_card.png" class="card-splash-img" alt="Guava Splash">
+                <img loading="lazy" decoding="async" src="assets/mango_splash_card.png" class="card-splash-img" alt="Mango Splash">
+              </div>
+              <a href="product.html?id=mango" title="Alphonso Mango Juice (160 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0005.png" alt="Alphonso Mango Juice" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/mango_pack_splash.jpg" alt="Alphonso Mango Juice Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=mango">Alphonso Mango Juice (160 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 10.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=mango" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Mango Drink 200ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/mango_splash_card.png" class="card-splash-img" alt="Mango Splash">
+              </div>
+              <a href="product.html?id=mango-200ml" title="Mango Drink (200 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0005_200ml.png" alt="Mango Drink 200ml" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/mango_pack_splash.jpg" alt="Mango Drink Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=mango-200ml">Mango Drink (200 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 20.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=mango-200ml" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Fresh Litchi 160ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/litchi_splash_card.png" class="card-splash-img" alt="Litchi Splash">
+              </div>
+              <a href="product.html?id=litchi" title="Fresh Litchi Juice (160 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0015.png" alt="Fresh Litchi Juice" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/litchi_pack_splash.jpg" alt="Fresh Litchi Juice Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=litchi">Fresh Litchi Juice (160 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 10.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=litchi" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Fresh Litchi Drink 200ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/litchi_splash_card.png" class="card-splash-img" alt="Litchi Splash">
+              </div>
+              <a href="product.html?id=litchi-200ml" title="Fresh Litchi Drink (200 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0015_200ml.png" alt="Fresh Litchi Drink" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/litchi_pack_splash.jpg" alt="Fresh Litchi Drink Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=litchi-200ml">Fresh Litchi Drink (200 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 20.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=litchi-200ml" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Fresh Apple 160ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/apple_splash_card.png" class="card-splash-img" alt="Apple Splash">
+              </div>
+              <a href="product.html?id=apple" title="Fresh Apple Juice (160 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0016.png" alt="Fresh Apple Juice" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/apple_pack_splash.jpg" alt="Fresh Apple Juice Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=apple">Fresh Apple Juice (160 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 10.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=apple" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Fresh Apple Drink 200ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/apple_splash_card.png" class="card-splash-img" alt="Apple Splash">
+              </div>
+              <a href="product.html?id=apple-200ml" title="Fresh Apple Drink (200 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0016_200ml.png" alt="Fresh Apple Drink" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/apple_pack_splash.jpg" alt="Fresh Apple Drink Splash" class="secondary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=apple-200ml">Fresh Apple Drink (200 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 20.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=apple-200ml" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Pink Guava 160ml -->
+          <div class="product-card" data-category="juices">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/guava_splash_card.png" class="card-splash-img" alt="Guava Splash">
               </div>
               <a href="product.html?id=guava" title="Pink Guava Juice (160 ml)">
-                <img decoding="async" loading="lazy" src="assets/brand_pack_0018.png" alt="Pink Guava Juice" class="primary-img">
-                <img decoding="async" loading="lazy" src="assets/guava_pack_splash.jpg" alt="Pink Guava Juice" class="secondary-img">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0018.png" alt="Pink Guava Juice" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Fresh</div>
@@ -182,19 +261,19 @@
             </div>
           </div>
 
-          <!-- Guava 200ml -->
+          <!-- 8. Pink Guava Drink 200ml -->
           <div class="product-card" data-category="juices">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/guava_splash_card.png" class="card-splash-img" alt="Guava Splash">
+                <img loading="lazy" decoding="async" src="assets/guava_splash_card.png" class="card-splash-img" alt="Guava Splash">
               </div>
-              <a href="product.html?id=guava-200ml" title="Guava Rus (200 ml)">
-                <img decoding="async" loading="lazy" src="assets/brand_pack_0018_200ml.png" alt="Guava Rus" class="primary-img">
+              <a href="product.html?id=guava-200ml" title="Pink Guava Drink (200 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0018_200ml.png" alt="Pink Guava Drink" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Fresh</div>
-            <h3 class="product-title"><a href="product.html?id=guava-200ml">Guava Rus (200 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=guava-200ml">Pink Guava Drink (200 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 20.00</span>
@@ -205,67 +284,64 @@
             </div>
           </div>
 
-          <!-- SOFT DRINKS -->
-          <!-- Product Card 5: Demi's Multani Zeera -->
-          <div class="product-card" data-category="soft-drinks">
+          <!-- 9. Mix Fruit 160ml -->
+          <div class="product-card" data-category="juices">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/lime_splash.png" class="card-splash-img" alt="Lime Splash">
+                <img loading="lazy" decoding="async" src="assets/mixed_fruit_splash_card.png" class="card-splash-img" alt="Mixed Fruit Splash">
               </div>
-              <a href="product.html?id=multani-zeera" title="Demi's Multani Zeera (160 ml)">
-                <img decoding="async" loading="lazy" src="assets/soft_drink_multani_zeera.png" alt="Demi's Multani Zeera" class="primary-img">
-                <img decoding="async" loading="lazy" src="assets/multani_zeera_ad.jpg" alt="Demi's Multani Zeera" class="secondary-img">
+              <a href="product.html?id=mixed-fruit" title="Mix Fruit Juice (160 ml)">
+                <img loading="lazy" decoding="async" src="assets/brand_pack_0017.png" alt="Mix Fruit Juice" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Fizz</div>
-            <h3 class="product-title"><a href="product.html?id=multani-zeera">Demi's Multani Zeera (160 ml)</a></h3>
+            <div class="product-vendor">Demi's Fresh</div>
+            <h3 class="product-title"><a href="product.html?id=mixed-fruit">Mix Fruit Juice (160 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 10.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=multani-zeera" class="add-to-cart-btn">Order Now</a>
+                <a href="product.html?id=mixed-fruit" class="add-to-cart-btn">Order Now</a>
               </div>
             </div>
           </div>
 
-          <!-- Product Card 6: Demi's Masala Zeera -->
+          <!-- 10. Prebiotic Craft Cola 250ml -->
           <div class="product-card" data-category="soft-drinks">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/lime_splash.png" class="card-splash-img" alt="Lime Splash">
+                <img loading="lazy" decoding="async" src="assets/cola_splash.png" class="card-splash-img" alt="Cola Splash">
               </div>
-              <a href="product.html?id=masala-zeera" title="Demi's Masala Zeera (160 ml)">
-                <img decoding="async" loading="lazy" src="assets/soft_drink_masala_zeera.png" alt="Demi's Masala Zeera" class="primary-img">
+              <a href="product.html?id=cola" title="Prebiotic Craft Cola (250 ml)">
+                <img loading="lazy" decoding="async" src="assets/soft_drink_cola.png" alt="Prebiotic Craft Cola" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Fizz</div>
-            <h3 class="product-title"><a href="product.html?id=masala-zeera">Demi's Masala Zeera (160 ml)</a></h3>
+            <div class="product-vendor">Demi's Craft</div>
+            <h3 class="product-title"><a href="product.html?id=cola">Prebiotic Craft Cola (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
-                <span class="price-amount">Rs. 10.00</span>
+                <span class="price-amount">Rs. 20.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=masala-zeera" class="add-to-cart-btn">Order Now</a>
+                <a href="product.html?id=cola" class="add-to-cart-btn">Order Now</a>
               </div>
             </div>
           </div>
 
-          <!-- Product Card 7: Demi's Lemona -->
+          <!-- 11. Demi's Lemona 250ml -->
           <div class="product-card" data-category="soft-drinks">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/lemon_splash.png" class="card-splash-img" alt="Lemon Splash">
+                <img loading="lazy" decoding="async" src="assets/lime_splash.png" class="card-splash-img" alt="Lime Splash">
               </div>
               <a href="product.html?id=lemon" title="Demi's Lemona (250 ml)">
-                <img decoding="async" loading="lazy" src="assets/lemona_bottle_updated.png" alt="Demi's Lemona" class="primary-img">
-                <img decoding="async" loading="lazy" src="assets/lemona_ad_new.jpg" alt="Demi's Lemona" class="secondary-img">
+                <img loading="lazy" decoding="async" src="assets/soft_drink_lemon.png" alt="Demi's Lemona" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Fizz</div>
+            <div class="product-vendor">Demi's Craft</div>
             <h3 class="product-title"><a href="product.html?id=lemon">Demi's Lemona (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
@@ -277,20 +353,19 @@
             </div>
           </div>
 
-          <!-- Product Card 8: Demi's Tasty Orange -->
+          <!-- 12. Sparkling Blood Orange 250ml -->
           <div class="product-card" data-category="soft-drinks">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/ice_splash.png" class="card-splash-img" alt="Orange Splash">
+                <img loading="lazy" decoding="async" src="assets/lime_splash.png" class="card-splash-img" alt="Orange Splash">
               </div>
-              <a href="product.html?id=orange" title="Demi's Tasty Orange (200 ml)">
-                <img decoding="async" loading="lazy" src="assets/soft_drink_orange.png" alt="Demi's Tasty Orange" class="primary-img">
-                <img decoding="async" loading="lazy" src="assets/orange_ad.jpg" alt="Demi's Tasty Orange" class="secondary-img">
+              <a href="product.html?id=orange" title="Sparkling Blood Orange (250 ml)">
+                <img loading="lazy" decoding="async" src="assets/soft_drink_orange.png" alt="Sparkling Blood Orange" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Fizz</div>
-            <h3 class="product-title"><a href="product.html?id=orange">Demi's Tasty Orange (200 ml)</a></h3>
+            <div class="product-vendor">Demi's Craft</div>
+            <h3 class="product-title"><a href="product.html?id=orange">Sparkling Blood Orange (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 20.00</span>
@@ -301,86 +376,84 @@
             </div>
           </div>
 
-          <!-- Product Card 9: Demi's Cola -->
+          <!-- 13. Demi's Masala Zeera 250ml -->
           <div class="product-card" data-category="soft-drinks">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/cola_splash.png" class="card-splash-img" alt="Cola Splash">
+                <img loading="lazy" decoding="async" src="assets/lime_splash.png" class="card-splash-img" alt="Zeera Splash">
               </div>
-              <a href="product.html?id=cola" title="Demi's Tasty Cola (200 ml)">
-                <img decoding="async" loading="lazy" src="assets/soft_drink_cola.png" alt="Demi's Tasty Cola" class="primary-img">
-                <img decoding="async" loading="lazy" src="assets/cola_ad_ice.jpg" alt="Demi's Tasty Cola" class="secondary-img">
+              <a href="product.html?id=masala-zeera" title="Demi's Masala Zeera (250 ml)">
+                <img loading="lazy" decoding="async" src="assets/soft_drink_masala_zeera.png" alt="Demi's Masala Zeera" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Fizz</div>
-            <h3 class="product-title"><a href="product.html?id=cola">Demi's Tasty Cola (200 ml)</a></h3>
+            <div class="product-vendor">Demi's Craft</div>
+            <h3 class="product-title"><a href="product.html?id=masala-zeera">Demi's Masala Zeera (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 20.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=cola" class="add-to-cart-btn">Order Now</a>
+                <a href="product.html?id=masala-zeera" class="add-to-cart-btn">Order Now</a>
               </div>
             </div>
           </div>
 
-          <!-- MILK -->
-          <!-- Double Toned -->
-          <div class="product-card" data-category="milk">
+          <!-- 14. Demi's Multani Zeera 250ml -->
+          <div class="product-card" data-category="soft-drinks">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
+                <img loading="lazy" decoding="async" src="assets/lime_splash.png" class="card-splash-img" alt="Zeera Splash">
               </div>
-              <a href="product.html?id=double-toned-milk" title="Demi's TastY Milk (400 ml)">
-                <img decoding="async" loading="lazy" src="assets/tasty_milk_400ml.png" alt="Demi's TastY Milk (400 ml)" class="primary-img">
+              <a href="product.html?id=multani-zeera" title="Demi's Multani Zeera (250 ml)">
+                <img loading="lazy" decoding="async" src="assets/soft_drink_multani_zeera.png" alt="Demi's Multani Zeera" class="primary-img">
               </a>
             </figure>
-            <div class="product-vendor">Demi's Dairy</div>
-            <h3 class="product-title"><a href="product.html?id=double-toned-milk">Demi's TastY Milk (400 ml)</a></h3>
+            <div class="product-vendor">Demi's Craft</div>
+            <h3 class="product-title"><a href="product.html?id=multani-zeera">Demi's Multani Zeera (250 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
-                <span class="price-amount">Rs. 35.00</span>
+                <span class="price-amount">Rs. 20.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=double-toned-milk" class="add-to-cart-btn">Order Now</a>
+                <a href="product.html?id=multani-zeera" class="add-to-cart-btn">Order Now</a>
               </div>
             </div>
           </div>
 
-          <!-- Cow Milk -->
+          <!-- 15. Demi's Tasty Milk 125ml -->
           <div class="product-card" data-category="milk">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
+                <img loading="lazy" decoding="async" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
               </div>
-              <a href="product.html?id=cow-milk" title="Demi's Tasty Milk (125 ml)">
-                <img decoding="async" loading="lazy" src="assets/tasty_milk_125ml.png" alt="Demi's Tasty Milk (125 ml)" class="primary-img">
+              <a href="product.html?id=tasty-milk" title="Demi's Tasty Milk (125 ml)">
+                <img loading="lazy" decoding="async" src="assets/tasty_milk_125ml.png" alt="Demi's Tasty Milk (125 ml)" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Dairy</div>
-            <h3 class="product-title"><a href="product.html?id=cow-milk">Demi's Tasty Milk (125 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=tasty-milk">Demi's Tasty Milk (125 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 10.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=cow-milk" class="add-to-cart-btn">Order Now</a>
+                <a href="product.html?id=tasty-milk" class="add-to-cart-btn">Order Now</a>
               </div>
             </div>
           </div>
 
-          <!-- Amole Milk -->
+          <!-- 16. Demi's Amole Double Toned Milk 125ml -->
           <div class="product-card" data-category="milk">
             <span class="moq-badge">MOQ: 500 pcs</span>
             <figure class="product-thumbnail">
               <div class="card-splash-wrapper">
-                <img decoding="async" loading="lazy" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
+                <img loading="lazy" decoding="async" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
               </div>
               <a href="product.html?id=amole-milk" title="Demi's Amole Double Toned Milk (125 ml)">
-                <img decoding="async" loading="lazy" src="assets/amole_milk_pack.png" alt="Demi's Amole Double Toned Milk (125 ml)" class="primary-img">
+                <img loading="lazy" decoding="async" src="assets/amole_milk_pack.png" alt="Demi's Amole Double Toned Milk" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Dairy</div>
@@ -394,24 +467,48 @@
               </div>
             </div>
           </div>
+<!-- 18. Demi's Tasty Milk 400ml -->
+          <div class="product-card" data-category="milk">
+            <span class="moq-badge">MOQ: 500 pcs</span>
+            <figure class="product-thumbnail">
+              <div class="card-splash-wrapper">
+                <img loading="lazy" decoding="async" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
+              </div>
+              <a href="product.html?id=double-toned-milk" title="Demi's Tasty Milk (400 ml)">
+                <img loading="lazy" decoding="async" src="assets/tasty_milk_400ml.png" alt="Demi's Tasty Milk (400 ml)" class="primary-img">
+              </a>
+            </figure>
+            <div class="product-vendor">Demi's Dairy</div>
+            <h3 class="product-title"><a href="product.html?id=double-toned-milk">Demi's Tasty Milk (400 ml)</a></h3>
+            <div class="product-meta quick-add-active">
+              <div class="product-price-wrapper">
+                <span class="price-amount">Rs. 35.00</span>
+              </div>
+              <div class="product-button-wrapper">
+                <a href="product.html?id=double-toned-milk" class="add-to-cart-btn">Order Now</a>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Green Curved Footer -->
+  <!-- Master Site Footer (Matching index.html) -->
   <footer class="tropicana-footer">
-    
     <div class="footer-content-wrap">
       <div class="container" style="position: relative;">
-          <!-- Floating Products Collage in Footer -->
-          <img decoding="async" loading="lazy" src="assets/footer png.png" class="footer-floating-collage" alt="Demi's Products Collage">
+        <!-- Floating Products Collage in Footer -->
+        <img decoding="async" loading="lazy" src="assets/footer png.png" class="footer-floating-collage" alt="Demi's Products Collage">
+        <!-- Centered Master Logo (Demi's Brand Logo) -->
         <div class="footer-logo-row text-center">
           <img decoding="async" fetchpriority="high" src="assets/logo.png" alt="Demi's Master Logo" class="footer-logo-white">
         </div>
+
+        <!-- Footer Columns Grid -->
         <div class="footer-columns-grid">
-          <!-- Column 1: Main Pages -->
+          <!-- Column 1: Navigation -->
           <div class="footer-col font-large">
             <h4>NAVIGATION</h4>
             <a href="index.html" class="col-link-bold">Home</a>
@@ -420,59 +517,37 @@
             <a href="partner.html" class="col-link-bold">Become a Partner</a>
             <a href="contact.html" class="col-link-bold">Contact Us</a>
           </div>
-          <div class="footer-col font-large"></div>
-          <div class="footer-col font-small"></div>
+
+          <!-- Column 2: Spacer -->
+          <div class="footer-col font-large">
+          </div>
+
+          <!-- Column 3: Spacer -->
+          <div class="footer-col font-small">
+          </div>
+
           <!-- Column 4: Contact Form -->
-          <div class="footer-col footer-contact-form-col">
-            <h4>GET IN TOUCH</h4>
-            <form id="footer-contact-form" class="footer-contact-form">
-              <input type="text" id="fc-name" placeholder="Your Name" required aria-label="Your Name">
-              <input type="email" id="fc-email" placeholder="Your Email" required aria-label="Your Email">
-              <textarea id="fc-message" placeholder="Message..." rows="2" required aria-label="Message"></textarea>
-              <button type="submit" class="fc-submit-btn">Send Message</button>
+          <div class="footer-col font-form">
+            <form class="footer-contact-form" id="footer-contact-form">
+              <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: #fff; font-family: var(--font-title);">GET IN TOUCH</h4>
+              <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-bottom: 0.8rem;">Drop your email or phone for wholesale catalog & price list.</p>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.8rem;">
+                <input type="text" placeholder="Your Email / Phone" required style="flex: 1; padding: 0.6rem 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: #fff; font-size: 0.85rem; outline: none;">
+                <button type="submit" style="padding: 0.6rem 1rem; border-radius: 8px; border: none; background: #fff; color: #016130; font-weight: 700; font-size: 0.85rem; cursor: pointer;">Send</button>
+              </div>
             </form>
           </div>
         </div>
-        <div class="footer-bottom-row">
-          <div class="social-icons-white">
-            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-          <div class="footer-copyright">
-            <p>© 2026 DEMI'S PRODUCTS, INC. ALL RIGHTS RESERVED.</p>
-          </div>
+
+        <div class="footer-bottom text-center">
+          <p>&copy; 2026 Demigod Agro Food Pvt. Ltd. All Rights Reserved.</p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Interactive toast container -->
-  <div class="toast-container" id="toast-wrapper"></div>
-
-  <!-- Scripts -->
+  <!-- Filter, Search & Navbar Script -->
   <script>
-    // Navbar Offcanvas Menu Toggle
-    const toggle = document.querySelector('.mobile-toggle');
-    const menu = document.querySelector('.mobile-menu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const active = menu.classList.toggle('active');
-        toggle.classList.toggle('active');
-        if (active) {
-          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
-          toggle.querySelectorAll('span')[1].style.opacity = '0';
-          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
-        } else {
-          toggle.querySelectorAll('span')[0].style.transform = 'none';
-          toggle.querySelectorAll('span')[1].style.opacity = '1';
-          toggle.querySelectorAll('span')[2].style.transform = 'none';
-        }
-      });
-    }
-
     // Combined Category & Search Filtering Function
     const tabs = document.querySelectorAll('.filter-tab');
     const cards = document.querySelectorAll('.product-card');
@@ -511,32 +586,30 @@
       });
     });
 
-    // Toast Notice Helper
-    function showToast(message) {
-      const container = document.getElementById('toast-wrapper');
-      const toast = document.createElement('div');
-      toast.className = 'toast-notice';
-      toast.innerHTML = `
-        <div class="toast-content">
-          <i class="fas fa-check-circle" style="color: var(--accent-primary); margin-right: 10px;"></i>
-          <span>${message}</span>
-        </div>
-      `;
-      container.appendChild(toast);
-      setTimeout(() => toast.classList.add('show'), 50);
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 400);
-      }, 3500);
+    // Handle Category Parameter in URL (e.g. products.html?cat=juices)
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat');
+    if (catParam) {
+      const targetTab = document.querySelector(`.filter-tab[data-filter="${catParam}"]`);
+      if (targetTab) targetTab.click();
     }
 
-    // Handle Contact Form Submit
-    const contactForm = document.getElementById('footer-contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        showToast("Thanks for reaching out! We will contact you soon.");
-        contactForm.reset();
+    // Mobile Navigation Toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const active = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        if (active) {
+          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+          toggle.querySelectorAll('span')[1].style.opacity = '0';
+          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+        } else {
+          toggle.querySelectorAll('span')[0].style.transform = 'none';
+          toggle.querySelectorAll('span')[1].style.opacity = '1';
+          toggle.querySelectorAll('span')[2].style.transform = 'none';
+        }
       });
     }
   </script>
@@ -582,7 +655,7 @@
               <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; font-weight: 500;">
                 <input type="checkbox" checked> Remember Me
               </label>
-              <a href="javascript:void(0)" onclick="showToast(\'Password Reset\', \'Password reset instructions have been sent to your email.\', \'fa-key\')">Forgot Password?</a>
+              <a href="#">Forgot Password?</a>
             </div>
             <button type="submit" class="btn-account-submit" id="btn-submit-login">Sign In to My Account</button>
           </form>

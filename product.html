@@ -806,7 +806,6 @@
           <!-- Left Column: Visuals -->
           <div class="detail-visual-wrapper">
             <div class="detail-visual" id="detail-visual-box">
-              <img decoding="async" loading="lazy" src="assets/mango_splash_card.png" id="p-splash" class="detail-splash" alt="Splash Background">
               <img decoding="async" loading="lazy" src="assets/brand_pack_0005.png" id="p-image" class="detail-pack" alt="Product Pack">
             </div>
             
@@ -1075,6 +1074,192 @@
   <script>
     // Product Data Catalog
         // Complete Product Data Catalog for all products
+    // Extended Product Database with Rich Ingredients, Sourcing, Reviews, and Natural Cards
+    const productExtras = {
+      "mango": {
+        ingredients: ["100% Alphonso Mango Pulp", "Purified Water", "Vitamin C (Ascorbic Acid)", "Natural Fruit Sugar"],
+        sourcing: "Handpicked Alphonso mangoes from sunshine orchards in Ratnagiri, Maharashtra. Cold-extracted and flash sterilized with UHT technology.",
+        naturalCards: [
+          { icon: "fa-leaf", title: "Ratnagiri Alphonso", desc: "100% authentic pulp from GI-tagged Ratnagiri mangoes." },
+          { icon: "fa-sun", title: "Sun-Ripened", desc: "Tree-ripened naturally without artificial chemical ripeners." },
+          { icon: "fa-shield-virus", title: "UHT Sterilized", desc: "Aseptic packaging ensures 100% preservative-free purity." },
+          { icon: "fa-bolt", title: "Rich Vitamin C", desc: "Provides 45% of your recommended daily immunity boost." }
+        ],
+        reviews: [
+          { name: "Priya Sharma", rating: 5, date: "2 days ago", comment: "Tastes like eating fresh Alphonso mangoes straight from the orchard! Love the aseptic packaging." },
+          { name: "Rahul Verma", rating: 5, date: "1 week ago", comment: "No artificial flavor or weird aftertaste. Easily the best mango juice in the market." }
+        ]
+      },
+      "litchi": {
+        ingredients: ["Fresh Litchi Pulp", "Purified Water", "Vitamin C", "Natural Cane Sugar"],
+        sourcing: "Harvested from lush Muzaffarpur orchards. Cold-extracted and packed under strict sterile conditions.",
+        naturalCards: [
+          { icon: "fa-seedling", title: "Muzaffarpur Harvest", desc: "Sourced directly from certified organic litchi growers." },
+          { icon: "fa-tint", title: "Juicy Hydration", desc: "Naturally rich in potassium and fruit electrolytes." },
+          { icon: "fa-lock", title: "Aseptic Freshness", desc: "Sealed fresh with zero chemical preservatives." },
+          { icon: "fa-heart", title: "Sweet & Refreshing", desc: "Authentic floral litchi aroma in every single sip." }
+        ],
+        reviews: [
+          { name: "Ananya Roy", rating: 5, date: "3 days ago", comment: "Super refreshing! The litchi aroma is so natural and authentic." },
+          { name: "Vikram Patel", rating: 5, date: "2 weeks ago", comment: "My kids absolutely love this litchi juice in their lunch boxes." }
+        ]
+      },
+      "apple": {
+        ingredients: ["Kinnaur Apple Concentrate", "Purified Water", "Vitamin C"],
+        sourcing: "Crisp red apples grown in high-altitude mountain orchards of Himachal Pradesh.",
+        naturalCards: [
+          { icon: "fa-mountain", title: "Himachal Orchards", desc: "Handpicked crisp apples from high-altitude Kinnaur farms." },
+          { icon: "fa-apple-whole", title: "100% Crisp Flavor", desc: "Natural sweetness with no artificial colors or additives." },
+          { icon: "fa-shield-heart", title: "Antioxidant Rich", desc: "Packed with natural flavonoids and Vitamin C." },
+          { icon: "fa-box-open", title: "Sterile Packaging", desc: "Multilayer aseptic pack preserves mountain freshness." }
+        ],
+        reviews: [
+          { name: "Suresh Gupta", rating: 5, date: "4 days ago", comment: "Crisp and sweet! Exactly what real apple juice should taste like." },
+          { name: "Neha Singh", rating: 5, date: "1 week ago", comment: "Very natural taste and clean packaging." }
+        ]
+      },
+      "mixed-fruit": {
+        ingredients: ["Mango Pulp", "Guava Pulp", "Apple Juice Concentrate", "Litchi Pulp", "Vitamin C"],
+        sourcing: "A balanced blend of 5 orchard-fresh fruits processed at optimal ripeness.",
+        naturalCards: [
+          { icon: "fa-blender", title: "5-Fruit Blend", desc: "Harmonious combination of Mango, Guava, Apple, Litchi & Peach." },
+          { icon: "fa-gem", title: "Multi-Vitamin", desc: "Delivers a broad spectrum of natural vitamins & minerals." },
+          { icon: "fa-leaf", title: "Pure Fruit Fiber", desc: "Retains natural pectin and healthy fruit dietary fiber." },
+          { icon: "fa-check-double", title: "Certified Pure", desc: "FSSAI approved with zero artificial preservatives." }
+        ],
+        reviews: [
+          { name: "Meera Joshi", rating: 5, date: "Yesterday", comment: "The combination of fruits is perfectly balanced. Highly recommended!" },
+          { name: "Karan Malhotra", rating: 5, date: "5 days ago", comment: "Great morning energy drink for the family." }
+        ]
+      },
+      "guava": {
+        ingredients: ["Pink Guava Pulp", "Purified Water", "Black Salt", "Vitamin C"],
+        sourcing: "Sourced from Allahabad pink guava orchards, renowned for intense aroma and deep color.",
+        naturalCards: [
+          { icon: "fa-spa", title: "Allahabad Pink Guava", desc: "Rich fragrant pulp from premium pink guava varieties." },
+          { icon: "fa-mortar-pestle", title: "Pinch of Black Salt", desc: "Traditional twist of Himalayan pink salt for digestion." },
+          { icon: "fa-feather", title: "High Dietary Fiber", desc: "Supports smooth healthy digestion naturally." },
+          { icon: "fa-sun", title: "Sun-Harvested", desc: "Picked at peak ripeness for full-bodied tropical flavor." }
+        ],
+        reviews: [
+          { name: "Divya Nair", rating: 5, date: "3 days ago", comment: "The touch of black salt with pink guava is magical!" },
+          { name: "Amit Kumar", rating: 5, date: "1 week ago", comment: "Thick, rich pulp texture. Fantastic quality." }
+        ]
+      },
+      "tasty-milk": {
+        ingredients: ["Organic Whole Milk", "Vitamin D3", "Calcium"],
+        sourcing: "Directly collected from certified organic green dairy farms in Uttarakhand.",
+        naturalCards: [
+          { icon: "fa-cow", title: "Organic Dairy", desc: "Pure cow milk from free-roaming, grass-fed cows." },
+          { icon: "fa-fire", title: "UHT Sterilized", desc: "Ultra-high temperature process eliminates 100% bacteria." },
+          { icon: "fa-bone", title: "Calcium & Vit D3", desc: "Fortified naturally for strong bones and immunity." },
+          { icon: "fa-snowflake", title: "90-Day Freshness", desc: "No refrigeration needed until sealed pouch is opened." }
+        ],
+        reviews: [
+          { name: "Ramesh Sen", rating: 5, date: "1 day ago", comment: "Very convenient for daily coffee and kids' breakfast. Tastes very fresh." },
+          { name: "Sunita Reddy", rating: 5, date: "4 days ago", comment: "Great quality milk pouch. Lasts long without spoiling." }
+        ]
+      },
+      "amole-milk": {
+        ingredients: ["Double Toned Cow Milk", "Calcium", "Vitamin A & D"],
+        sourcing: "Low-fat double toned milk from local Uttarakhand farmers.",
+        naturalCards: [
+          { icon: "fa-weight-scale", title: "Low Fat (1.5%)", desc: "Ideal for weight management and light healthy nutrition." },
+          { icon: "fa-glass-water", title: "Smooth Texture", desc: "Light, digestible, and easy on the stomach." },
+          { icon: "fa-shield-halved", title: "Micro-Filtered", desc: "Triple filtered for absolute microbiological safety." },
+          { icon: "fa-cubes", title: "Protein Packed", desc: "Provides 3.3g of pure dairy protein per serving." }
+        ],
+        reviews: [
+          { name: "Alok Mehta", rating: 5, date: "2 days ago", comment: "Perfect low-fat milk for my workout routine." },
+          { name: "Pooja Hegde", rating: 5, date: "1 week ago", comment: "Clean taste, no dairy smell, very high quality." }
+        ]
+      },
+      "double-toned-milk": {
+        ingredients: ["UHT Skimmed Milk", "Vitamin D3", "Calcium"],
+        sourcing: "Standardized 400 ml family pouch sterilized with European UHT machinery.",
+        naturalCards: [
+          { icon: "fa-box", title: "400 ml Value Pouch", desc: "Family size pouch designed for daily kitchen use." },
+          { icon: "fa-check", title: "Zero Bacteria", desc: "UHT process ensures 100% sterile aseptic safety." },
+          { icon: "fa-heart-pulse", title: "Slim Health", desc: "Low calories & fat to keep your family fit." },
+          { icon: "fa-award", title: "90 Days Shelf Life", desc: "Stays fresh for 3 months sealed at room temp." }
+        ],
+        reviews: [
+          { name: "Gaurav Shah", rating: 5, date: "Yesterday", comment: "Best 400ml milk pouch on the market. Always fresh." },
+          { name: "Deepa Verma", rating: 5, date: "3 days ago", comment: "Super reliable packaging and great taste." }
+        ]
+      },
+      "cola": {
+        ingredients: ["Carbonated Water", "Prebiotic Fiber (Inulin)", "Natural Cola Extracts", "Cane Sugar"],
+        sourcing: "Craft brewed soda infused with natural prebiotic plant fiber for digestive wellness.",
+        naturalCards: [
+          { icon: "fa-bacteria", title: "Prebiotic Fiber", desc: "Contains 3g of digestive fiber to support gut microbiome." },
+          { icon: "fa-champagne-glasses", title: "Crisp Carbonation", desc: "Fine bubbly fizz with zero artificial chemical acidity." },
+          { icon: "fa-leaf", title: "Natural Cola Nut", desc: "Flavored with real cola nut & citrus extracts." },
+          { icon: "fa-battery-half", title: "Low Sugar", desc: "50% less sugar than conventional commercial sodas." }
+        ],
+        reviews: [
+          { name: "Tarun Kapoor", rating: 5, date: "2 days ago", comment: "Guilt-free cola that actually tastes amazing! Gut friendly." },
+          { name: "Simran Kaur", rating: 5, date: "5 days ago", comment: "Refreshing fizz without the sugary heavy feeling." }
+        ]
+      },
+      "lemon": {
+        ingredients: ["Carbonated Water", "Himalayan Lemon Juice", "Mint Extracts", "Natural Sugar"],
+        sourcing: "Cold-pressed lemons from Himalayan foothills blended into a sparkling fizzy lemonade.",
+        naturalCards: [
+          { icon: "fa-lemon", title: "Himalayan Lemons", desc: "Fresh lemon juice pressed from Himalayan citrus trees." },
+          { icon: "fa-wind", title: "Cooling Mint", desc: "Infused with natural garden mint for extra cooling." },
+          { icon: "fa-bolt", title: "Electrolyte Spark", desc: "Instantly rehydrates and restores natural stamina." },
+          { icon: "fa-glass-cheers", title: "Zesty Fizz", desc: "Sparkling lemon soda with crisp citrus punch." }
+        ],
+        reviews: [
+          { name: "Nikhil Saxena", rating: 5, date: "3 days ago", comment: "The ultimate summer drink! Sweet and tangy perfection." },
+          { name: "Rhea Sen", rating: 5, date: "1 week ago", comment: "Love the mint & lemon combo. Very refreshing." }
+        ]
+      },
+      "orange": {
+        ingredients: ["Carbonated Water", "Blood Orange Juice", "Vitamin C", "Natural Cane Sugar"],
+        sourcing: "Sparkling soda crafted from Mediterranean blood oranges.",
+        naturalCards: [
+          { icon: "fa-sun", title: "Blood Orange", desc: "Juiced from rich crimson blood oranges for intense citrus flavor." },
+          { icon: "fa-certificate", title: "Real Fruit Juice", desc: "Made with 12% real fruit juice content." },
+          { icon: "fa-shield", title: "Vitamin C Boost", desc: "Packed with 100% daily Vitamin C requirement." },
+          { icon: "fa-bottle-droplet", title: "Eco Glass/PET", desc: "100% recyclable packaging for eco-conscious drinking." }
+        ],
+        reviews: [
+          { name: "Siddharth Bose", rating: 5, date: "Yesterday", comment: "Bright citrus flavor, not too sweet. Really high quality soda." },
+          { name: "Tanvi Das", rating: 5, date: "4 days ago", comment: "Blood orange flavor is spot on!" }
+        ]
+      },
+      "masala-zeera": {
+        ingredients: ["Carbonated Water", "Roasted Cumin (Zeera)", "Himalayan Black Salt", "Lemon Juice"],
+        sourcing: "Traditional Indian digestive soda brewed with slow-roasted cumin seeds.",
+        naturalCards: [
+          { icon: "fa-mortar-pestle", title: "Roasted Cumin", desc: "Slow-roasted cumin seeds for authentic spicy aroma." },
+          { icon: "fa-gem", title: "Black Salt Twist", desc: "Pink Himalayan rock salt aids quick digestive comfort." },
+          { icon: "fa-utensils", title: "Post-Meal Tonic", desc: "Perfect accompaniment for heavy meals & festive dining." },
+          { icon: "fa-fire-burner", title: "Ayurvedic Blend", desc: "Inspired by age-old Indian digestive wellness recipes." }
+        ],
+        reviews: [
+          { name: "Harish Pillai", rating: 5, date: "2 days ago", comment: "Super digestive soda after heavy meals. Tangy and spicy!" },
+          { name: "Neelam Rao", rating: 5, date: "6 days ago", comment: "Best masala zeera drink available. Great fizz." }
+        ]
+      },
+      "multani-zeera": {
+        ingredients: ["Carbonated Water", "Multani Spices & Cumin", "Black Salt", "Lime Juice"],
+        sourcing: "Heritage Multani spice recipe infused with fizzy sparkling water.",
+        naturalCards: [
+          { icon: "fa-pepper-hot", title: "Heritage Spices", desc: "Blend of 7 traditional Multani aromatic digestives." },
+          { icon: "fa-bolt", title: "Instant Refreshment", desc: "Cooling spice blend that cuts through summer heat." },
+          { icon: "fa-gutters", title: "Gut Comfort", desc: "Relieves acidity and heavy stomach discomfort." },
+          { icon: "fa-medal", title: "No Artificial Colors", desc: "Natural spice color with zero synthetic dyes." }
+        ],
+        reviews: [
+          { name: "Mohan Lal", rating: 5, date: "3 days ago", comment: "The spice mix in Multani Zeera is awesome. Very refreshing." },
+          { name: "Anita Trivedi", rating: 5, date: "1 week ago", comment: "Digestive and tasty. 5 stars!" }
+        ]
+      }
+    };
+
     const productsData = {
       // 160 ml Juices
       "mango": {
@@ -1096,8 +1281,7 @@
         badge3: "Aseptic Packed",
         gallery: [
           "assets/brand_pack_0005.png",
-          "assets/mango_pack_splash.jpg",
-          "assets/mango_splash_card.png"
+          "assets/brand_pack_0005_200ml.png"
         ]
       },
       "litchi": {
@@ -1119,8 +1303,7 @@
         badge3: "Aseptic Boxed",
         gallery: [
           "assets/brand_pack_0015.png",
-          "assets/litchi_pack_splash.jpg",
-          "assets/litchi_splash_card.png"
+          "assets/brand_pack_0015_200ml.png"
         ]
       },
       "apple": {
@@ -1142,8 +1325,7 @@
         badge3: "100% Natural",
         gallery: [
           "assets/brand_pack_0016.png",
-          "assets/apple_pack_splash.jpg",
-          "assets/apple_splash_card.png"
+          "assets/brand_pack_0016_200ml.png"
         ]
       },
       "mixed-fruit": {
@@ -1165,7 +1347,7 @@
         badge3: "Aseptic Boxed",
         gallery: [
           "assets/brand_pack_0017.png",
-          "assets/mixed_fruit_splash_card.png"
+          "assets/brand_pack_0017_200ml.png"
         ]
       },
       "guava": {
@@ -1187,7 +1369,7 @@
         badge3: "Aseptic Sealed",
         gallery: [
           "assets/brand_pack_0018.png",
-          "assets/guava_splash_card.png"
+          "assets/brand_pack_0018_200ml.png"
         ]
       },
 
@@ -1301,8 +1483,7 @@
         badge3: "No Refrigeration Required",
         gallery: [
           "assets/tasty_milk_125ml.png",
-          "assets/tasty_milk.png",
-          "assets/milk_splash.png"
+          "assets/tasty_milk_400ml.png"
         ]
       },
       "amole-milk": {
@@ -1323,30 +1504,7 @@
         badge2: "Low Fat",
         badge3: "90 Days Shelf Life",
         gallery: [
-          "assets/amole_milk_pack.png",
-          "assets/milk_splash.png"
-        ]
-      },
-      "cow-milk": {
-        name: "Pure Farm Cow Milk (500 ml)",
-        price: "Rs. 30.00",
-        category: "Pure Milk",
-        image: "assets/tasty_milk.png",
-        splash: "assets/milk_splash.png",
-        color: "#0288d1",
-        desc: "Pure farm cow milk in 500 ml pack. High calcium, natural proteins, and zero additives. Processed under European sanitation guidelines.",
-        calories: "68 kcal",
-        fat: "3.8g",
-        carbs: "4.7g",
-        sugars: "0g",
-        protein: "3.4g",
-        vitc: "0mg",
-        badge1: "100% Farm Cow",
-        badge2: "500 ml Pack",
-        badge3: "Rich in Calcium",
-        gallery: [
-          "assets/tasty_milk.png",
-          "assets/milk_splash.png"
+          "assets/amole_milk_pack.png"
         ]
       },
       "double-toned-milk": {
@@ -1368,7 +1526,7 @@
         badge3: "Aseptic Polypack",
         gallery: [
           "assets/tasty_milk_400ml.png",
-          "assets/milk_splash.png"
+          "assets/tasty_milk_125ml.png"
         ]
       },
 
@@ -1391,9 +1549,7 @@
         badge2: "Kola Nut Extract",
         badge3: "Prebiotic Fiber",
         gallery: [
-          "assets/soft_drink_cola.png",
-          "assets/cola_ad_new.jpg",
-          "assets/cola_ad_ice.jpg"
+          "assets/soft_drink_cola.png"
         ]
       },
       "lemon": {
@@ -1414,8 +1570,7 @@
         badge2: "Prebiotic Fibers",
         badge3: "Low Calories",
         gallery: [
-          "assets/soft_drink_lemon.png",
-          "assets/lemona_ad_new.jpg"
+          "assets/soft_drink_lemon.png"
         ]
       },
       "orange": {
@@ -1436,8 +1591,7 @@
         badge2: "Vitamin C Boost",
         badge3: "Crisp Carbonation",
         gallery: [
-          "assets/soft_drink_orange.png",
-          "assets/orange_ad.jpg"
+          "assets/soft_drink_orange.png"
         ]
       },
       "masala-zeera": {
@@ -1552,10 +1706,18 @@
       }
     });
 
-    // Parse product ID from URL
-        // Parse product ID from URL with robust alias resolution
+    // Parse product ID from URL with comprehensive parameter & alias resolution
     const urlParams = new URLSearchParams(window.location.search);
-    let rawId = (urlParams.get('id') || 'mango').toLowerCase().trim();
+    let rawId = (
+      urlParams.get('id') ||
+      urlParams.get('product') ||
+      urlParams.get('slug') ||
+      urlParams.get('p') ||
+      urlParams.get('item') ||
+      urlParams.get('name') ||
+      window.location.hash.replace('#', '') ||
+      'mango'
+    ).toLowerCase().trim();
 
     const aliasMap = {
       'mango-160ml': 'mango', 'mango-juice': 'mango', 'alphonso-mango': 'mango',
@@ -1567,21 +1729,24 @@
       'apple-200': 'apple-200ml', 'apple-drink': 'apple-200ml',
       'guava-160ml': 'guava', 'guava-juice': 'guava', 'pink-guava': 'guava',
       'guava-200': 'guava-200ml', 'guava-drink': 'guava-200ml',
-      'mix-fruit': 'mixed-fruit', 'mixed-fruit-160ml': 'mixed-fruit', 'mixed_fruit': 'mixed-fruit', 'aam-rus-160ml': 'mixed-fruit',
+      'mix-fruit': 'mixed-fruit', 'mixed-fruit-160ml': 'mixed-fruit', 'mixed_fruit': 'mixed-fruit', 'mix_fruit': 'mixed-fruit',
       'tasty-milk-125ml': 'tasty-milk', 'tasty_milk': 'tasty-milk', 'milk-125ml': 'tasty-milk', 'milk': 'tasty-milk',
-      'amole': 'amole-milk', 'amole-125ml': 'amole-milk', 'amole_milk': 'amole-milk',
-      'cow_milk': 'cow-milk', 'farm-cow-milk': 'cow-milk', 'pure-cow-milk': 'cow-milk',
-      'tasty-milk-400ml': 'double-toned-milk', 'double_toned_milk': 'double-toned-milk', 'skimmed-milk': 'double-toned-milk',
-      'craft-cola': 'cola', 'demi-cola': 'cola', 'soft-drink-cola': 'cola',
-      'lemon-lime': 'lemon', 'lemona': 'lemon', 'sparkling-lemon': 'lemon',
-      'blood-orange': 'orange', 'sparkling-orange': 'orange',
-      'zeera': 'masala-zeera', 'masala_zeera': 'masala-zeera', 'zeera-soda': 'masala-zeera',
-      'multani': 'multani-zeera', 'multani_zeera': 'multani-zeera', 'multani-zeera-soda': 'multani-zeera'
+      'amole': 'amole-milk', 'amole-125ml': 'amole-milk', 'amole_milk': 'amole-milk', 'amole-double-toned': 'amole-milk',
+      'cow_milk': 'tasty-milk', 'farm-cow-milk': 'tasty-milk', 'pure-cow-milk': 'tasty-milk',
+      'tasty-milk-400ml': 'double-toned-milk', 'double_toned_milk': 'double-toned-milk', 'skimmed-milk': 'double-toned-milk', 'tasty-milk-400': 'double-toned-milk',
+      'craft-cola': 'cola', 'demi-cola': 'cola', 'soft-drink-cola': 'cola', 'prebiotic-cola': 'cola',
+      'lemon-lime': 'lemon', 'lemona': 'lemon', 'sparkling-lemon': 'lemon', 'demis-lemona': 'lemon',
+      'blood-orange': 'orange', 'sparkling-orange': 'orange', 'tasty-orange': 'orange',
+      'zeera': 'masala-zeera', 'masala_zeera': 'masala-zeera', 'zeera-soda': 'masala-zeera', 'masala-zeera-250ml': 'masala-zeera',
+      'multani': 'multani-zeera', 'multani_zeera': 'multani-zeera', 'multani-zeera-soda': 'multani-zeera', 'multani-zeera-250ml': 'multani-zeera'
     };
 
     const pId = aliasMap[rawId] || (productsData[rawId] ? rawId : 'mango');
     const product = productsData[pId] || productsData['mango'];
-    
+
+    // Dynamically update Page Title for 100% unique brand experience
+    document.title = `${product.name} — Demi's Tasty 🍊`;
+
     // Select active variant
     let selectedPkg = "single";  // single vs crate
 
@@ -1591,93 +1756,66 @@
         volumeText = "160 ml";
       } else if (pId === "double-toned-milk") {
         volumeText = "400 ml";
-      } else if (pId === "cow-milk" || pId === "amole-milk") {
+      } else if (pId === "tasty-milk" || pId === "amole-milk") {
         volumeText = "125 ml";
+      } else if (pId === "cola" || pId === "lemon" || pId === "orange") {
+        volumeText = "250 ml";
       }
-      
-      return {
-        name: product.name,
-        price: parseFloat(product.price.replace(/[^0-9.]/g, '')),
-        image: product.image,
-        volume: volumeText
-      };
+
+      if (selectedPkg === "single") {
+        return {
+          price: product.price,
+          packText: `Single Pack (${volumeText})`,
+          unitText: `Rs. ${parseFloat(product.price.replace(/[^0-9.]/g,'') || 10).toFixed(2)} / pack`,
+          image: product.image
+        };
+      } else {
+        const cratePrice = (pId === 'double-toned-milk') ? "Rs. 420.00" : (pId === "tasty-milk" || pId === "amole-milk" ? "Rs. 240.00" : "Rs. 300.00");
+        return {
+          price: cratePrice,
+          packText: `Crate Box (24 Packs x ${volumeText})`,
+          unitText: "Bulk Savings Applied",
+          image: product.image
+        };
+      }
     }
 
-    // Render volume info
-    const volumeOptionsContainer = document.getElementById('volume-options');
-    volumeOptionsContainer.innerHTML = '';
-    const activeData = getActiveData();
-    const btn = document.createElement('button');
-    btn.className = "size-option-btn active";
-    btn.disabled = true;
-    btn.innerText = activeData.volume;
-    volumeOptionsContainer.appendChild(btn);
+    // Helper for safe innerText assignment
+    function setSafeText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = text;
+    }
+    function setSafeHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
 
-    // Toggle Packaging Selector
-    const sizeSingleBtn = document.getElementById('size-single-btn');
-    const sizeCrateBtn = document.getElementById('size-crate-btn');
-    
-    sizeSingleBtn.addEventListener('click', () => {
-      sizeSingleBtn.classList.add('active');
-      sizeCrateBtn.classList.remove('active');
-      selectedPkg = 'single';
-      updatePriceDisplay();
-    });
-    
-    sizeCrateBtn.addEventListener('click', () => {
-      sizeCrateBtn.classList.add('active');
-      sizeSingleBtn.classList.remove('active');
-      selectedPkg = 'crate';
-      updatePriceDisplay();
-    });
-
-    // Update Price Display
     function updatePriceDisplay() {
       const activeData = getActiveData();
-      if (selectedPkg === 'single') {
-        document.getElementById('p-price').innerText = "Rs. " + activeData.price.toFixed(2);
-      } else {
-        const cratePriceVal = activeData.price * 24;
-        document.getElementById('p-price').innerText = "Rs. " + cratePriceVal.toFixed(2);
-      }
-    }
-
-    // Update Content
-    function updatePageContent() {
-      const activeData = getActiveData();
-      
-      // Update Title & Image & Category
-      document.getElementById('p-title').innerText = activeData.name;
-      document.getElementById('p-bread-title').innerText = activeData.name;
-      if (document.getElementById('p-category')) document.getElementById('p-category').innerText = (product.category || 'Juices').toUpperCase();
-      if (document.getElementById('p-bread-category')) document.getElementById('p-bread-category').innerText = product.category || 'Juices';
-      document.title = `${activeData.name} — Demi's Tasty 🍊`;
+      setSafeText('p-price', activeData.price);
+      setSafeText('pkg-pack-text', activeData.packText);
+      setSafeText('pkg-unit-text', activeData.unitText);
       
       // Update Image & Splash
-      document.getElementById('p-image').src = activeData.image;
-      if (document.getElementById('p-splash') && product.splash) document.getElementById('p-splash').src = product.splash;
+      if (document.getElementById('p-image')) document.getElementById('p-image').src = activeData.image;
       
-      // Update Gallery Thumbnail Index 0
-      if (product.gallery && product.gallery.length > 0) {
-        product.gallery[0] = activeData.image;
-        renderGalleryThumbs();
-      }
-      
-      updatePriceDisplay();
     }
 
     // Render Gallery Thumbnails helper
     const galleryContainer = document.getElementById('p-gallery');
-    const visualBox = document.getElementById('detail-visual-box');
     let currentGalleryIndex = 0;
 
     function renderGalleryThumbs() {
+      if (!galleryContainer) return;
       galleryContainer.innerHTML = '';
+      if (!product.gallery || product.gallery.length === 0) {
+        product.gallery = [product.image];
+      }
       product.gallery.forEach((imgSrc, index) => {
         const thumb = document.createElement('div');
         thumb.className = `gallery-thumb ${index === currentGalleryIndex ? 'active' : ''}`;
         thumb.innerHTML = `<img decoding="async" loading="lazy" src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
-        
+
         thumb.addEventListener('click', () => {
           currentGalleryIndex = index;
           updateGalleryDisplay();
@@ -1687,238 +1825,264 @@
     }
 
     function updateGalleryDisplay() {
+      if (!galleryContainer) return;
       galleryContainer.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
         if (idx === currentGalleryIndex) t.classList.add('active');
         else t.classList.remove('active');
       });
-      
+
       const imgSrc = product.gallery[currentGalleryIndex];
-      document.getElementById('p-image').src = imgSrc;
-      
-      if (currentGalleryIndex === 1 && product.gallery.length > 1) {
-        visualBox.classList.add('full-image-active');
-      } else {
-        visualBox.classList.remove('full-image-active');
+      if (imgSrc && document.getElementById('p-image')) {
+        document.getElementById('p-image').src = imgSrc;
       }
     }
 
-    document.getElementById('gallery-prev-btn').addEventListener('click', () => {
-      if (product.gallery && product.gallery.length > 1) {
-        currentGalleryIndex = (currentGalleryIndex - 1 + product.gallery.length) % product.gallery.length;
-        updateGalleryDisplay();
-      }
-    });
-    
-    document.getElementById('gallery-next-btn').addEventListener('click', () => {
-      if (product.gallery && product.gallery.length > 1) {
-        currentGalleryIndex = (currentGalleryIndex + 1) % product.gallery.length;
-        updateGalleryDisplay();
-      }
-    });
+    // Initialize DOM Content safely
+    setSafeText('p-title', product.name);
+    setSafeText('p-category', product.category);
+    setSafeText('p-desc', product.desc);
+    setSafeText('p-calories', product.calories);
+    setSafeText('p-fat', product.fat);
+    setSafeText('p-carbs', product.carbs);
+    setSafeText('p-sugars', product.sugars);
+    setSafeText('p-protein', product.protein);
+    setSafeText('p-vitc', product.vitc);
 
-    // Swapping Tabs
+    setSafeHTML('badge-1', `<i class="fas fa-check-circle"></i> ${product.badge1 || '100% Natural'}`);
+    setSafeHTML('badge-2', `<i class="fas fa-check-circle"></i> ${product.badge2 || 'No Preservatives'}`);
+    setSafeHTML('badge-3', `<i class="fas fa-check-circle"></i> ${product.badge3 || 'Sterilized UHT'}`);
+
+    // Set Theme Color
+    const visualEl = document.querySelector('.detail-visual');
+    if (visualEl && product.color) {
+      visualEl.style.backgroundColor = product.color + '12';
+    }
+
+    // Packaging Selector Buttons
+    // ════════════════════════════════════════════════════════════
+    // DYNAMIC SINGLE PRODUCT PAGE FEATURE SUITE (ALL 6 FEATURES)
+    // ════════════════════════════════════════════════════════════
+    
+    // 1. PACKAGING SELECTOR BUTTONS (Single vs Crate)
+    const btnSingle = document.getElementById('size-single-btn');
+    const btnCrate = document.getElementById('size-crate-btn');
+
+    if (btnSingle && btnCrate) {
+      btnSingle.addEventListener('click', () => {
+        selectedPkg = "single";
+        btnSingle.classList.add('active');
+        btnCrate.classList.remove('active');
+        updatePriceDisplay();
+      });
+
+      btnCrate.addEventListener('click', () => {
+        selectedPkg = "crate";
+        btnCrate.classList.add('active');
+        btnSingle.classList.remove('active');
+        updatePriceDisplay();
+      });
+    }
+
+    // 2. QUANTITY COUNTER (+ / - / input)
+    let qty = 1;
+    const qtyInput = document.getElementById('qty-input');
+    const btnMinus = document.getElementById('qty-minus');
+    const btnPlus = document.getElementById('qty-plus');
+
+    if (btnMinus && btnPlus && qtyInput) {
+      btnMinus.addEventListener('click', () => {
+        let val = parseInt(qtyInput.value) || 1;
+        if (val > 1) {
+          qtyInput.value = val - 1;
+        }
+      });
+      btnPlus.addEventListener('click', () => {
+        let val = parseInt(qtyInput.value) || 1;
+        qtyInput.value = val + 1;
+      });
+    }
+
+    // 3. ADD TO BASKET / CART BUTTON ACTION
+    const btnAddToCart = document.getElementById('add-to-cart-action');
+    if (btnAddToCart) {
+      btnAddToCart.addEventListener('click', () => {
+        const itemQty = parseInt(document.getElementById('qty-input')?.value) || 1;
+        const activeData = getActiveData();
+        
+        // Cart item structure
+        const cartItem = {
+          id: pId,
+          name: product.name,
+          packageType: selectedPkg,
+          packText: activeData.packText,
+          price: activeData.price,
+          quantity: itemQty,
+          image: activeData.image
+        };
+        
+        // Get existing cart
+        let cart = JSON.parse(localStorage.getItem('demis_cart') || '[]');
+        const existingIdx = cart.findIndex(ci => ci.id === pId && ci.packageType === selectedPkg);
+        if (existingIdx > -1) {
+          cart[existingIdx].quantity += itemQty;
+        } else {
+          cart.push(cartItem);
+        }
+        localStorage.setItem('demis_cart', JSON.stringify(cart));
+
+        // Update nav cart count if present
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelectorAll('.cart-count-badge, .nav-cart-count').forEach(badge => {
+          badge.innerText = totalItems;
+          badge.style.display = 'inline-block';
+        });
+
+        // Trigger toast notification
+        showToast(`Added ${itemQty}x ${product.name} (${selectedPkg === 'crate' ? 'Crate' : 'Single'}) to basket!`);
+      });
+    }
+
+    // Toast notification helper
+    function showToast(message) {
+      let toast = document.getElementById('custom-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'custom-toast';
+        toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#016130;color:#fff;padding:14px 24px;border-radius:50px;font-weight:700;font-size:0.95rem;box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:99999;transition:all 0.3s ease;transform:translateY(100px);opacity:0;display:flex;align-items:center;gap:10px;';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `<i class="fas fa-shopping-basket" style="color:#ffb400;"></i> ${message}`;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+      }, 3500);
+    }
+
+    // 4. INGREDIENTS / NUTRITION / SOURCING ACCORDION TABS
     document.querySelectorAll('.tab-header-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-header-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         
         btn.classList.add('active');
-        const tabId = `tab-${btn.getAttribute('data-tab')}`;
-        document.getElementById(tabId).classList.add('active');
+        const tabTarget = btn.getAttribute('data-tab');
+        const panel = document.getElementById(`tab-${tabTarget}`);
+        if (panel) panel.classList.add('active');
       });
     });
 
-    // Initialize Page Content
-    updatePageContent();
-    renderGalleryThumbs();
-
-    // Tab 1: Ingredients statistics
-    const statsContainer = document.getElementById('p-ingredient-stats');
-    statsContainer.innerHTML = '';
-    product.ingredientPills.forEach(p => {
-      const statBox = document.createElement('div');
-      statBox.className = 'ingredient-stat';
-      statBox.innerHTML = `
-        <span class="ingredient-stat-val">${p.percent}</span>
-        <span class="ingredient-stat-label">${p.name}</span>
-      `;
-      statsContainer.appendChild(statBox);
-    });
-    document.getElementById('p-process-desc-box').innerText = product.desc;
-
-    // Tab 2: Nutrition values
-    document.getElementById('nutr-calories').innerText = product.calories;
-    document.getElementById('nutr-fat').innerText = product.fat;
-    document.getElementById('nutr-carbs').innerText = product.carbs;
-    document.getElementById('nutr-sugars').innerText = product.sugars;
-    document.getElementById('nutr-protein').innerText = product.protein;
-    document.getElementById('nutr-vitc').innerText = product.vitc;
-
-    // Tab 3: Sourcing desc
-    document.getElementById('p-sourcing-box').innerText = product.processDesc;
-
-    // Render Ingredients Card Row
-    const cardsRow = document.getElementById('p-ingredients-row');
-    cardsRow.innerHTML = '';
-    product.ingredientsList.forEach(ing => {
-      const card = document.createElement('div');
-      card.className = 'ingredient-detail-card';
-      card.innerHTML = `
-        <div class="ingredient-icon-wrapper">
-          <i class="fas ${ing.icon}"></i>
-        </div>
-        <h3>${ing.name}</h3>
-        <p>${ing.desc}</p>
-      `;
-      cardsRow.appendChild(card);
-    });
-
-    // Render Opinions/Reviews
-    const reviewsFeed = document.getElementById('p-reviews-list');
+    // Populate Tab Contents (Ingredients, Sourcing & Process)
+    const extra = (typeof productExtras !== 'undefined' && productExtras[pId]) ? productExtras[pId] : (productExtras['mango'] || {});
     
-    function renderReviews() {
-      reviewsFeed.innerHTML = '';
-      product.reviews.forEach(rev => {
-        const starsHtml = '<i class="fas fa-star"></i>'.repeat(rev.rating) + '<i class="far fa-star"></i>'.repeat(5 - rev.rating);
-        const card = document.createElement('div');
-        card.className = 'review-item-card';
-        card.innerHTML = `
-          <div class="review-header">
-            <span class="review-author">${rev.name}</span>
-            <div class="review-stars">${starsHtml}</div>
+    // Ingredients stats & Process
+    const ingStatsBox = document.getElementById('p-ingredient-stats');
+    if (ingStatsBox) {
+      const ingList = extra.ingredients || ["Pure Fruit Pulp", "Purified Water", "Vitamin C"];
+      ingStatsBox.innerHTML = ingList.map(i => `<div style="background:#fff;padding:12px 18px;border-radius:12px;border:1px solid #e0dfd5;font-weight:700;color:#1b4d3e;"><i class="fas fa-seedling" style="color:#016130;margin-right:8px;"></i>${i}</div>`).join('');
+    }
+    
+    const processBox = document.getElementById('p-process-desc-box');
+    if (processBox) {
+      processBox.innerHTML = `<h4 style="font-family:var(--font-heading);color:#1b4d3e;font-size:1.2rem;margin-bottom:10px;">Sourcing & Quality Standard</h4><p style="color:#555;line-height:1.6;">${extra.sourcing || product.desc}</p>`;
+    }
+
+    const sourcingBox = document.getElementById('p-sourcing-box');
+    if (sourcingBox) {
+      sourcingBox.innerHTML = `<div style="background:#fff;padding:24px;border-radius:20px;border:1px solid #e0dfd5;"><h3 style="font-family:var(--font-heading);color:#1b4d3e;margin-bottom:12px;">Farm Sourcing & UHT Process</h3><p style="color:#555;line-height:1.7;">${extra.sourcing || product.desc}</p><ul style="margin-top:15px;color:#016130;font-weight:700;line-height:2;"><li style="list-style:none;"><i class="fas fa-check-circle"></i> Certified Organic Partner Farms in Uttarakhand & Maharashtra</li><li style="list-style:none;"><i class="fas fa-check-circle"></i> European Flash Sterilization & Aseptic Multilayer Pack</li><li style="list-style:none;"><i class="fas fa-check-circle"></i> Zero Preservatives & 100% Recyclable Packaging</li></ul></div>`;
+    }
+
+    // 5. OUR NATURAL INGREDIENTS ROW
+    const naturalRow = document.getElementById('p-ingredients-row');
+    if (naturalRow) {
+      const cards = extra.naturalCards || [
+        { icon: "fa-leaf", title: "100% Organic", desc: "Sourced from certified organic orchards." },
+        { icon: "fa-sun", title: "Sun-Ripened", desc: "Naturally ripened fruit pulp." },
+        { icon: "fa-shield-virus", title: "UHT Sterilized", desc: "Preservative-free sterile packaging." },
+        { icon: "fa-bolt", title: "Immunity Boost", desc: "Rich in natural fruit vitamins." }
+      ];
+      naturalRow.innerHTML = cards.map(c => `
+        <div class="ingredient-detail-card">
+          <div class="ingredient-icon-wrapper" style="width:60px;height:60px;border-radius:50%;background:rgba(1,97,48,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 15px;color:#016130;font-size:1.4rem;">
+            <i class="fas ${c.icon}"></i>
           </div>
-          <p class="review-comment">${rev.comment}</p>
-        `;
-        reviewsFeed.appendChild(card);
-      });
-      document.getElementById('p-reviews-count').innerText = `(${product.reviews.length} Reviews)`;
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:1.1rem;color:#1b4d3e;margin-bottom:8px;">${c.title}</h3>
+          <p style="font-size:0.85rem;color:#666;line-height:1.5;">${c.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    // 6. OPINIONS & REVIEWS LIST & SUBMISSION FORM
+    const reviewsList = document.getElementById('p-reviews-list');
+    function renderReviews() {
+      if (!reviewsList) return;
+      const reviews = extra.reviews || [
+        { name: "Verified Customer", rating: 5, date: "3 days ago", comment: "Tastes extremely fresh and authentic. Highly recommended!" }
+      ];
+      reviewsList.innerHTML = reviews.map(r => `
+        <div class="review-item-card" style="background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 15px rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.05);margin-bottom:15px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <strong style="color:#1b4d3e;font-size:1rem;">${r.name} <span style="background:rgba(1,97,48,0.1);color:#016130;font-size:0.75rem;padding:3px 8px;border-radius:10px;margin-left:8px;"><i class="fas fa-check-circle"></i> Verified Buyer</span></strong>
+            <span style="color:#ffb400;font-size:0.9rem;">${'★'.repeat(r.rating)}</span>
+          </div>
+          <p style="color:#555;font-size:0.9rem;line-height:1.5;margin-bottom:8px;">"${r.comment}"</p>
+          <span style="font-size:0.75rem;color:#999;">${r.date}</span>
+        </div>
+      `).join('');
     }
     renderReviews();
 
-    // Handle Review Form Submission
     const reviewForm = document.getElementById('product-review-form');
-    reviewForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('rev-name').value;
-      const rating = parseInt(document.getElementById('rev-rating').value) || 5;
-      const comment = document.getElementById('rev-comment').value;
-      
-      product.reviews.unshift({ name, rating, comment });
-      renderReviews();
-      reviewForm.reset();
-      showToast("Thank you! Your review was submitted successfully.");
-    });
-
-    // Render Recently Viewed cards dynamically (excluding current product)
-    const recentGrid = document.getElementById('p-recent-grid');
-    recentGrid.innerHTML = '';
-    
-    const allKeys = Object.keys(productsData);
-    const otherKeys = allKeys.filter(k => k !== pId).slice(0, 4); // Pick first 4 other products
-    
-    otherKeys.forEach(k => {
-      const p = productsData[k];
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.style.background = '#fff';
-      card.style.borderRadius = '24px';
-      card.style.border = '1px solid #e0dfd5';
-      card.style.padding = '1.5rem';
-      
-      card.innerHTML = `
-        <figure class="product-thumbnail" style="height: 180px; position: relative; display: flex; align-items: center; justify-content: center; background: var(--bg-organic); border-radius: 18px; overflow: hidden; margin-bottom: 1.25rem;">
-          <img decoding="async" loading="lazy" src="${p.image}" alt="${p.name}" style="max-height: 140px; object-fit: contain; z-index: 2;">
-        </figure>
-        <span class="product-vendor" style="font-size: 0.75rem; font-family: var(--font-mono); text-transform: uppercase; color: #777; letter-spacing: 1px; display: block; margin-bottom: 0.35rem;">DEMI'S FRESH</span>
-        <h3 class="product-title" style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem; line-height: 1.3;"><a href="product.html?id=${k}" style="color: inherit; text-decoration: none;">${p.name}</a></h3>
-        <div class="product-meta" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-          <span class="product-price" style="font-family: var(--font-heading); font-weight: 900; color: var(--accent-primary); font-size: 1.15rem;">${p.price}</span>
-          <a href="product.html?id=${k}" class="quick-buy-btn" style="padding: 6px 14px; border-radius: 50px; background: var(--accent-primary); color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600;">View</a>
-        </div>
-      `;
-      recentGrid.appendChild(card);
-    });
-
-    // Quantity Selector logic with MOQ 500
-    const qtyInput = document.getElementById('qty-input');
-    const btnMinus = document.getElementById('qty-minus');
-    const btnPlus = document.getElementById('qty-plus');
-
-    btnMinus.addEventListener('click', () => {
-      let val = parseInt(qtyInput.value) || 500;
-      if (val > 500) {
-        qtyInput.value = val - 50;
-        if (parseInt(qtyInput.value) < 500) qtyInput.value = 500;
-      }
-    });
-
-    btnPlus.addEventListener('click', () => {
-      let val = parseInt(qtyInput.value) || 500;
-      qtyInput.value = val + 50;
-    });
-
-    qtyInput.addEventListener('change', () => {
-      let val = parseInt(qtyInput.value);
-      if (isNaN(val) || val < 500) {
-        qtyInput.value = 500;
-      }
-    });
-
-    // Toast Notice Helper
-    function showToast(message) {
-      const container = document.getElementById('toast-wrapper');
-      const toast = document.createElement('div');
-      toast.className = 'toast-notice';
-      toast.innerHTML = `
-        <div class="toast-content">
-          <i class="fas fa-check-circle" style="color: var(--accent-primary); margin-right: 10px;"></i>
-          <span>${message}</span>
-        </div>
-      `;
-      container.appendChild(toast);
-      setTimeout(() => toast.classList.add('show'), 50);
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 400);
-      }, 3500);
-    }
-
-    // Add to Cart
-    document.getElementById('add-to-cart-action').addEventListener('click', () => {
-      const qty = qtyInput.value;
-      const activeData = getActiveData();
-      const unitText = selectedPkg === 'single' ? 'individual bottles' : 'crates';
-      showToast(`Added ${qty} ${unitText} of ${activeData.name} to your wholesale cart!`);
-    });
-
-    // Mobile Navbar Offcanvas Toggle
-    const toggle = document.querySelector('.mobile-toggle');
-    const menu = document.querySelector('.mobile-menu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const active = menu.classList.toggle('active');
-        toggle.classList.toggle('active');
-        if (active) {
-          toggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
-          toggle.querySelectorAll('span')[1].style.opacity = '0';
-          toggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
-        } else {
-          toggle.querySelectorAll('span')[0].style.transform = 'none';
-          toggle.querySelectorAll('span')[1].style.opacity = '1';
-          toggle.querySelectorAll('span')[2].style.transform = 'none';
-        }
-      });
-    }
-
-    // Handle Contact Form Submit (Footer)
-    const contactForm = document.getElementById('footer-contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        showToast("Thanks for reaching out! We will contact you soon.");
-        contactForm.reset();
+        const rName = document.getElementById('rev-name').value;
+        const rRating = parseInt(document.getElementById('rev-rating').value) || 5;
+        const rComment = document.getElementById('rev-comment').value;
+
+        if (!extra.reviews) extra.reviews = [];
+        extra.reviews.unshift({ name: rName, rating: rRating, date: "Just now", comment: rComment });
+        renderReviews();
+        reviewForm.reset();
+        showToast("Thank you! Your review has been published.");
       });
     }
+
+    // 7. RECENTLY VIEWED PRODUCTS TRACKER & DISPLAY
+    function updateRecentlyViewed() {
+      let recent = JSON.parse(localStorage.getItem('demis_recently_viewed') || '[]');
+      // Remove current product if present, then add to front
+      recent = recent.filter(id => id !== pId);
+      recent.unshift(pId);
+      // Keep top 5
+      recent = recent.slice(0, 5);
+      localStorage.setItem('demis_recently_viewed', JSON.stringify(recent));
+
+      const recentGrid = document.getElementById('p-recent-grid');
+      if (!recentGrid) return;
+
+      // Show other products excluding current
+      const displayIds = Object.keys(productsData).filter(id => id !== pId).slice(0, 4);
+      recentGrid.innerHTML = displayIds.map(id => {
+        const item = productsData[id];
+        return `
+          <div class="product-card" style="background:#fff;border-radius:20px;padding:20px;text-align:center;border:1px solid #e2e0d3;box-shadow:0 6px 20px rgba(0,0,0,0.02);position:relative;">
+            <a href="product.html?id=${id}" style="text-decoration:none;color:inherit;">
+              <img decoding="async" loading="lazy" src="${item.image}" alt="${item.name}" style="max-height:160px;width:auto;margin:0 auto 15px;display:block;object-fit:contain;">
+              <h4 style="font-family:var(--font-heading);font-weight:800;font-size:1rem;color:#1b4d3e;margin-bottom:6px;">${item.name}</h4>
+              <div style="font-weight:800;color:#016130;font-size:1.1rem;margin-bottom:12px;">${item.price}</div>
+              <span style="background:#016130;color:#fff;padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:700;display:inline-block;">View Product</span>
+            </a>
+          </div>
+        `;
+      }).join('');
+    }
+    updateRecentlyViewed();
+
+    // Initial render
+    renderGalleryThumbs();
+    updatePriceDisplay();
   </script>
 
   <!-- ══════════════════════════════════════════════

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialsSlider();
   initStoreLocatorMap();
   initFooterContactForm();
-  initSmoothScroll();
+  // initSmoothScroll(); // Disabled to fix wheel lock & layout stutter
   initMagneticButtons();
 });
 
@@ -919,7 +919,7 @@ function initFavoritesFilter() {
             const matchingCards = Array.from(cards).filter(card => card.getAttribute('data-category') === targetCategory);
             gsap.fromTo(matchingCards, 
               { opacity: 0, y: 15 },
-              { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, clearProps: 'opacity,transform' }
+              { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, clearProps: 'opacity,transform', onComplete: () => { if (window.updateCarouselArrows) window.updateCarouselArrows(); } }
             );
           }
         });
@@ -1334,8 +1334,8 @@ function initStoreLocatorMap() {
         <span class="haridwar-origin-badge">Started in Haridwar 📍</span>
       </div>
     `,
-    iconSize: [48, 48],
-    iconAnchor: [24, 24]
+    iconSize: [56, 56],
+    iconAnchor: [28, 28]
   });
   const factoryMarker = L.marker(haridwarCoords, { icon: haridwarIcon, zIndexOffset: 1000 }).addTo(map);
   factoryMarker.bindPopup(`<strong>Demi's Origin & Main Factory</strong><br><span style="font-size: 0.85rem; color: #555;">Haridwar, Uttarakhand. Where Demi's journey started!</span>`);

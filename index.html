@@ -94,7 +94,7 @@
         </div>
         <!-- Slide 3: Milk & Dairy Commercial -->
         <div class="swiper-slide">
-          <video preload="metadata" class="video-bg" autoplay loop muted playsinline poster="assets/hero_fallback_desktop.jpg">
+          <video preload="metadata" class="video-bg video-bg-third" autoplay loop muted playsinline poster="assets/hero_fallback_desktop.jpg">
             <source src="assets/hero_video_3.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -418,18 +418,18 @@
               <div class="card-splash-wrapper">
                 <img decoding="async" loading="lazy" src="assets/milk_splash.png" class="card-splash-img" alt="Milk Splash">
               </div>
-              <a href="product.html?id=cow-milk" title="Demi's Tasty Milk (125 ml)">
+              <a href="product.html?id=tasty-milk" title="Demi's Tasty Milk (125 ml)">
                 <img decoding="async" loading="lazy" src="assets/tasty_milk_125ml.png" alt="Demi's Tasty Milk (125 ml)" class="primary-img">
               </a>
             </figure>
             <div class="product-vendor">Demi's Dairy</div>
-            <h3 class="product-title"><a href="product.html?id=cow-milk">Demi's Tasty Milk (125 ml)</a></h3>
+            <h3 class="product-title"><a href="product.html?id=tasty-milk">Demi's Tasty Milk (125 ml)</a></h3>
             <div class="product-meta quick-add-active">
               <div class="product-price-wrapper">
                 <span class="price-amount">Rs. 10.00</span>
               </div>
               <div class="product-button-wrapper">
-                <a href="product.html?id=cow-milk" class="add-to-cart-btn" style="background-color: var(--accent-primary);">Order Now</a>
+                <a href="product.html?id=tasty-milk" class="add-to-cart-btn" style="background-color: var(--accent-primary);">Order Now</a>
               </div>
             </div>
           </div>
@@ -938,7 +938,7 @@
   
   <script defer src="mockup.js"></script>
   <script>
-  // ── Product Carousel Arrows ──
+  // ── Product Carousel Arrows & Dynamic Centering Sync ──
   (function() {
     const carousel = document.getElementById('products-carousel');
     const prevBtn  = document.querySelector('.carousel-prev');
@@ -946,15 +946,32 @@
     if (!carousel || !prevBtn || !nextBtn) return;
 
     function getScrollStep() {
-      // Scroll by ~1 card width + gap
-      const card = carousel.querySelector('.product-card');
+      const card = carousel.querySelector('.product-card:not([style*="display: none"])');
       return card ? card.offsetWidth + 24 : 260;
     }
 
-    function updateArrows() {
-      prevBtn.disabled = carousel.scrollLeft <= 0;
-      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2;
+    function updateArrowsAndAlignment() {
+      const visibleCards = carousel.querySelectorAll('.product-card:not([style*="display: none"])');
+      let totalCardWidth = 0;
+      visibleCards.forEach(c => { totalCardWidth += c.offsetWidth + 24; });
+
+      // Dynamic centering when cards fit within container width on desktop
+      if (window.innerWidth > 768 && totalCardWidth > 0 && totalCardWidth <= carousel.clientWidth + 15) {
+        carousel.style.justifyContent = 'center';
+      } else {
+        carousel.style.justifyContent = 'flex-start';
+      }
+
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      prevBtn.disabled = (carousel.style.justifyContent === 'center') || (carousel.scrollLeft <= 5);
+      nextBtn.disabled = (carousel.style.justifyContent === 'center') || (maxScroll <= 10) || (carousel.scrollLeft >= maxScroll - 10);
     }
+
+    window.updateCarouselArrows = function() {
+      carousel.scrollLeft = 0;
+      setTimeout(updateArrowsAndAlignment, 30);
+      setTimeout(updateArrowsAndAlignment, 300); // Re-check after GSAP completes
+    };
 
     prevBtn.addEventListener('click', () => {
       carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
@@ -964,16 +981,18 @@
       carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
     });
 
-    carousel.addEventListener('scroll', updateArrows);
+    carousel.addEventListener('scroll', updateArrowsAndAlignment, { passive: true });
+    window.addEventListener('resize', updateArrowsAndAlignment, { passive: true });
 
-    // Re-run updateArrows whenever a category tab switches (tabs show/hide cards)
+    // Category tabs trigger arrow update
     document.querySelectorAll('.category-tab').forEach(btn => {
       btn.addEventListener('click', () => {
-        setTimeout(() => { carousel.scrollLeft = 0; updateArrows(); }, 50);
+        if (window.updateCarouselArrows) window.updateCarouselArrows();
       });
     });
 
-    updateArrows();
+    updateArrowsAndAlignment();
+    setTimeout(updateArrowsAndAlignment, 500);
   })();
   </script>
 
