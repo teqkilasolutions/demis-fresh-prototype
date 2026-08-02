@@ -1334,8 +1334,8 @@ function initStoreLocatorMap() {
         <span class="haridwar-origin-badge">Started in Haridwar 📍</span>
       </div>
     `,
-    iconSize: [56, 56],
-    iconAnchor: [28, 28]
+    iconSize: [100, 100],
+    iconAnchor: [50, 50]
   });
   const factoryMarker = L.marker(haridwarCoords, { icon: haridwarIcon, zIndexOffset: 1000 }).addTo(map);
   factoryMarker.bindPopup(`<strong>Demi's Origin & Main Factory</strong><br><span style="font-size: 0.85rem; color: #555;">Haridwar, Uttarakhand. Where Demi's journey started!</span>`);
@@ -1703,3 +1703,372 @@ function initMagneticButtons() {
   });
 }
 
+
+/* ── Card 3-Photo Sequential Auto-Rotation on Hover ── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.product-card').forEach(card => {
+    let rotInterval = null;
+    
+    card.addEventListener('mouseenter', () => {
+      const imgs = card.querySelectorAll('.card-rot-img');
+      if (imgs.length <= 1) return;
+      
+      let currIdx = 1; // Switch to Photo 2 immediately on hover
+      imgs.forEach(i => i.classList.remove('active'));
+      imgs[currIdx].classList.add('active');
+      
+      rotInterval = setInterval(() => {
+        imgs.forEach(i => i.classList.remove('active'));
+        currIdx = (currIdx + 1) % imgs.length;
+        imgs[currIdx].classList.add('active');
+      }, 1200);
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      if (rotInterval) {
+        clearInterval(rotInterval);
+        rotInterval = null;
+      }
+      const imgs = card.querySelectorAll('.card-rot-img');
+      if (imgs.length > 0) {
+        imgs.forEach(i => i.classList.remove('active'));
+        imgs[0].classList.add('active'); // Reset to Photo 1 (clean floating PNG)
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselWrapper = document.querySelector('.products-carousel-wrapper');
+  if (!carouselWrapper) return;
+  
+  const carousel = carouselWrapper.querySelector('#products-carousel');
+  const prevBtn = carouselWrapper.querySelector('.carousel-prev');
+  const nextBtn = carouselWrapper.querySelector('.carousel-next');
+  if (!carousel) return;
+
+  function getCardStep() {
+    const card = carousel.querySelector('.product-card:not([style*="display: none"])');
+    return card ? card.offsetWidth + 24 : 280;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      carousel.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      carousel.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+    });
+  }
+});
+
+/* Reset Carousel Scroll on Category Tab Switch */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const carousel = document.getElementById('products-carousel');
+      if (carousel) {
+        carousel.scrollLeft = 0;
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselWrapper = document.querySelector('.products-carousel-wrapper');
+  if (!carouselWrapper) return;
+  
+  const carousel = carouselWrapper.querySelector('#products-carousel');
+  const prevBtn = carouselWrapper.querySelector('.carousel-prev');
+  const nextBtn = carouselWrapper.querySelector('.carousel-next');
+  if (!carousel) return;
+
+  function updateArrows() {
+    if (!prevBtn || !nextBtn) return;
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    
+    if (carousel.scrollLeft <= 5) {
+      prevBtn.style.opacity = '0.3';
+      prevBtn.style.cursor = 'not-allowed';
+    } else {
+      prevBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+    }
+    
+    if (carousel.scrollLeft >= maxScrollLeft - 5) {
+      nextBtn.style.opacity = '0.3';
+      nextBtn.style.cursor = 'not-allowed';
+    } else {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+
+  carousel.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      carousel.scrollLeft = 0;
+      setTimeout(updateArrows, 250);
+    });
+  });
+
+  updateArrows();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselWrapper = document.querySelector('.products-carousel-wrapper');
+  if (!carouselWrapper) return;
+  
+  const carousel = carouselWrapper.querySelector('#products-carousel');
+  const prevBtn = carouselWrapper.querySelector('.carousel-prev');
+  const nextBtn = carouselWrapper.querySelector('.carousel-next');
+  if (!carousel) return;
+
+  let currentCardIndex = 0;
+
+  function getVisibleCards() {
+    return Array.from(carousel.querySelectorAll('.product-card')).filter(card => {
+      const style = window.getComputedStyle(card);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  }
+
+  function updateArrowStates(visibleCards) {
+    if (!prevBtn || !nextBtn) return;
+    if (visibleCards.length <= 1) {
+      prevBtn.style.opacity = '0.3';
+      prevBtn.style.cursor = 'not-allowed';
+      nextBtn.style.opacity = '0.3';
+      nextBtn.style.cursor = 'not-allowed';
+      return;
+    }
+
+    if (currentCardIndex <= 0) {
+      prevBtn.style.opacity = '0.3';
+      prevBtn.style.cursor = 'not-allowed';
+    } else {
+      prevBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+    }
+
+    if (currentCardIndex >= visibleCards.length - 1) {
+      nextBtn.style.opacity = '0.3';
+      nextBtn.style.cursor = 'not-allowed';
+    } else {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+
+  function scrollToCard(index) {
+    const visibleCards = getVisibleCards();
+    if (visibleCards.length === 0) return;
+    
+    currentCardIndex = Math.max(0, Math.min(visibleCards.length - 1, index));
+    const targetCard = visibleCards[currentCardIndex];
+    
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    updateArrowStates(visibleCards);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const visibleCards = getVisibleCards();
+      if (currentCardIndex < visibleCards.length - 1) {
+        scrollToCard(currentCardIndex + 1);
+      }
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentCardIndex > 0) {
+        scrollToCard(currentCardIndex - 1);
+      }
+    });
+  }
+
+  // Reset index when category tabs change
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      setTimeout(() => {
+        carousel.scrollLeft = 0;
+        currentCardIndex = 0;
+        const visibleCards = getVisibleCards();
+        scrollToCard(0);
+      }, 250);
+    });
+  });
+
+  // Track manual touch/wheel scroll index sync
+  let scrollTimer = null;
+  carousel.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const visibleCards = getVisibleCards();
+      if (visibleCards.length === 0) return;
+      const carouselCenter = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+      
+      let closestIdx = 0;
+      let minDistance = Infinity;
+      
+      visibleCards.forEach((card, idx) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(carouselCenter - cardCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+      
+      currentCardIndex = closestIdx;
+      updateArrowStates(visibleCards);
+    }, 150);
+  });
+
+  setTimeout(() => {
+    scrollToCard(0);
+  }, 200);
+});
+
+/* ── Guaranteed Card-by-Card Carousel Arrow Navigation ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselWrapper = document.querySelector('.products-carousel-wrapper');
+  if (!carouselWrapper) return;
+  
+  const carousel = carouselWrapper.querySelector('#products-carousel');
+  const prevBtn = carouselWrapper.querySelector('.carousel-prev');
+  const nextBtn = carouselWrapper.querySelector('.carousel-next');
+  if (!carousel) return;
+
+  let currentCardIndex = 0;
+
+  function getVisibleCards() {
+    return Array.from(carousel.querySelectorAll('.product-card')).filter(card => {
+      const style = window.getComputedStyle(card);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  }
+
+  function updateArrowStates(visibleCards) {
+    if (!prevBtn || !nextBtn) return;
+    if (visibleCards.length <= 1) {
+      prevBtn.style.opacity = '0.3';
+      prevBtn.style.cursor = 'not-allowed';
+      nextBtn.style.opacity = '0.3';
+      nextBtn.style.cursor = 'not-allowed';
+      return;
+    }
+
+    if (currentCardIndex <= 0) {
+      prevBtn.style.opacity = '0.3';
+      prevBtn.style.cursor = 'not-allowed';
+    } else {
+      prevBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+    }
+
+    if (currentCardIndex >= visibleCards.length - 1) {
+      nextBtn.style.opacity = '0.3';
+      nextBtn.style.cursor = 'not-allowed';
+    } else {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+
+  function scrollToCard(index) {
+    const visibleCards = getVisibleCards();
+    if (visibleCards.length === 0) return;
+    
+    currentCardIndex = Math.max(0, Math.min(visibleCards.length - 1, index));
+    const targetCard = visibleCards[currentCardIndex];
+    
+    if (targetCard) {
+      const carouselCenterOffset = (carousel.clientWidth - targetCard.offsetWidth) / 2;
+      const targetScrollLeft = targetCard.offsetLeft - carouselCenterOffset;
+      carousel.scrollTo({
+        left: Math.max(0, targetScrollLeft),
+        behavior: 'smooth'
+      });
+    }
+    updateArrowStates(visibleCards);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const visibleCards = getVisibleCards();
+      if (currentCardIndex < visibleCards.length - 1) {
+        scrollToCard(currentCardIndex + 1);
+      }
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentCardIndex > 0) {
+        scrollToCard(currentCardIndex - 1);
+      }
+    });
+  }
+
+  // Reset index when category tabs change
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      setTimeout(() => {
+        carousel.scrollLeft = 0;
+        currentCardIndex = 0;
+        const visibleCards = getVisibleCards();
+        scrollToCard(0);
+      }, 250);
+    });
+  });
+
+  // Sync index on touch/drag scroll
+  let scrollTimer = null;
+  carousel.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const visibleCards = getVisibleCards();
+      if (visibleCards.length === 0) return;
+      const carouselCenter = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+      
+      let closestIdx = 0;
+      let minDistance = Infinity;
+      
+      visibleCards.forEach((card, idx) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(carouselCenter - cardCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+      
+      currentCardIndex = closestIdx;
+      updateArrowStates(visibleCards);
+    }, 150);
+  });
+
+  setTimeout(() => {
+    scrollToCard(0);
+  }, 200);
+});

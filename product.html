@@ -52,47 +52,252 @@
       align-items: start;
     }
     
-    /* Left Column: Visuals Box */
+    
+    
+    /* Single Product Hero Visual Container */
     .detail-visual-wrapper {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      width: 100%;
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
     }
+    
+    /* Big White Card Box (Strictly Main Image) */
     .detail-visual {
-      position: relative;
-      background: transparent;
-      border-radius: 28px;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 480px;
-      overflow: hidden;
-      transition: background-color 0.3s;
+      position: relative !important;
+      background: #ffffff !important;
+      border-radius: 28px !important;
+      padding: 2rem !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      height: 520px !important;
+      width: 100% !important;
+      overflow: hidden !important;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08) !important;
+      border: 1px solid rgba(0, 0, 0, 0.04) !important;
+      box-sizing: border-box !important;
     }
+    
     .detail-splash {
-      position: absolute;
-      bottom: -10px;
-      left: -10px;
-      right: -10px;
-      height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
-      opacity: 0.95;
-      z-index: 1;
+      display: none !important;
     }
+    
+    /* Image 1: Clean Floating PNG */
     .detail-pack {
-      position: relative;
-      z-index: 2;
-      max-height: 380px;
-      object-fit: contain;
+      position: relative !important;
+      z-index: 2 !important;
+      max-height: 440px !important;
+      width: auto !important;
+      height: 90% !important;
+      object-fit: contain !important;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.12));
       animation: floatPack 4s ease-in-out infinite alternate;
+      transition: all 0.3s ease;
     }
+    
+    /* Images 2 & 3: Full-Cover Edge-to-Edge Fill inside White Box */
+    .detail-visual img.full-cover,
+    #p-image.full-cover {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      border-radius: 28px !important;
+      animation: none !important;
+      filter: none !important;
+      z-index: 5 !important;
+    }
+
     @keyframes floatPack {
       0% { transform: translateY(0); }
       100% { transform: translateY(-12px); }
     }
+    
+    /* Navigation Gallery Row BELOW White Box */
+    .gallery-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 1.2rem !important;
+      width: 100% !important;
+      margin-top: 0.5rem !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+    .gallery-arrow-btn {
+      width: 46px !important;
+      height: 46px !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(0, 0, 0, 0.12) !important;
+      background: #ffffff !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #2c3e50 !important;
+      font-size: 15px !important;
+      transition: all 0.25s ease !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    }
+    .gallery-arrow-btn:hover {
+      background: #046836 !important;
+      color: #ffffff !important;
+      border-color: #046836 !important;
+      transform: translateY(-2px) !important;
+    }
+    .gallery-arrow-btn:disabled {
+      opacity: 0.35 !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+    }
+    .gallery-thumbs {
+      display: flex !important;
+      gap: 0.8rem !important;
+      align-items: center !important;
+    }
+    .gallery-thumb,
+    .thumb-btn {
+      width: 72px !important;
+      height: 72px !important;
+      border-radius: 16px !important;
+      border: 2px solid transparent !important;
+      background: #ffffff !important;
+      padding: 4px !important;
+      cursor: pointer !important;
+      overflow: hidden !important;
+      transition: all 0.25s ease !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+      box-sizing: border-box !important;
+    }
+    .gallery-thumb img,
+    .thumb-btn img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 12px !important;
+    }
+    .gallery-thumb.active,
+    .thumb-btn.active {
+      border-color: #046836 !important;
+      transform: scale(1.05) !important;
+      box-shadow: 0 6px 16px rgba(4, 104, 54, 0.2) !important;
+    }
+
+    @media (max-width: 768px) {
+      .detail-visual {
+        height: 380px !important;
+        padding: 1rem !important;
+      }
+      .detail-pack {
+        max-height: 320px !important;
+      }
+      .gallery-thumb,
+      .thumb-btn {
+        width: 60px !important;
+        height: 60px !important;
+      }
+      .gallery-arrow-btn {
+        width: 40px !important;
+        height: 40px !important;
+      }
+    }
+
+    
+    /* Navigation Gallery Rows Below Box */
+    .gallery-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .gallery-arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2c3e50;
+      font-size: 15px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .gallery-arrow-btn:hover {
+      background: #046836;
+      color: #ffffff;
+      border-color: #046836;
+      transform: translateY(-2px);
+    }
+    .gallery-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .gallery-thumbs {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .thumb-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      border: 2px solid transparent;
+      background: #ffffff;
+      padding: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .thumb-btn.active {
+      border-color: #046836;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(4, 104, 54, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .detail-visual {
+        height: 380px !important;
+        padding: 1rem !important;
+      }
+      .detail-pack {
+        max-height: 320px !important;
+      }
+      .thumb-btn {
+        width: 60px;
+        height: 60px;
+      }
+      .gallery-arrow-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
     
     /* Navigation Gallery Rows */
     .gallery-row {
@@ -1174,7 +1379,7 @@
           { name: "Pooja Hegde", rating: 5, date: "1 week ago", comment: "Clean taste, no dairy smell, very high quality." }
         ]
       },
-      "double-toned-milk": {
+  "double-toned-milk": {
         ingredients: ["UHT Skimmed Milk", "Vitamin D3", "Calcium"],
         sourcing: "Standardized 400 ml family pouch sterilized with European UHT machinery.",
         naturalCards: [
@@ -1281,6 +1486,7 @@
         badge3: "Aseptic Packed",
         gallery: [
           "assets/brand_pack_0005.png",
+          "assets/mango_pack_splash.jpg",
           "assets/brand_pack_0005_200ml.png"
         ]
       },
@@ -1303,6 +1509,7 @@
         badge3: "Aseptic Boxed",
         gallery: [
           "assets/brand_pack_0015.png",
+          "assets/litchi_pack_splash.jpg",
           "assets/brand_pack_0015_200ml.png"
         ]
       },
@@ -1325,6 +1532,7 @@
         badge3: "100% Natural",
         gallery: [
           "assets/brand_pack_0016.png",
+          "assets/apple_pack_splash.jpg",
           "assets/brand_pack_0016_200ml.png"
         ]
       },
@@ -1347,6 +1555,7 @@
         badge3: "Aseptic Boxed",
         gallery: [
           "assets/brand_pack_0017.png",
+          "assets/mixed_fruit_pack_splash.jpg",
           "assets/brand_pack_0017_200ml.png"
         ]
       },
@@ -1369,6 +1578,7 @@
         badge3: "Aseptic Sealed",
         gallery: [
           "assets/brand_pack_0018.png",
+          "assets/guava_pack_splash.jpg",
           "assets/brand_pack_0018_200ml.png"
         ]
       },
@@ -1393,7 +1603,8 @@
         badge3: "Aseptic Packed",
         gallery: [
           "assets/brand_pack_0005_200ml.png",
-          "assets/mango_pack_splash.jpg"
+          "assets/mango_pack_splash.jpg",
+          "assets/brand_pack_0005.png"
         ]
       },
       "litchi-200ml": {
@@ -1415,7 +1626,8 @@
         badge3: "Zero Preservatives",
         gallery: [
           "assets/brand_pack_0015_200ml.png",
-          "assets/litchi_pack_splash.jpg"
+          "assets/litchi_pack_splash.jpg",
+          "assets/brand_pack_0015.png"
         ]
       },
       "apple-200ml": {
@@ -1437,7 +1649,8 @@
         badge3: "Aseptic Boxed",
         gallery: [
           "assets/brand_pack_0016_200ml.png",
-          "assets/apple_pack_splash.jpg"
+          "assets/apple_pack_splash.jpg",
+          "assets/brand_pack_0016.png"
         ]
       },
       "guava-200ml": {
@@ -1459,7 +1672,8 @@
         badge3: "Sterilized UHT",
         gallery: [
           "assets/brand_pack_0018_200ml.png",
-          "assets/guava_splash_card.png"
+          "assets/guava_pack_splash.jpg",
+          "assets/brand_pack_0018.png"
         ]
       },
 
@@ -1483,6 +1697,7 @@
         badge3: "No Refrigeration Required",
         gallery: [
           "assets/tasty_milk_125ml.png",
+          "assets/brand_milk_fresh.png",
           "assets/tasty_milk_400ml.png"
         ]
       },
@@ -1504,10 +1719,12 @@
         badge2: "Low Fat",
         badge3: "90 Days Shelf Life",
         gallery: [
-          "assets/amole_milk_pack.png"
+          "assets/amole_milk_pack.png",
+          "assets/brand_milk_fresh.png",
+          "assets/amole_milk.png"
         ]
       },
-      "double-toned-milk": {
+  "double-toned-milk": {
         name: "Demi's Tasty Milk (400 ml)",
         price: "Rs. 35.00",
         category: "Pure Milk",
@@ -1526,6 +1743,7 @@
         badge3: "Aseptic Polypack",
         gallery: [
           "assets/tasty_milk_400ml.png",
+          "assets/brand_milk_fresh.png",
           "assets/tasty_milk_125ml.png"
         ]
       },
@@ -1549,7 +1767,9 @@
         badge2: "Kola Nut Extract",
         badge3: "Prebiotic Fiber",
         gallery: [
-          "assets/soft_drink_cola.png"
+          "assets/soft_drink_cola.png",
+          "assets/cola_ad_new.jpg",
+          "assets/brand_wa15.png"
         ]
       },
       "lemon": {
@@ -1570,7 +1790,9 @@
         badge2: "Prebiotic Fibers",
         badge3: "Low Calories",
         gallery: [
-          "assets/soft_drink_lemon.png"
+          "assets/soft_drink_lemon.png",
+          "assets/lemona_ad_new.jpg",
+          "assets/brand_wa05.png"
         ]
       },
       "orange": {
@@ -1591,7 +1813,9 @@
         badge2: "Vitamin C Boost",
         badge3: "Crisp Carbonation",
         gallery: [
-          "assets/soft_drink_orange.png"
+          "assets/soft_drink_orange.png",
+          "assets/orange_ad.jpg",
+          "assets/brand_wa16.png"
         ]
       },
       "masala-zeera": {
@@ -1612,7 +1836,9 @@
         badge2: "Digestive Relief",
         badge3: "Traditional Spice",
         gallery: [
-          "assets/soft_drink_masala_zeera.png"
+          "assets/soft_drink_masala_zeera.png",
+          "assets/multani_zeera_ad.jpg",
+          "assets/brand_wa17.png"
         ]
       },
       "multani-zeera": {
@@ -1633,7 +1859,9 @@
         badge2: "Digestive Minerals",
         badge3: "Zero Preservatives",
         gallery: [
-          "assets/soft_drink_multani_zeera.png"
+          "assets/soft_drink_multani_zeera.png",
+          "assets/multani_zeera_ad.jpg",
+          "assets/brand_wa18.png"
         ]
       }
     };
@@ -1801,40 +2029,109 @@
       
     }
 
-    // Render Gallery Thumbnails helper
+    /* Single Product Smooth Gallery Transition & Persistent Thumbs */
     const galleryContainer = document.getElementById('p-gallery');
+    const mainImg = document.getElementById('p-image');
+    const prevBtn = document.getElementById('gallery-prev-btn');
+    const nextBtn = document.getElementById('gallery-next-btn');
     let currentGalleryIndex = 0;
+    let isTransitioning = false;
 
-    function renderGalleryThumbs() {
-      if (!galleryContainer) return;
+    function initGalleryThumbs() {
+      if (!galleryContainer || !product.gallery || product.gallery.length === 0) return;
       galleryContainer.innerHTML = '';
-      if (!product.gallery || product.gallery.length === 0) {
-        product.gallery = [product.image];
-      }
+      
       product.gallery.forEach((imgSrc, index) => {
-        const thumb = document.createElement('div');
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
         thumb.className = `gallery-thumb ${index === currentGalleryIndex ? 'active' : ''}`;
+        thumb.setAttribute('aria-label', `View product photo ${index + 1}`);
         thumb.innerHTML = `<img decoding="async" loading="lazy" src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
 
-        thumb.addEventListener('click', () => {
-          currentGalleryIndex = index;
-          updateGalleryDisplay();
+        thumb.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (index !== currentGalleryIndex) {
+            switchGalleryImage(index);
+          }
         });
         galleryContainer.appendChild(thumb);
       });
     }
 
-    function updateGalleryDisplay() {
+    function updateThumbActiveState() {
       if (!galleryContainer) return;
-      galleryContainer.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
-        if (idx === currentGalleryIndex) t.classList.add('active');
-        else t.classList.remove('active');
+      const thumbs = galleryContainer.querySelectorAll('.gallery-thumb');
+      thumbs.forEach((t, i) => {
+        if (i === currentGalleryIndex) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
       });
-
-      const imgSrc = product.gallery[currentGalleryIndex];
-      if (imgSrc && document.getElementById('p-image')) {
-        document.getElementById('p-image').src = imgSrc;
+      
+      if (prevBtn) {
+        prevBtn.style.opacity = currentGalleryIndex === 0 ? '0.4' : '1';
+        prevBtn.style.cursor = currentGalleryIndex === 0 ? 'pointer' : 'pointer';
       }
+      if (nextBtn) {
+        nextBtn.style.opacity = currentGalleryIndex === product.gallery.length - 1 ? '0.4' : '1';
+        nextBtn.style.cursor = currentGalleryIndex === product.gallery.length - 1 ? 'pointer' : 'pointer';
+      }
+    }
+
+    function switchGalleryImage(newIndex) {
+      if (!mainImg || !product.gallery || !product.gallery[newIndex] || isTransitioning) return;
+      isTransitioning = true;
+      currentGalleryIndex = newIndex;
+      
+      updateThumbActiveState();
+      
+      // Smooth fade transition
+      mainImg.style.transition = 'opacity 0.22s ease-in-out, transform 0.22s ease-in-out';
+      mainImg.style.opacity = '0';
+      
+      setTimeout(() => {
+        mainImg.src = product.gallery[currentGalleryIndex];
+        
+        if (currentGalleryIndex === 0) {
+          mainImg.classList.remove('full-cover');
+        } else {
+          mainImg.classList.add('full-cover');
+        }
+        
+        setTimeout(() => {
+          mainImg.style.opacity = '1';
+          isTransitioning = false;
+        }, 30);
+      }, 200);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isTransitioning) return;
+        const total = product.gallery ? product.gallery.length : 1;
+        const newIdx = (currentGalleryIndex - 1 + total) % total;
+        switchGalleryImage(newIdx);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isTransitioning) return;
+        const total = product.gallery ? product.gallery.length : 1;
+        const newIdx = (currentGalleryIndex + 1) % total;
+        switchGalleryImage(newIdx);
+      });
+    }
+
+    // Initialize gallery DOM & display
+    initGalleryThumbs();
+    if (mainImg) {
+      mainImg.src = product.gallery[0];
+      mainImg.classList.remove('full-cover');
+      mainImg.style.opacity = '1';
     }
 
     // Initialize DOM Content safely
@@ -2081,7 +2378,7 @@
     updateRecentlyViewed();
 
     // Initial render
-    renderGalleryThumbs();
+    updateThumbActiveState();
     updatePriceDisplay();
   </script>
 
